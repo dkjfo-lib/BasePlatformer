@@ -20,8 +20,9 @@ public class Enemy : CharacterAbstract
 
     void Move()
     {
+        if (!charState.CanMove) return;
         float movement_H = 0;
-        if (!charState.isDead && playerDetector.detected)
+        if (playerDetector.detected)
         {
             var target = GetClosest(playerDetector.contacts.Select(s => s.transform));
             if (target.position.x > transform.position.x && !charState.isRight)
@@ -52,25 +53,33 @@ public class Enemy : CharacterAbstract
                 }
             }
         }
+        Anim_SetBool("run", movement_H != 0 && OnGround);
     }
     void Jump()
     {
-        if (charState.isDead) return;
+        if (charState.IsDead) return;
         //if (OnGround)
         //    if (Input.GetKeyDown(KeyCode.W))
         //        SetVelocityV(speed_V);
     }
     void Attack()
     {
-        if (charState.isDead) return;
+        if (charState.IsDead) return;
         if (attack == null) return;
-        if (Physics2D.OverlapBox((Vector2)transform.position + attack.stats.offset, attack.stats.size, 0, attack.stats.layerMask))
+        if (attack.CastAttack(transform.position).Length > 0)
         {
-            if (attack.DoAttack(transform.position))
+            if (charState.CanAttack && attack.CanAttack())
             {
-                Anim_SetTrigget("attack");
+                charState.inAttack = true;
+                Anim_SetTrigger("attack");
+                StartCoroutine(WaitWhileAttack());
             }
         }
+    }
+    IEnumerator WaitWhileAttack()
+    {
+        yield return WaitWhileAnim("b_attack");
+        charState.inAttack = false;
     }
 
     Transform GetClosest(IEnumerable<Transform> transforms)

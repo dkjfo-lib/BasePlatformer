@@ -155,8 +155,8 @@ MonoBehaviour:
   attack:
     stats: {fileID: 11400000, guid: 2628c440d555b0748a5d90e6afe00a20, type: 2}
     offset: {x: 0, y: 0}
-  hitSounds: {fileID: 11400000, guid: dbf68490ff38bac498672a1742c86e0f, type: 2}
-  attackScreams: {fileID: 11400000, guid: dbf68490ff38bac498672a1742c86e0f, type: 2}
+  hitSounds: {fileID: 11400000, guid: 1da00febe55d45c40a42e0352afdc040, type: 2}
+  attackScreams: {fileID: 11400000, guid: a263d6f62cd9b3d4693df2588248d46b, type: 2}
   hitScreams: {fileID: 11400000, guid: 5fc95cab4bb8cbd448f8d107dbf381be, type: 2}
   deathScreams: {fileID: 11400000, guid: 0ffddff59c735cf4dbb1bb1b0de5d1a2, type: 2}
 --- !u!114 &1132134102

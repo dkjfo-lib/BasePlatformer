@@ -87,22 +87,27 @@ public class CharacterAbstract : MonoBehaviour
     }
 
     protected void Anim_SetBool(string name, bool value) => animator.SetBool(name, value);
-    protected void Anim_SetTrigget(string name) => animator.SetTrigger(name);
+    protected void Anim_SetTrigger(string name) => animator.SetTrigger(name);
+    protected IEnumerator WaitWhileAnim(string animationName)
+    {
+        yield return new WaitWhile(() => animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == animationName);
+    }
 
+    public void CastAttack() => attack.DoAttack(transform.position);
     public void GetHit(Hit hit)
     {
         charState.health -= hit.damage;
         if (hit.position.x < transform.position.x)
-            AddVelocityH(1000);
+            AddVelocityH(hit.force);
         else
-            AddVelocityH(-1000);
-        if (charState.isDead)
+            AddVelocityH(-hit.force);
+        if (charState.IsDead)
         {
-            Anim_SetTrigget("die");
+            Anim_SetTrigger("die");
         }
         else
         {
-            Anim_SetTrigget("hurt");
+            Anim_SetTrigger("hurt");
         }
     }
 
@@ -132,7 +137,7 @@ public class CharacterAbstract : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        if (attack.stats != null) Gizmos.DrawWireCube(transform.position + (Vector3)attack.offset, attack.stats.size);
+        attack.OnGizmos(transform.position);
         AddOnDrawGizmos();
     }
     protected virtual void AddOnDrawGizmos() { }

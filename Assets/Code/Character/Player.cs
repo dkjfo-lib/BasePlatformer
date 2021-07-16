@@ -14,14 +14,12 @@ public class Player : CharacterAbstract
 
     void Move()
     {
+        if (!charState.CanMove) return;
         float movement_H = 0;
-        if (!charState.isDead)
-        {
-            if (Input.GetKey(KeyCode.D))
-                movement_H += 1;
-            if (Input.GetKey(KeyCode.A))
-                movement_H -= 1;
-        }
+        if (Input.GetKey(KeyCode.D))
+            movement_H += 1;
+        if (Input.GetKey(KeyCode.A))
+            movement_H -= 1;
         if (movement_H != 0)
         {
             if (OnGround)
@@ -42,7 +40,7 @@ public class Player : CharacterAbstract
     }
     void Jump()
     {
-        if (charState.isDead) return;
+        if (charState.IsDead) return;
         if (OnGround)
         {
             if (Input.GetKeyDown(KeyCode.W))
@@ -53,12 +51,12 @@ public class Player : CharacterAbstract
     }
     void Attack()
     {
-        if (charState.isDead) return;
+        if (charState.IsDead) return;
         if (Input.GetMouseButtonDown(0))
         {
-            if (attack.DoAttack(transform.position))
+            if (attack.CanAttack())
             {
-                Anim_SetTrigget("attack");
+                Anim_SetTrigger("attack");
             }
         }
     }

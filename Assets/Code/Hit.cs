@@ -5,5 +5,6 @@ using UnityEngine;
 public class Hit
 {
     public int damage;
+    public int force;
     public Vector2 position;
 }

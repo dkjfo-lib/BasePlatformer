@@ -6,7 +6,11 @@ using UnityEngine;
 public class CharState
 {
     public int health = 10;
-    public bool isDead => health < 1;
     public bool isRight = true;
     public float speed_H = 0;
+    public bool inAttack = false;
+
+    public bool IsDead => health < 1;
+    public bool CanMove => !inAttack && !IsDead;
+    public bool CanAttack => !inAttack && !IsDead;
 }
