@@ -146,13 +146,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05c3ceb7f37a904087b212bba84a377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  physicalStats: {fileID: 11400000, guid: 726e9b18726fd2f49a3dabf4b23f731f, type: 2}
   charStats: {fileID: 11400000, guid: 7fc79d22464bd7445aa85ad7ad01677d, type: 2}
   charState:
     health: 1
     isRight: 1
     speed_H: 0
+    inAttack: 0
   attack:
     stats: {fileID: 11400000, guid: 3f0d6e47d8d50a449958e52fc822ca72, type: 2}
+    isRight: 1
     offset: {x: 0, y: 0}
   hitSounds: {fileID: 11400000, guid: 1da00febe55d45c40a42e0352afdc040, type: 2}
   attackScreams: {fileID: 11400000, guid: a263d6f62cd9b3d4693df2588248d46b, type: 2}

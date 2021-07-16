@@ -8,11 +8,13 @@ public class Enemy : CharacterAbstract
     DetectLayer playerDetector;
     protected override void OnStart()
     {
+        base.OnStart();
         playerDetector = GetComponents<DetectLayer>()[1];
     }
 
     protected override void OnFixedUpdate()
     {
+        base.OnFixedUpdate();
         Attack();
         Move();
         Jump();
@@ -42,14 +44,14 @@ public class Enemy : CharacterAbstract
         {
             if (OnGround)
             {
-                charState.speed_H = Mathf.Clamp(charState.speed_H + charStats.Movement.Acceleration_H, 0, charStats.Movement.MaxSpeed_H);
-                SetVelocityH(movement_H * charState.speed_H);
+                Velocity_H = Mathf.Clamp(Velocity_H + physicalStats.Acceleration_H, 0, physicalStats.MaxSpeed_H);
+                SetVelocityH(movement_H * Velocity_H);
             }
             else
             {
                 if (movement_H != 0)
                 {
-                    AddVelocityH(movement_H * charStats.Movement.MaxSpeed_H * charStats.Movement.Speed_controll_inAir);
+                    AddVelocityH(movement_H * physicalStats.MaxSpeed_H * physicalStats.Speed_controll_inAir);
                 }
             }
         }
@@ -68,18 +70,8 @@ public class Enemy : CharacterAbstract
         if (attack == null) return;
         if (attack.CastAttack(transform.position).Length > 0)
         {
-            if (charState.CanAttack && attack.CanAttack())
-            {
-                charState.inAttack = true;
-                Anim_SetTrigger("attack");
-                StartCoroutine(WaitWhileAttack());
-            }
+            DoAttack("b_attack");
         }
-    }
-    IEnumerator WaitWhileAttack()
-    {
-        yield return WaitWhileAnim("b_attack");
-        charState.inAttack = false;
     }
 
     Transform GetClosest(IEnumerable<Transform> transforms)
@@ -87,8 +79,9 @@ public class Enemy : CharacterAbstract
         return transforms.First();
     }
 
-    protected override void AddFlip_H()
+    protected override void Flip_H()
     {
+        base.Flip_H();
         playerDetector.Flip_H();
     }
 }

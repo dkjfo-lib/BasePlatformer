@@ -7,7 +7,7 @@ public class Music : MonoBehaviour
 {
     AudioSource audioSource;
 
-    public SoundCollection currentPlaylist;
+    public ClipsCollection currentPlaylist;
     public bool playOnStart = true;
     public bool play = false;
     public float seconds = 1;
@@ -18,7 +18,7 @@ public class Music : MonoBehaviour
         if (playOnStart) PlaySongs();
     }
 
-    public void PlaySongs(SoundCollection music)
+    public void PlaySongs(ClipsCollection music)
     {
         currentPlaylist = music;
         PlaySongs();

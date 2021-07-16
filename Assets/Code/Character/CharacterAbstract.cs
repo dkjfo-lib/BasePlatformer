@@ -2,97 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(DetectLayer))]
-[RequireComponent(typeof(SpriteRenderer))]
-[RequireComponent(typeof(Animator))]
-public class CharacterAbstract : MonoBehaviour
+public class CharacterAbstract : PhysicalItem
 {
     public CharStats charStats;
     public CharState charState;
     public Attack attack;
 
-    Rigidbody2D rigidbody;
-    DetectLayer detectLayer;
-    SpriteRenderer spriteRenderer;
-    Animator animator;
+    public ClipsCollection hitSounds;
+    public ClipsCollection attackScreams;
+    public ClipsCollection hitScreams;
+    public ClipsCollection deathScreams;
 
-    public SoundCollection hitSounds;
-    public SoundCollection attackScreams;
-    public SoundCollection hitScreams;
-    public SoundCollection deathScreams;
-
-    protected bool OnGround => detectLayer.detected;
-    protected Vector2 Velocity => rigidbody.velocity;
-
-    private void Start()
+    protected override void OnStart()
     {
         charState.health = charStats.MaxHealth;
         attack.Init();
         GetComponents();
-        OnStart();
     }
-    private void GetComponents()
-    {
-        rigidbody = GetComponent<Rigidbody2D>();
-        detectLayer = GetComponents<DetectLayer>()[0];
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
-    }
-    protected virtual void OnStart() { }
 
-    private void FixedUpdate()
+    protected override void OnFixedUpdate()
     {
         DampVelocity();
-        OnFixedUpdate();
-    }
-    protected virtual void OnFixedUpdate() { }
-
-    protected void DampVelocity()
-    {
-        if (OnGround)
-        {
-            charState.speed_H = Mathf.Clamp(charState.speed_H - charStats.Movement.Acceleration_H, 0, charStats.Movement.MaxSpeed_H);
-            MultVelocityH(charStats.Movement.Speed_dump_H);
-        }
-        else
-        {
-            MultVelocityH(charStats.Movement.Speed_dump_inAir);
-        }
-    }
-    protected void SetVelocityH(float setSpeed_H)
-    {
-        rigidbody.velocity = new Vector2(setSpeed_H * Time.fixedDeltaTime, rigidbody.velocity.y);
-    }
-    protected void AddVelocityH(float addSpeed_H)
-    {
-        rigidbody.velocity += new Vector2(addSpeed_H * Time.fixedDeltaTime, 0);
-        if (OnGround)
-        {
-            rigidbody.velocity = new Vector2(Mathf.Clamp(rigidbody.velocity.x, -charStats.Movement.maxSpeed_H, charStats.Movement.maxSpeed_H), rigidbody.velocity.y);
-        }
-        else
-        {
-            float inAirMaxSpeed = Mathf.Max(charStats.Movement.MinSpeedInAir_H, charState.speed_H);
-            rigidbody.velocity = new Vector2(Mathf.Clamp(rigidbody.velocity.x, -inAirMaxSpeed, inAirMaxSpeed), rigidbody.velocity.y);
-        }
-    }
-    protected void MultVelocityH(float multSpeed_H)
-    {
-        rigidbody.velocity = new Vector2(multSpeed_H * rigidbody.velocity.x, rigidbody.velocity.y);
-    }
-    protected void SetVelocityV(float speed_V)
-    {
-        rigidbody.velocity = new Vector2(rigidbody.velocity.x, speed_V);
     }
 
-    protected void Anim_SetBool(string name, bool value) => animator.SetBool(name, value);
-    protected void Anim_SetTrigger(string name) => animator.SetTrigger(name);
-    protected IEnumerator WaitWhileAnim(string animationName)
+    protected void DoAttack(string attackName)
     {
-        yield return new WaitWhile(() => animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == animationName);
+        if (charState.CanAttack && attack.CanAttack())
+        {
+            charState.inAttack = true;
+            Anim_SetTrigger("attack");
+            StartCoroutine(WaitWhileAttack(attackName));
+        }
     }
-
+    IEnumerator WaitWhileAttack(string attackName)
+    {
+        yield return WaitWhileAnim(attackName);
+        charState.inAttack = false;
+    }
     public void CastAttack() => attack.DoAttack(transform.position);
     public void GetHit(Hit hit)
     {
@@ -115,7 +61,7 @@ public class CharacterAbstract : MonoBehaviour
     public void PlayAttackScream() => attackScreams.PlayRandomClip();
     public void PlayHitScream() => hitScreams.PlayRandomClip();
     public void PlayDeathScream() => deathScreams.PlayRandomClip();
-    public void PlaySound(SoundCollection collection)
+    public void PlaySound(ClipsCollection collection)
     {
         collection.PlayRandomClip();
     }
@@ -124,21 +70,16 @@ public class CharacterAbstract : MonoBehaviour
         Destroy(gameObject);
     }
 
-    protected void Flip_H()
+    protected override void Flip_H()
     {
+        base.Flip_H();
         charState.isRight = !charState.isRight;
-        detectLayer.Flip_H();
-        spriteRenderer.flipX = !spriteRenderer.flipX;
         if (attack != null) attack.Flip_H();
-        AddFlip_H();
     }
-    protected virtual void AddFlip_H() { }
 
-    private void OnDrawGizmos()
+    protected override void AddOnDrawGizmos()
     {
         Gizmos.color = Color.red;
         attack.OnGizmos(transform.position);
-        AddOnDrawGizmos();
     }
-    protected virtual void AddOnDrawGizmos() { }
 }

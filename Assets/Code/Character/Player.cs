@@ -5,8 +5,14 @@ using UnityEngine;
 
 public class Player : CharacterAbstract
 {
+    protected override void OnStart()
+    {
+        base.OnStart();
+    }
+
     protected override void OnFixedUpdate()
     {
+        base.OnFixedUpdate();
         Attack();
         Move();
         Jump();
@@ -22,16 +28,18 @@ public class Player : CharacterAbstract
             movement_H -= 1;
         if (movement_H != 0)
         {
+            float dampValue = OnGround ? physicalStats.Speed_dump_H : physicalStats.Speed_dump_inAir;
+            MultVelocityH(1f / dampValue);
             if (OnGround)
             {
-                charState.speed_H = Mathf.Clamp(charState.speed_H + charStats.Movement.Acceleration_H, 0, charStats.Movement.MaxSpeed_H);
-                SetVelocityH(movement_H * charState.speed_H);
+                Velocity_H = Mathf.Clamp(Velocity_H + physicalStats.Acceleration_H, 0, physicalStats.MaxSpeed_H);
+                SetVelocityH(movement_H * Velocity_H);
                 if (Velocity.x < 0 && charState.isRight || Velocity.x > 0 && !charState.isRight)
                     Flip_H();
             }
             else
             {
-                AddVelocityH(movement_H * charStats.Movement.MaxSpeed_H * charStats.Movement.Speed_controll_inAir);
+                AddVelocityH(movement_H * physicalStats.MaxSpeed_H * physicalStats.Speed_controll_inAir);
                 if (Velocity.x < 0 && charState.isRight || Velocity.x > 0 && !charState.isRight)
                     Flip_H();
             }
@@ -45,7 +53,7 @@ public class Player : CharacterAbstract
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
-                SetVelocityV(charStats.Movement.JumpSpeed);
+                SetVelocityV(physicalStats.JumpSpeed);
             }
         }
     }
@@ -54,10 +62,7 @@ public class Player : CharacterAbstract
         if (charState.IsDead) return;
         if (Input.GetMouseButtonDown(0))
         {
-            if (attack.CanAttack())
-            {
-                Anim_SetTrigger("attack");
-            }
+            DoAttack("b_attack");
         }
     }
 }
