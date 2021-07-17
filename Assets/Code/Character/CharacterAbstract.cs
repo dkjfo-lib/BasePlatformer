@@ -18,6 +18,7 @@ public class CharacterAbstract : PhysicalItem
         charState.health = charStats.MaxHealth;
         attack.Init();
         GetComponents();
+        inited = true;
     }
 
     protected override void OnFixedUpdate()

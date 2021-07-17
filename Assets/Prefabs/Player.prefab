@@ -151,7 +151,6 @@ MonoBehaviour:
   charState:
     health: 1
     isRight: 1
-    speed_H: 0
     inAttack: 0
   attack:
     stats: {fileID: 11400000, guid: 3f0d6e47d8d50a449958e52fc822ca72, type: 2}
@@ -177,7 +176,7 @@ MonoBehaviour:
   offset: {x: 0, y: -0.5}
   layerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   gizmosColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   detected: 0
   contacts: []

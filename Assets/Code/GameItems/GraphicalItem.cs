@@ -19,6 +19,7 @@ public abstract class GraphicalItem : Base
 
     protected virtual void GetComponents()
     {
+        inited = true;
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }

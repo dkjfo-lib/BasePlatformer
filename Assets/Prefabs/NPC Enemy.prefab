@@ -147,12 +147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43e4f7f80e14f294686b80951e9c44a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inited: 0
   physicalStats: {fileID: 11400000, guid: 726e9b18726fd2f49a3dabf4b23f731f, type: 2}
   charStats: {fileID: 11400000, guid: 3900547283e6ae74397c50317a672083, type: 2}
   charState:
     health: 1
     isRight: 1
-    speed_H: 0
     inAttack: 0
   attack:
     stats: {fileID: 11400000, guid: 2628c440d555b0748a5d90e6afe00a20, type: 2}
@@ -178,7 +178,7 @@ MonoBehaviour:
   offset: {x: 0, y: -0.5}
   layerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   gizmosColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   detected: 0
   contacts: []

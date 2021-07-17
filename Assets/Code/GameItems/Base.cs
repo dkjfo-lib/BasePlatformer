@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Base : MonoBehaviour
 {
+    public bool inited = false;
     private void Start()
     {
         OnStart();

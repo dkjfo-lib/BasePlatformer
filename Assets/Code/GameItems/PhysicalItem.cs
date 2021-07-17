@@ -39,9 +39,22 @@ public abstract class PhysicalItem : GraphicalItem
             rigidbody.velocity = new Vector2(Mathf.Clamp(rigidbody.velocity.x, -inAirMaxSpeed, inAirMaxSpeed), rigidbody.velocity.y);
         }
     }
-    protected void AddForceH(float addforce_H)
+    public void AddForceH(float addforce_H)
     {
         rigidbody.velocity += new Vector2(addforce_H / physicalStats.Mass * Time.fixedDeltaTime, 0);
+        if (OnGround)
+        {
+            rigidbody.velocity = new Vector2(Mathf.Clamp(rigidbody.velocity.x, -physicalStats.maxSpeed_H, physicalStats.maxSpeed_H), rigidbody.velocity.y);
+        }
+        else
+        {
+            float inAirMaxSpeed = Mathf.Max(physicalStats.MinSpeedInAir_H, Velocity_H);
+            rigidbody.velocity = new Vector2(Mathf.Clamp(rigidbody.velocity.x, -inAirMaxSpeed, inAirMaxSpeed), rigidbody.velocity.y);
+        }
+    }
+    public void AddForce(Vector2 addforce)
+    {
+        rigidbody.velocity += new Vector2(addforce.x / physicalStats.Mass, addforce.y / physicalStats.Mass);
         if (OnGround)
         {
             rigidbody.velocity = new Vector2(Mathf.Clamp(rigidbody.velocity.x, -physicalStats.maxSpeed_H, physicalStats.maxSpeed_H), rigidbody.velocity.y);
