@@ -4,12 +4,5 @@ using UnityEngine;
 
 public class Item : GraphicalItem
 {
-    protected override void OnStart()
-    {
-        GetComponents();
-    }
-
     protected override void OnFixedUpdate() { }
-
-    protected override void AddOnDrawGizmos() { }
 }

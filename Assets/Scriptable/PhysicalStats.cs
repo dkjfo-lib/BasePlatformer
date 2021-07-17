@@ -12,6 +12,7 @@ public class PhysicalStats : ScriptableObject
     public float minSpeedInAir_H = 6;
     [Range(0f, 1f)] public float speed_dump = .8f;
     [Header("Vertical")]
+    public float gravity = 1;
     public float jumpSpeed = 10;
     [Range(0f, 1f)] public float speed_dump_inAir = .97f;
     [Range(0f, 1f)] public float speed_controll_inAir = .01f;

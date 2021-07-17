@@ -4,12 +4,14 @@ using UnityEngine;
 
 public abstract class Base : MonoBehaviour
 {
-    public bool inited = false;
+    public bool inited { get; protected set; } = false;
     private void Start()
     {
-        OnStart();
+        GetComponents();
+        Init();
     }
-    protected abstract void OnStart();
+    protected abstract void GetComponents();
+    protected abstract void Init();
 
     private void FixedUpdate()
     {
@@ -17,9 +19,14 @@ public abstract class Base : MonoBehaviour
     }
     protected abstract void OnFixedUpdate();
 
+    protected void DestroySelf()
+    {
+        Destroy(gameObject);
+    }
+
     private void OnDrawGizmos()
     {
         AddOnDrawGizmos();
     }
-    protected abstract void AddOnDrawGizmos();
+    protected virtual void AddOnDrawGizmos() { }
 }

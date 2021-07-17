@@ -5,11 +5,6 @@ using UnityEngine;
 
 public class Player : CharacterAbstract
 {
-    protected override void OnStart()
-    {
-        base.OnStart();
-    }
-
     protected override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
@@ -32,8 +27,7 @@ public class Player : CharacterAbstract
             MultVelocityH(1f / dampValue);
             if (OnGround)
             {
-                Velocity_H = Mathf.Clamp(Velocity_H + physicalStats.Acceleration_H, 0, physicalStats.MaxSpeed_H);
-                SetVelocityH(movement_H * Velocity_H);
+                AddVelocityH(movement_H * physicalStats.Acceleration_H);
                 if (Velocity.x < 0 && charState.isRight || Velocity.x > 0 && !charState.isRight)
                     Flip_H();
             }

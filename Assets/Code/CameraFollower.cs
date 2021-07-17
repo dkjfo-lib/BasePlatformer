@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class CameraFollower : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Transform target;
+    public Vector2 offset = Vector2.zero;
+    [Range(0f, 1f)] public float stickness = .5f;
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        Vector3 offsetV3 = new Vector3(offset.x, offset.y, -10);
+        transform.position = Vector3.Lerp(transform.position, target.position + offsetV3, stickness * stickness);
     }
 }

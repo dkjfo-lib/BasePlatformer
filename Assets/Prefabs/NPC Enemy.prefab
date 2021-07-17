@@ -147,21 +147,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43e4f7f80e14f294686b80951e9c44a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inited: 0
   physicalStats: {fileID: 11400000, guid: 726e9b18726fd2f49a3dabf4b23f731f, type: 2}
   charStats: {fileID: 11400000, guid: 3900547283e6ae74397c50317a672083, type: 2}
   charState:
     health: 1
     isRight: 1
     inAttack: 0
-  attack:
-    stats: {fileID: 11400000, guid: 2628c440d555b0748a5d90e6afe00a20, type: 2}
-    isRight: 1
-    offset: {x: 0, y: 0}
+  attackStats: {fileID: 11400000, guid: 2628c440d555b0748a5d90e6afe00a20, type: 2}
   hitSounds: {fileID: 11400000, guid: 1da00febe55d45c40a42e0352afdc040, type: 2}
   attackScreams: {fileID: 11400000, guid: a263d6f62cd9b3d4693df2588248d46b, type: 2}
   hitScreams: {fileID: 11400000, guid: 5fc95cab4bb8cbd448f8d107dbf381be, type: 2}
   deathScreams: {fileID: 11400000, guid: 0ffddff59c735cf4dbb1bb1b0de5d1a2, type: 2}
+  attackAnimName: b_attack
 --- !u!114 &1132134102
 MonoBehaviour:
   m_ObjectHideFlags: 0

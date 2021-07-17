@@ -6,24 +6,19 @@ public class CharacterAbstract : PhysicalItem
 {
     public CharStats charStats;
     public CharState charState;
-    public Attack attack;
+    public AttackStatsBase attackStats;
+    protected IAttackHandler attack;
 
     public ClipsCollection hitSounds;
     public ClipsCollection attackScreams;
     public ClipsCollection hitScreams;
     public ClipsCollection deathScreams;
 
-    protected override void OnStart()
+    protected override void Init()
     {
+        base.Init();
+        attack = AttackHandlerHelper.GetAttackHandler(attackStats);
         charState.health = charStats.MaxHealth;
-        attack.Init();
-        GetComponents();
-        inited = true;
-    }
-
-    protected override void OnFixedUpdate()
-    {
-        DampVelocity();
     }
 
     protected void DoAttack(string attackName)
@@ -35,12 +30,13 @@ public class CharacterAbstract : PhysicalItem
             StartCoroutine(WaitWhileAttack(attackName));
         }
     }
+    public void CastAttack() => attack.DoAttack(transform.position, charState.isRight);
     IEnumerator WaitWhileAttack(string attackName)
     {
         yield return WaitWhileAnim(attackName);
         charState.inAttack = false;
     }
-    public void CastAttack() => attack.DoAttack(transform.position);
+
     public void GetHit(Hit hit)
     {
         charState.health -= hit.damage;
@@ -54,9 +50,11 @@ public class CharacterAbstract : PhysicalItem
         }
         else
         {
+            OnHit(hit);
             Anim_SetTrigger("hurt");
         }
     }
+    protected virtual void OnHit(Hit hit) { }
 
     public void PlayHitSound() => hitSounds.PlayRandomClip();
     public void PlayAttackScream() => attackScreams.PlayRandomClip();
@@ -66,21 +64,15 @@ public class CharacterAbstract : PhysicalItem
     {
         collection.PlayRandomClip();
     }
-    public void DestroySelf()
-    {
-        Destroy(gameObject);
-    }
 
-    protected override void Flip_H()
+    public override void Flip_H()
     {
         base.Flip_H();
         charState.isRight = !charState.isRight;
-        if (attack != null) attack.Flip_H();
     }
 
     protected override void AddOnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        attack.OnGizmos(transform.position);
+        if (attackStats != null) AttackHandlerHelper.OnGizmos(attackStats, transform.position, charState.isRight);
     }
 }

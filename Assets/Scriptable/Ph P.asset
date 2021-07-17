@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Ph P
   m_EditorClassIdentifier: 
   mass: 10
-  maxSpeed_H: 1000
-  acceleration_H: 300
+  maxSpeed_H: 8
+  acceleration_H: 40
   minSpeedInAir_H: 6
   speed_dump: 0.85
+  gravity: 1
   jumpSpeed: 10
   speed_dump_inAir: 0.97
   speed_controll_inAir: 0.01

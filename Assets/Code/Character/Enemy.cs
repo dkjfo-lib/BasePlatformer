@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class Enemy : CharacterAbstract
 {
+    public string attackAnimName = "b_attack";
+
     DetectLayer playerDetector;
-    protected override void OnStart()
+    protected override void GetComponents()
     {
-        base.OnStart();
+        base.GetComponents();
         playerDetector = GetComponents<DetectLayer>()[1];
     }
 
@@ -31,11 +33,11 @@ public class Enemy : CharacterAbstract
                 Flip_H();
             if (target.position.x < transform.position.x && charState.isRight)
                 Flip_H();
-            if (target.position.x > transform.position.x + attack.stats.offset.x + attack.stats.size.x / 2)
+            if (target.position.x > transform.position.x + attackStats.GetOffset(charState.isRight).x + attackStats.size.x / 2)
             {
                 movement_H = +1;
             }
-            if (target.position.x < transform.position.x + attack.stats.offset.x - attack.stats.size.x / 2)
+            if (target.position.x < transform.position.x + attackStats.GetOffset(charState.isRight).x - attackStats.size.x / 2)
             {
                 movement_H = -1;
             }
@@ -44,15 +46,11 @@ public class Enemy : CharacterAbstract
         {
             if (OnGround)
             {
-                Velocity_H = Mathf.Clamp(Velocity_H + physicalStats.Acceleration_H, 0, physicalStats.MaxSpeed_H);
-                SetVelocityH(movement_H * Velocity_H);
+                AddVelocityH(movement_H * physicalStats.Acceleration_H);
             }
             else
             {
-                if (movement_H != 0)
-                {
-                    AddVelocityH(movement_H * physicalStats.MaxSpeed_H * physicalStats.Speed_controll_inAir);
-                }
+                AddVelocityH(movement_H * physicalStats.Acceleration_H * physicalStats.Speed_controll_inAir);
             }
         }
         Anim_SetBool("run", movement_H != 0 && OnGround);
@@ -68,9 +66,20 @@ public class Enemy : CharacterAbstract
     {
         if (charState.IsDead) return;
         if (attack == null) return;
-        if (attack.CastAttack(transform.position).Length > 0)
+        if (attack.CastAttack(transform.position, charState.isRight).Length > 0)
         {
-            DoAttack("b_attack");
+            DoAttack(attackAnimName);
+        }
+    }
+    protected override void OnHit(Hit hit)
+    {
+        if (hit.position.x < transform.position.x && charState.isRight)
+        {
+            Flip_H();
+        }
+        if (hit.position.x > transform.position.x && !charState.isRight)
+        {
+            Flip_H();
         }
     }
 
@@ -79,7 +88,7 @@ public class Enemy : CharacterAbstract
         return transforms.First();
     }
 
-    protected override void Flip_H()
+    public override void Flip_H()
     {
         base.Flip_H();
         playerDetector.Flip_H();

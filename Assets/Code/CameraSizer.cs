@@ -5,12 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class CameraSizer : MonoBehaviour
 {
-    Camera camera;
+    new Camera camera;
 
     void Start()
     {
         camera = GetComponent<Camera>();
-
     }
 
     void Update()

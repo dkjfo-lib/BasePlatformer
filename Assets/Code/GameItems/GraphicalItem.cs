@@ -17,14 +17,17 @@ public abstract class GraphicalItem : Base
     }
 
 
-    protected virtual void GetComponents()
+    protected override void GetComponents()
     {
-        inited = true;
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }
+    protected override void Init()
+    {
+        inited = true;
+    }
 
-    protected virtual void Flip_H()
+    public virtual void Flip_H()
     {
         spriteRenderer.flipX = !spriteRenderer.flipX;
     }
