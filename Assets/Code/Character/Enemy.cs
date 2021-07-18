@@ -44,14 +44,10 @@ public class Enemy : CharacterAbstract
         }
         if (movement_H != 0)
         {
-            if (OnGround)
-            {
-                AddVelocityH(movement_H * physicalStats.Acceleration_H);
-            }
-            else
-            {
-                AddVelocityH(movement_H * physicalStats.Acceleration_H * physicalStats.Speed_controll_inAir);
-            }
+            var addVelocity = OnGround ?
+                movement_H * physicalStats.Acceleration_H :
+                movement_H * physicalStats.Acceleration_H * physicalStats.Speed_controll_inAir;
+            AddVelocityH(addVelocity);
         }
         Anim_SetBool("run", movement_H != 0 && OnGround);
     }

@@ -9,14 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c370a1055af1b594d96a4e1c30a503bb, type: 3}
-  m_Name: At P
+  m_Script: {fileID: 11500000, guid: a8af0de02334cca428940b66742a443c, type: 3}
+  m_Name: Ch E G
   m_EditorClassIdentifier: 
-  offset: {x: 2, y: 0}
-  size: {x: 2, y: 0.75}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 384
-  cooldown: 0.5
-  damage: 1
-  force: 1000
+  maxHealth: 2

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c370a1055af1b594d96a4e1c30a503bb, type: 3}
   m_Name: At B
   m_EditorClassIdentifier: 
-  offset: {x: 0.94, y: 0}
-  size: {x: 1.95, y: 0.3}
+  offset: {x: 0.16, y: 0}
+  size: {x: 0.33, y: 0.3}
   layerMask:
     serializedVersion: 2
-    m_Bits: 448
+    m_Bits: 384
+  cooldown: 1
   damage: 1
   force: 500
-  cooldown: 1

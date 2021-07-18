@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   physicalStats: {fileID: 11400000, guid: eff5de2d7323ca24cb64e108678c1bfa, type: 2}
-  charStats: {fileID: 11400000, guid: 3900547283e6ae74397c50317a672083, type: 2}
+  charStats: {fileID: 11400000, guid: da83ffc12ba14504a880990148151577, type: 2}
   charState:
     health: 1
     isRight: 1

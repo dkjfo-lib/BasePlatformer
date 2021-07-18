@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3996655239710967508}
   - component: {fileID: 4492163405442454739}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletStream
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 6379845403175536353}
   - component: {fileID: 1069016302816915457}
   - component: {fileID: 1531012876}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,11 +131,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d13a5b93674b84aaa4423145606799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 1.98, y: 0.15}
-  offset: {x: 0.83, y: 0}
+  size: {x: 0.71, y: 0.15}
+  offset: {x: 0.39, y: 0}
   layerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 448
   gizmosColor: {r: 0.03456242, g: 0.015686274, b: 1, a: 1}
   detected: 0
   contacts: []

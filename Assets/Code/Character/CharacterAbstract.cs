@@ -40,18 +40,18 @@ public class CharacterAbstract : PhysicalItem
     public void GetHit(Hit hit)
     {
         charState.health -= hit.damage;
-        if (hit.position.x < transform.position.x)
-            AddVelocityH(hit.force);
-        else
-            AddVelocityH(-hit.force);
+        var force = hit.position.x < transform.position.x ?
+            hit.force :
+            -hit.force;
+        AddVelocityH(force);
         if (charState.IsDead)
         {
             Anim_SetTrigger("die");
         }
         else
         {
-            OnHit(hit);
             Anim_SetTrigger("hurt");
+            OnHit(hit);
         }
     }
     protected virtual void OnHit(Hit hit) { }

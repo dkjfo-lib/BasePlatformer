@@ -23,19 +23,13 @@ public class Player : CharacterAbstract
             movement_H -= 1;
         if (movement_H != 0)
         {
-            float dampValue = OnGround ? physicalStats.Speed_dump_H : physicalStats.Speed_dump_inAir;
-            MultVelocityH(1f / dampValue);
-            if (OnGround)
+            var addVelocity = OnGround ?
+                movement_H * physicalStats.Acceleration_H :
+                movement_H * physicalStats.Acceleration_H * physicalStats.Speed_controll_inAir;
+            AddVelocityH(addVelocity);
+            if (Velocity_H < 0 && charState.isRight || Velocity_H > 0 && !charState.isRight)
             {
-                AddVelocityH(movement_H * physicalStats.Acceleration_H);
-                if (Velocity.x < 0 && charState.isRight || Velocity.x > 0 && !charState.isRight)
-                    Flip_H();
-            }
-            else
-            {
-                AddVelocityH(movement_H * physicalStats.MaxSpeed_H * physicalStats.Speed_controll_inAir);
-                if (Velocity.x < 0 && charState.isRight || Velocity.x > 0 && !charState.isRight)
-                    Flip_H();
+                Flip_H();
             }
         }
         Anim_SetBool("run", movement_H != 0 && OnGround);

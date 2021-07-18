@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class CharState
 {
-    public int health = 10;
+    public int health = 5;
     public bool isRight = true;
     public bool inAttack = false;
 

@@ -20,4 +20,4 @@ MonoBehaviour:
   gravity: 1
   jumpSpeed: 10
   speed_dump_inAir: 0.97
-  speed_controll_inAir: 0.01
+  speed_controll_inAir: 0.2

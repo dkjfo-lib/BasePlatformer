@@ -46,4 +46,6 @@ MonoBehaviour:
   timeBetween: 3
   forceRangeX: {x: -100, y: 100}
   forceRangeY: {x: 10, y: 100}
-  prefab: {fileID: 0}
+  prefabs:
+  - {fileID: 1132134097, guid: 5d9b7a9914c8552468d0ddcdb6782ea5, type: 3}
+  - {fileID: 4295053589185037721, guid: 8c6ef37e1abbe704c95404fccf86c047, type: 3}
