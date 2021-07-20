@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Projectile : PhysicalItem
 {
+    public ObjectType attackerType;
     public AttackStatsMelee attackStats;
     private AttackHandlerMelee attack;
     public bool isRight = true;
@@ -38,7 +39,7 @@ public class Projectile : PhysicalItem
 
     private void CastAttack()
     {
-        attack.DoAttack(transform.position, isRight);
+        attack.DoAttack(transform.position, isRight, attackerType);
     }
 
     protected override void AddOnDrawGizmos()

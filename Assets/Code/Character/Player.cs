@@ -67,7 +67,10 @@ public class Player : CharacterAbstract
             var activatesA = items.Select(s => s.transform.GetComponent<IActivate>()).Where(s => s != null).ToArray();
             var activatesAT = items.Select(s => s.transform);
             var tr = GetClosest(activatesAT);
-            tr.GetComponent<IActivate>().Activate(new ActivateValues());
+            tr.GetComponent<IActivate>().Activate(new ActivationParams
+            {
+                character = this
+            });
         }
     }
     protected override void AddOnDrawGizmos()

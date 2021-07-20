@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Hit
 {
+    public ObjectType attackerType;
     public int damage;
     public int force;
     public Vector2 position;

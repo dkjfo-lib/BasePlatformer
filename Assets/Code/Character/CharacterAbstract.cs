@@ -9,6 +9,7 @@ public class CharacterAbstract : PhysicalItem
     public CharState charState;
     public AttackStatsBase attackStats;
     protected IAttackHandler attack;
+    public ObjectType characterType = ObjectType.UNDEFINED;
 
     public ClipsCollection hitSounds;
     public ClipsCollection attackScreams;
@@ -31,7 +32,7 @@ public class CharacterAbstract : PhysicalItem
             StartCoroutine(WaitWhileAttack(attackName));
         }
     }
-    public void CastAttack() => attack.DoAttack(transform.position, charState.isRight);
+    public void CastAttack() => attack.DoAttack(transform.position, charState.isRight, characterType);
     IEnumerator WaitWhileAttack(string attackName)
     {
         yield return WaitWhileAnim(attackName);
@@ -47,6 +48,12 @@ public class CharacterAbstract : PhysicalItem
         AddVelocityH(force);
         if (charState.IsDead)
         {
+            QuestController.OnEvent(new EventDescription
+            {
+                who = hit.attackerType,
+                didWhat = EventType.kill,
+                toWhom= characterType
+            });
             Anim_SetTrigger("die");
         }
         else
