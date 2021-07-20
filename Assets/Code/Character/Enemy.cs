@@ -79,11 +79,6 @@ public class Enemy : CharacterAbstract
         }
     }
 
-    Transform GetClosest(IEnumerable<Transform> transforms)
-    {
-        return transforms.First();
-    }
-
     public override void Flip_H()
     {
         base.Flip_H();

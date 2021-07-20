@@ -5,12 +5,17 @@ using UnityEngine;
 
 public class Player : CharacterAbstract
 {
+    public Vector2 activationSize = Vector2.one;
+    public Vector2 activationOffset = Vector2.zero;
+    public LayerMask activationLayerMask;
+
     protected override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
         Attack();
         Move();
         Jump();
+        Activate();
     }
 
     void Move()
@@ -39,7 +44,7 @@ public class Player : CharacterAbstract
         if (charState.IsDead) return;
         if (OnGround)
         {
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKey(KeyCode.W))
             {
                 SetVelocityV(physicalStats.JumpSpeed);
             }
@@ -48,9 +53,25 @@ public class Player : CharacterAbstract
     void Attack()
     {
         if (charState.IsDead) return;
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             DoAttack("b_attack");
         }
+    }
+    void Activate()
+    {
+        if (charState.IsDead) return;
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            var items = Physics2D.OverlapBoxAll(transform.position, activationSize, 0, activationLayerMask);
+            var activatesA = items.Select(s => s.transform.GetComponent<IActivate>()).Where(s => s != null).ToArray();
+            var activatesAT = items.Select(s => s.transform);
+            var tr = GetClosest(activatesAT);
+            tr.GetComponent<IActivate>().Activate(new ActivateValues());
+        }
+    }
+    protected override void AddOnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position + (Vector3)activationOffset, activationSize);
     }
 }

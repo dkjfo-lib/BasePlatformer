@@ -29,6 +29,6 @@ public class GameManager : MonoBehaviour
     private void RespawnPlayer()
     {
         currentPlayer = Instantiate(playerPrefab, respawnPoint.transform.position, Quaternion.identity);
-        cameraFollower.target = currentPlayer.transform;
+        cameraFollower.target = currentPlayer;
     }
 }

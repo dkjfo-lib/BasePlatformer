@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1873702429
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2615874204119335, guid: c87ffd3f372eb4142b46cc32b2fad662, type: 3}
   m_Color: {r: 0.021415234, g: 1, b: 0, a: 1}
@@ -157,6 +157,11 @@ MonoBehaviour:
   attackScreams: {fileID: 11400000, guid: a263d6f62cd9b3d4693df2588248d46b, type: 2}
   hitScreams: {fileID: 11400000, guid: 5fc95cab4bb8cbd448f8d107dbf381be, type: 2}
   deathScreams: {fileID: 11400000, guid: 940905514f047e3449560e83cfcc1cb8, type: 2}
+  activationSize: {x: 1.5, y: 1.85}
+  activationOffset: {x: 0, y: 0.25}
+  activationLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &2110608264
 MonoBehaviour:
   m_ObjectHideFlags: 0

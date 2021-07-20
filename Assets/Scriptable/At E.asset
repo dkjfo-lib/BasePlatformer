@@ -16,7 +16,7 @@ MonoBehaviour:
   size: {x: 2, y: 0.75}
   layerMask:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 896
   cooldown: 1
   damage: 1
   force: 1000

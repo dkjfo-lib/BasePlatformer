@@ -11,7 +11,7 @@ public abstract class PhysicalItem : GraphicalItem
     DetectLayer detectGroundLayer;
     new Rigidbody2D rigidbody;
 
-    protected Vector2 Velocity => rigidbody.velocity;
+    public Vector2 Velocity => rigidbody.velocity;
     protected float Velocity_H
     {
         get => rigidbody.velocity.x;

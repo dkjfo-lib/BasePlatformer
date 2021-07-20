@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CharacterAbstract : PhysicalItem
@@ -69,6 +70,11 @@ public class CharacterAbstract : PhysicalItem
     {
         base.Flip_H();
         charState.isRight = !charState.isRight;
+    }
+
+    protected Transform GetClosest(IEnumerable<Transform> transforms)
+    {
+        return transforms.First();
     }
 
     protected override void AddOnDrawGizmos()
