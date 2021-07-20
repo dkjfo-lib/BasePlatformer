@@ -9,7 +9,7 @@ public interface IAttackHandler
 
     CharacterAbstract[] CastAttack(Vector2 position, bool isRight);
 
-    abstract void DoAttack(Vector2 position, bool isRight);
+    abstract void DoAttack(Vector2 position, bool isRight, ObjectType attackerType);
 }
 
 public abstract class AttackHandlerBase<T> : IAttackHandler where T : AttackStatsBase
@@ -31,7 +31,7 @@ public abstract class AttackHandlerBase<T> : IAttackHandler where T : AttackStat
         return characterHits;
     }
 
-    public abstract void DoAttack(Vector2 position, bool isRight);
+    public abstract void DoAttack(Vector2 position, bool isRight, ObjectType attackerType);
 
 }
 
@@ -43,7 +43,7 @@ public class AttackHandlerMelee : AttackHandlerBase<AttackStatsMelee>
         this.stats = stats;
     }
 
-    public override void DoAttack(Vector2 position, bool isRight)
+    public override void DoAttack(Vector2 position, bool isRight, ObjectType attackerType)
     {
         if (CanAttack())
         {
@@ -53,6 +53,7 @@ public class AttackHandlerMelee : AttackHandlerBase<AttackStatsMelee>
             {
                 hit.GetHit(new Hit
                 {
+                    attackerType = attackerType,
                     damage = stats.damage,
                     force = stats.force,
                     position = position
@@ -70,12 +71,13 @@ public class AttackHandlerRange : AttackHandlerBase<AttackStatsRange>
         this.stats = stats;
     }
 
-    public override void DoAttack(Vector2 position, bool isRight)
+    public override void DoAttack(Vector2 position, bool isRight, ObjectType attackerType)
     {
         if (CanAttack())
         {
             timeLastAttack = Time.timeSinceLevelLoad;
             var newProjectile = GameObject.Instantiate(stats.projectile, position + stats.GetShootOffset(isRight), Quaternion.identity);
+            newProjectile.attackerType = attackerType;
             newProjectile.isRight = isRight;
         }
     }

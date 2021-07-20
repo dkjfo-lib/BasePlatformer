@@ -153,6 +153,7 @@ MonoBehaviour:
     isRight: 1
     inAttack: 0
   attackStats: {fileID: 11400000, guid: 3f0d6e47d8d50a449958e52fc822ca72, type: 2}
+  characterType: 1
   hitSounds: {fileID: 11400000, guid: 1da00febe55d45c40a42e0352afdc040, type: 2}
   attackScreams: {fileID: 11400000, guid: a263d6f62cd9b3d4693df2588248d46b, type: 2}
   hitScreams: {fileID: 11400000, guid: 5fc95cab4bb8cbd448f8d107dbf381be, type: 2}
