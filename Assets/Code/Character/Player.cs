@@ -5,9 +5,16 @@ using UnityEngine;
 
 public class Player : CharacterAbstract
 {
+    public static Player thePlayer;
+
     public Vector2 activationSize = Vector2.one;
     public Vector2 activationOffset = Vector2.zero;
     public LayerMask activationLayerMask;
+
+    private void Awake()
+    {
+        thePlayer = this;
+    }
 
     protected override void OnFixedUpdate()
     {
