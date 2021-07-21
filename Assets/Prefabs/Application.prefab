@@ -46,6 +46,7 @@ MonoBehaviour:
   questsInProgress:
   - questDescription: {fileID: 11400000, guid: 9b6c6f2910fd400458a7e35d038996c3, type: 2}
     currentStepId: 0
+    currentStepHappenedTimes: 0
 --- !u!1 &1255547994
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +58,7 @@ GameObject:
   - component: {fileID: 1255547995}
   - component: {fileID: 1255547996}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: PlayerRespawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,7 +92,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPlayer: {fileID: 0}
   playerPrefab: {fileID: 2110608259, guid: 626a38efbb92d7440b07bf91f315c98e, type: 3}
-  cameraFollower: {fileID: 0}
   respawnPoint: {fileID: 0}
   respawnSeconds: 3
 --- !u!1 &1796679254
@@ -336,6 +336,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1734169231355744866}
   - component: {fileID: 1734169231355744867}
+  - component: {fileID: 1435723337}
   m_Layer: 0
   m_Name: Application
   m_TagString: Untagged
@@ -376,6 +377,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetFrameRate: 60
+--- !u!114 &1435723337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734169231355744868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b3db037ef57a540be86a000dc3a090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1734169231590212809
 GameObject:
   m_ObjectHideFlags: 0

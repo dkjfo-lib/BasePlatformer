@@ -5,9 +5,29 @@ using UnityEngine;
 
 public class Player : CharacterAbstract
 {
+    public static Player thePlayer;
+    public static bool firstSpawn = true;
+
     public Vector2 activationSize = Vector2.one;
     public Vector2 activationOffset = Vector2.zero;
     public LayerMask activationLayerMask;
+
+    public Pipe_BetweenScenesData pipe_BetweenScenesData;
+
+    private void Awake()
+    {
+        thePlayer = this;
+    }
+
+    protected override void Init()
+    {
+        base.Init();
+        if (!firstSpawn)
+        {
+            pipe_BetweenScenesData.ApplyData(this);
+        }
+        firstSpawn = false;
+    }
 
     protected override void OnFixedUpdate()
     {

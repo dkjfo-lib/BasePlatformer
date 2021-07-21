@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class CameraFollower : MonoBehaviour
 {
-    public PhysicalItem target;
+    public Player currentPlayer;
+    [Space]
     public Vector2 offset = Vector2.zero;
+    [Space]
     [Range(0f, 1f)] public float stickness = .5f;
     public float velocityDump = .1f;
     public float velocityMult = .1f;
@@ -16,17 +18,32 @@ public class CameraFollower : MonoBehaviour
 
     private void Start()
     {
-        transform.position = target.transform.position + offsetV3;
+        if (currentPlayer == null)
+        {
+            currentPlayer = Player.thePlayer;
+        }
+        transform.position = currentPlayer.transform.position + offsetV3;
+        StartCoroutine(KeepPlayerActive());
+    }
+
+    private IEnumerator KeepPlayerActive()
+    {
+        while (true)
+        {
+            yield return new WaitUntil(() => currentPlayer == null || currentPlayer.charState.IsDead);
+            currentPlayer = Player.thePlayer;
+        }
     }
 
     void FixedUpdate()
     {
         velocityOffset *= velocityDump;
-        velocityOffset += target.Velocity * velocityMult;
+        velocityOffset += currentPlayer.Velocity * velocityMult;
         velocityOffset = new Vector2(
             Mathf.Clamp(velocityOffset.x, -MaxVelocityOffset.x, MaxVelocityOffset.x),
             Mathf.Clamp(velocityOffset.y, -MaxVelocityOffset.y, MaxVelocityOffset.y));
-        Vector3 targetPosition = target.transform.position + (Vector3)velocityOffset + offsetV3;
+
+        Vector3 targetPosition = currentPlayer.transform.position + (Vector3)velocityOffset + offsetV3;
         transform.position = Vector3.Lerp(transform.position, targetPosition, stickness * stickness);
     }
 

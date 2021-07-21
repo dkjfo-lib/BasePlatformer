@@ -52,6 +52,11 @@ public abstract class PhysicalItem : GraphicalItem
         rigidbody.velocity = new Vector2(rigidbody.velocity.x, speed_V);
         ClampVelocity();
     }
+    public void SetVelocity(Vector2 speed_V)
+    {
+        rigidbody.velocity = speed_V;
+        ClampVelocity();
+    }
     protected void ClampVelocity()
     {
         if (OnGround)
