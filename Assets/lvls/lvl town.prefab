@@ -4186,17 +4186,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3408113208110850158}
     m_Modifications:
-    - target: {fileID: 2110608259, guid: 626a38efbb92d7440b07bf91f315c98e, type: 3}
-      propertyPath: charState.isRight
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2469682732009625289, guid: 626a38efbb92d7440b07bf91f315c98e, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2937913634312664301, guid: 626a38efbb92d7440b07bf91f315c98e, type: 3}
-      propertyPath: m_FlipX
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3926509777148684300, guid: 626a38efbb92d7440b07bf91f315c98e, type: 3}
       propertyPath: m_RootOrder

@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49b59d2f26612e749849c3d3eb44177c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pipe_BetweenScenesData: {fileID: 11400000, guid: 69395d1d59ab95b48a6dcba16e4f4f50, type: 2}
   sceneName: lvl 1
 --- !u!61 &9157875171890978426
 BoxCollider2D:

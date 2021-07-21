@@ -315,5 +315,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4782750611245944453, guid: b70cfaf55fc0ea74cae710fcb72af2fd, type: 3}
+      propertyPath: pipe_BetweenScenesData
+      value: 
+      objectReference: {fileID: 11400000, guid: 69395d1d59ab95b48a6dcba16e4f4f50, type: 2}
+    - target: {fileID: 7582704370764955096, guid: b70cfaf55fc0ea74cae710fcb72af2fd, type: 3}
+      propertyPath: charState.isRight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b70cfaf55fc0ea74cae710fcb72af2fd, type: 3}

@@ -15122,6 +15122,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3408113208110850158}
     m_Modifications:
+    - target: {fileID: 2110608259, guid: 626a38efbb92d7440b07bf91f315c98e, type: 3}
+      propertyPath: pipe_BetweenScenesData
+      value: 
+      objectReference: {fileID: 11400000, guid: 69395d1d59ab95b48a6dcba16e4f4f50, type: 2}
     - target: {fileID: 2469682732009625289, guid: 626a38efbb92d7440b07bf91f315c98e, type: 3}
       propertyPath: m_Name
       value: Player

@@ -21,6 +21,11 @@ public class CharacterAbstract : PhysicalItem
         base.Init();
         attack = AttackHandlerHelper.GetAttackHandler(attackStats);
         charState.health = charStats.MaxHealth;
+        if (!charState.isRight)
+        {
+            Flip_H();
+            charState.isRight = !charState.isRight;
+        }
     }
 
     protected void DoAttack(string attackName)

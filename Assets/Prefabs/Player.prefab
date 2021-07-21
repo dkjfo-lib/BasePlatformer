@@ -163,6 +163,7 @@ MonoBehaviour:
   activationLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  pipe_BetweenScenesData: {fileID: 11400000, guid: 69395d1d59ab95b48a6dcba16e4f4f50, type: 2}
 --- !u!114 &2110608264
 MonoBehaviour:
   m_ObjectHideFlags: 0
