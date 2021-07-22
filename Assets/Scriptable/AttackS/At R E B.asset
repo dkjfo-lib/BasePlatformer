@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AttackStats_Range
   offset: {x: 3.14, y: 0.06}
   size: {x: 4.31, y: 0.15}
-  layerMask:
+  triggerLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  attackLayerMask:
+    serializedVersion: 2
+    m_Bits: 896
   cooldown: 1
   shootOffset: {x: 0.56, y: 0.06}
   projectile: {fileID: 1069016302816915457, guid: ee5eedf1f9405ff4eabe07973ecc441a, type: 3}
