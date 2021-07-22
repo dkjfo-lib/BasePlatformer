@@ -20,7 +20,7 @@ public abstract class PhysicalItem : GraphicalItem
             rigidbody.velocity = new Vector2(value, rigidbody.velocity.y);
         }
     }
-    protected bool OnGround => detectGroundLayer.detected;
+    protected bool OnGround => detectGroundLayer.Detected;
 
     protected void SetVelocityH(float setSpeed_H)
     {

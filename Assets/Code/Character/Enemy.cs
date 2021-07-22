@@ -26,9 +26,9 @@ public class Enemy : CharacterAbstract
     {
         if (!charState.CanMove) return;
         float movement_H = 0;
-        if (playerDetector.detected)
+        if (playerDetector.Detected)
         {
-            var target = GetClosest(playerDetector.contacts.Select(s => s.transform));
+            var target = GetClosest(playerDetector.GetContacts(s => s.transform));
             if (target.position.x > transform.position.x && !charState.isRight)
                 Flip_H();
             if (target.position.x < transform.position.x && charState.isRight)
@@ -61,8 +61,8 @@ public class Enemy : CharacterAbstract
     void Attack()
     {
         if (charState.IsDead) return;
-        if (attack == null) return;
-        if (attack.CastAttack(transform.position, charState.isRight).Length > 0)
+        if (attackStats == null) return;
+        if (attackStats.HasEnemies(transform.position, charState.isRight).Length > 0)
         {
             DoAttack(attackAnimName);
         }

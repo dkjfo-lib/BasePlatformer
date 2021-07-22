@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0.16, y: 0}
   size: {x: 0.33, y: 0.3}
-  layerMask:
+  triggerLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  attackLayerMask:
     serializedVersion: 2
     m_Bits: 896
   cooldown: 1

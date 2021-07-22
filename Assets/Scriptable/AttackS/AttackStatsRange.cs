@@ -3,11 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewAttackStats", menuName = "My/AttackStats Range")]
+[CreateAssetMenu(fileName = "NewRangeAttack", menuName = "My/AttackStats Range")]
 public class AttackStatsRange : AttackStatsBase
 {
     public Vector2 shootOffset = new Vector2(1.2f, 0);
     public Projectile projectile;
 
     public Vector2 GetShootOffset(bool isRight) => isRight ? shootOffset : -shootOffset;
+
+    public override void DoAttack(Vector2 position, bool isRight, ObjectType attackerType)
+    {
+        var newProjectile = GameObject.Instantiate(projectile, position + GetShootOffset(isRight), Quaternion.identity);
+        newProjectile.attackerType = attackerType;
+        newProjectile.isRight = isRight;
+    }
+
+    public override void OnGizmos(Vector2 position, bool isRight)
+    {
+        base.OnGizmos(position, isRight);
+        Gizmos.DrawWireCube(position + GetShootOffset(isRight), Vector3.one * .25f);
+    }
 }
