@@ -8,7 +8,6 @@ public class CharacterAbstract : PhysicalItem
     public CharStats charStats;
     public CharState charState;
     public AttackStatsBase attackStats;
-    protected IAttackHandler attack;
     public ObjectType characterType = ObjectType.UNDEFINED;
 
     public ClipsCollection hitSounds;
@@ -19,7 +18,6 @@ public class CharacterAbstract : PhysicalItem
     protected override void Init()
     {
         base.Init();
-        attack = AttackHandlerHelper.GetAttackHandler(attackStats);
         charState.health = charStats.MaxHealth;
         if (!charState.isRight)
         {
@@ -38,7 +36,7 @@ public class CharacterAbstract : PhysicalItem
             StartCoroutine(WaitWhileAttack(attackName));
         }
     }
-    public void CastAttack() => attack.DoAttack(transform.position, charState.isRight, characterType);
+    public void CastAttack() => attackStats.DoAttack(transform.position, charState.isRight, characterType);
     IEnumerator WaitWhileAttack(string attackName)
     {
         yield return WaitWhileAnim(attackName);
@@ -87,11 +85,11 @@ public class CharacterAbstract : PhysicalItem
 
     protected Transform GetClosest(IEnumerable<Transform> transforms)
     {
-        return transforms.First();
+        return transforms?.FirstOrDefault();
     }
 
     protected override void AddOnDrawGizmos()
     {
-        if (attackStats != null) AttackHandlerHelper.OnGizmos(attackStats, transform.position, charState.isRight);
+        if (attackStats != null) attackStats.OnGizmos(transform.position, charState.isRight);
     }
 }

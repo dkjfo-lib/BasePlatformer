@@ -7,21 +7,20 @@ public class Projectile : PhysicalItem
 {
     public ObjectType attackerType;
     public AttackStatsMelee attackStats;
-    private AttackHandlerMelee attack;
     public bool isRight = true;
 
     protected override void Init()
     {
         base.Init();
-        attack = new AttackHandlerMelee(attackStats);
+        if (!isRight)
+        {
+            Flip_H();
+        }
     }
 
     protected override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
-
-        if (!isRight)
-            Flip_H();
 
         float movement_H = isRight ? 1 : -1;
         SetVelocityH(movement_H * physicalStats.Acceleration_H);
@@ -39,11 +38,11 @@ public class Projectile : PhysicalItem
 
     private void CastAttack()
     {
-        attack.DoAttack(transform.position, isRight, attackerType);
+        attackStats.DoAttack(transform.position, isRight, attackerType);
     }
 
     protected override void AddOnDrawGizmos()
     {
-        AttackHandlerHelper.OnGizmos(attackStats, transform.position, isRight);
+        attackStats.OnGizmos(transform.position, isRight);
     }
 }
