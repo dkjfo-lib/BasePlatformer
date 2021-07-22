@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewAttackStats", menuName = "My/AttackStats Range")]
+[CreateAssetMenu(fileName = "NewRangeAttack", menuName = "My/AttackStats Range")]
 public class AttackStatsRange : AttackStatsBase
 {
     public Vector2 shootOffset = new Vector2(1.2f, 0);

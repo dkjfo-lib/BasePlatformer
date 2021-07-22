@@ -30,8 +30,9 @@ public class CharacterAbstract : PhysicalItem
 
     protected void DoAttack(string attackName)
     {
-        if (charState.CanAttack && attack.CanAttack())
+        if (charState.CanAttack(attackStats.cooldown))
         {
+            charState.timeLastAttack = Time.timeSinceLevelLoad;
             charState.inAttack = true;
             Anim_SetTrigger("attack");
             StartCoroutine(WaitWhileAttack(attackName));

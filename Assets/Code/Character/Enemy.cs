@@ -62,7 +62,7 @@ public class Enemy : CharacterAbstract
     {
         if (charState.IsDead) return;
         if (attack == null) return;
-        if (attack.CastAttack(transform.position, charState.isRight).Length > 0)
+        if (attack.HasEnemies(transform.position, charState.isRight).Length > 0)
         {
             DoAttack(attackAnimName);
         }
