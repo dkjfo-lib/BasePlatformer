@@ -8,6 +8,9 @@ public class Projectile : PhysicalItem
     public ObjectType attackerType;
     public AttackStatsMelee attackStats;
     public bool isRight = true;
+    [Space]
+    public ParticleSystem addonParticleSystem;
+    public ClipsCollection addonHitSound;
 
     protected override void Init()
     {
@@ -34,6 +37,15 @@ public class Projectile : PhysicalItem
     private void Detonate()
     {
         Anim_SetTrigger("die");
+        if (addonParticleSystem != null)
+        {
+            addonParticleSystem.transform.parent = transform.parent;
+            Destroy(addonParticleSystem.gameObject, 5);
+        }
+        if (addonHitSound)
+        {
+            addonHitSound.PlayRandomClip();
+        }
     }
 
     private void CastAttack()

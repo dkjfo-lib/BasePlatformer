@@ -146,10 +146,11 @@ MonoBehaviour:
     health: 1
     isRight: 1
     inAttack: 0
+    timeLastAttack: -1
   attackStats: {fileID: 11400000, guid: 4656ea095f0e30c44bd73ce79790fbc1, type: 2}
   characterType: 4
   hitSounds: {fileID: 11400000, guid: 1da00febe55d45c40a42e0352afdc040, type: 2}
-  attackScreams: {fileID: 11400000, guid: a263d6f62cd9b3d4693df2588248d46b, type: 2}
+  attackScreams: {fileID: 11400000, guid: d4b6780e11cb21b43bf145d5027b01ac, type: 2}
   hitScreams: {fileID: 11400000, guid: 5fc95cab4bb8cbd448f8d107dbf381be, type: 2}
   deathScreams: {fileID: 11400000, guid: 0ffddff59c735cf4dbb1bb1b0de5d1a2, type: 2}
   attackAnimName: attack
@@ -197,7 +198,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   gizmosColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  detected: 0
   contacts: []
   lastOverlapTime: -1
 --- !u!114 &2832433201594664067
@@ -218,7 +218,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   gizmosColor: {r: 1, g: 0.015686274, b: 0.8031374, a: 1}
-  detected: 1
   contacts:
   - {fileID: 0}
   lastOverlapTime: 109.47592
