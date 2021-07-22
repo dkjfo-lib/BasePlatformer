@@ -382,3 +382,183 @@ System memory in use after: 89.0 MB.
 Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2333.
 Total: 2.589200 ms (FindLiveObjects: 0.444000 ms CreateObjectMapping: 0.127900 ms MarkObjects: 1.999400 ms  DeleteObjects: 0.016900 ms)
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001198 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.42 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.175 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.09 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1842 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 88.9 MB.
+System memory in use after: 89.0 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2336.
+Total: 2.908400 ms (FindLiveObjects: 0.352000 ms CreateObjectMapping: 0.143000 ms MarkObjects: 2.390100 ms  DeleteObjects: 0.022000 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 5072.357666 seconds.
+  path: Assets/Prefabs/Gunner.prefab
+  artifactKey: Guid(8c6ef37e1abbe704c95404fccf86c047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gunner.prefab using Guid(8c6ef37e1abbe704c95404fccf86c047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50346f79ad70eb1b192ba720c898ec1f') in 0.111084 seconds
+  Import took 0.116657 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000292 seconds.
+  path: Assets/Prefabs/Player.prefab
+  artifactKey: Guid(626a38efbb92d7440b07bf91f315c98e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Player.prefab using Guid(626a38efbb92d7440b07bf91f315c98e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1da89c847b6f8e96088b14c9067c3e5') in 0.036897 seconds
+  Import took 0.041924 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000328 seconds.
+  path: Assets/Prefabs/Talky.prefab
+  artifactKey: Guid(27c73783d00481543a0f9c06b3e61ef4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Talky.prefab using Guid(27c73783d00481543a0f9c06b3e61ef4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9737a1c9e48c1dc2045cd6140435f66') in 0.039814 seconds
+  Import took 0.045605 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000302 seconds.
+  path: Assets/Prefabs/NPC Enemy.prefab
+  artifactKey: Guid(5d9b7a9914c8552468d0ddcdb6782ea5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/NPC Enemy.prefab using Guid(5d9b7a9914c8552468d0ddcdb6782ea5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8b8e23b7672306067785e52ffe4432b') in 0.028554 seconds
+  Import took 0.034349 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.771726 seconds.
+  path: Assets/Scriptable/SysPipes/BetweenScenesData.asset
+  artifactKey: Guid(69395d1d59ab95b48a6dcba16e4f4f50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scriptable/SysPipes/BetweenScenesData.asset using Guid(69395d1d59ab95b48a6dcba16e4f4f50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94e53f7817de4257d5243db698e8bbf2') in 0.014333 seconds
+  Import took 0.018284 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.253645 seconds.
+  path: Assets/Scriptable/Quest/Kill Dinos.asset
+  artifactKey: Guid(69d3dd6f1ccb4ab4da88a5a5f1ea35ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scriptable/Quest/Kill Dinos.asset using Guid(69d3dd6f1ccb4ab4da88a5a5f1ea35ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '189e76bd4c1496db18536a954fe75f6c') in 0.009019 seconds
+  Import took 0.014603 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000336 seconds.
+  path: Assets/Scriptable/Quest/Quest 1.asset
+  artifactKey: Guid(9b6c6f2910fd400458a7e35d038996c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scriptable/Quest/Quest 1.asset using Guid(9b6c6f2910fd400458a7e35d038996c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93cd7d0c312c3be8548667998f35aa13') in 0.010432 seconds
+  Import took 0.014972 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000431 seconds.
+  path: Assets/Scriptable/Quest/TalkTo Girl.asset
+  artifactKey: Guid(ce7651671b7e7bc4a91714f23f272c1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scriptable/Quest/TalkTo Girl.asset using Guid(ce7651671b7e7bc4a91714f23f272c1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9652f2064840ffb0036f74c7bdb1f8b') in 0.011867 seconds
+  Import took 0.016504 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.532195 seconds.
+  path: Assets/SpriteSheets/TeamGunner
+  artifactKey: Guid(875f0a8489039c14f848b388e8177b43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SpriteSheets/TeamGunner using Guid(875f0a8489039c14f848b388e8177b43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03c120f4fb435e46ae3caf96d2c66ebc') in 0.009593 seconds
+  Import took 0.014060 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.112092 seconds.
+  path: Assets/SpriteSheets/TeamGunner/EXTRAS
+  artifactKey: Guid(2ac2b258281196c41b28d69d150a7c2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SpriteSheets/TeamGunner/EXTRAS using Guid(2ac2b258281196c41b28d69d150a7c2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38b4a8c6b1fbb2fef00aff272b77de50') in 0.010445 seconds
+  Import took 0.016293 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038911 seconds.
+  path: Assets/SpriteSheets/TeamGunner/EXTRAS/Bullet.png
+  artifactKey: Guid(9cca616234dbd9d4392dc8a18bf4a447) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SpriteSheets/TeamGunner/EXTRAS/Bullet.png using Guid(9cca616234dbd9d4392dc8a18bf4a447) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '335b16770d88193290e8e1b9bf6128df') in 0.106005 seconds
+  Import took 0.109867 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000248 seconds.
+  path: Assets/SpriteSheets/TeamGunner/EXTRAS/Platform.png
+  artifactKey: Guid(7491c1b335d2e0543b683f5c5eba6569) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SpriteSheets/TeamGunner/EXTRAS/Platform.png using Guid(7491c1b335d2e0543b683f5c5eba6569) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd79772c829c571bd0ff45e9dff567d1e') in 0.033193 seconds
+  Import took 0.036995 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000264 seconds.
+  path: Assets/SpriteSheets/TeamGunner/EXTRAS/Shadow.png
+  artifactKey: Guid(0b233f8e9908e7248aa8994d94094dd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SpriteSheets/TeamGunner/EXTRAS/Shadow.png using Guid(0b233f8e9908e7248aa8994d94094dd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0abe9cf11100d00b542832dc63d2c203') in 0.025493 seconds
+  Import took 0.030669 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000373 seconds.
+  path: Assets/SpriteSheets/TeamGunner/EXTRAS/Platform_Thin.png
+  artifactKey: Guid(9c26432904c65bd498fc91c000153db0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SpriteSheets/TeamGunner/EXTRAS/Platform_Thin.png using Guid(9c26432904c65bd498fc91c000153db0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3a0a25235dbda642340e6e287e497ec') in 0.029463 seconds
+  Import took 0.033303 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000269 seconds.
+  path: Assets/SpriteSheets/TeamGunner/EXTRAS/BulletStream.png
+  artifactKey: Guid(430561844852a0048a2c912e15f921c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SpriteSheets/TeamGunner/EXTRAS/BulletStream.png using Guid(430561844852a0048a2c912e15f921c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9189a65ebdd0df4e3a0e381547ee734d') in 0.024308 seconds
+  Import took 0.028147 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000315 seconds.
+  path: Assets/SpriteSheets/TeamGunner/EXTRAS/MuzzleFlash.png
+  artifactKey: Guid(19034abcb54e41f488137a88487629d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SpriteSheets/TeamGunner/EXTRAS/MuzzleFlash.png using Guid(19034abcb54e41f488137a88487629d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b76c779c71bd9bfb2337597792dedb1c') in 0.028057 seconds
+  Import took 0.031849 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000358 seconds.
+  path: Assets/SpriteSheets/TeamGunner/EXTRAS/BulletStream.png
+  artifactKey: Guid(430561844852a0048a2c912e15f921c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SpriteSheets/TeamGunner/EXTRAS/BulletStream.png using Guid(430561844852a0048a2c912e15f921c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9189a65ebdd0df4e3a0e381547ee734d') in 0.015879 seconds
+  Import took 0.020176 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000361 seconds.
+  path: Assets/SpriteSheets/TeamGunner/EXTRAS/MuzzleFlash.png
+  artifactKey: Guid(19034abcb54e41f488137a88487629d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SpriteSheets/TeamGunner/EXTRAS/MuzzleFlash.png using Guid(19034abcb54e41f488137a88487629d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b76c779c71bd9bfb2337597792dedb1c') in 0.015051 seconds
+  Import took 0.019115 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 38.364787 seconds.
+  path: Assets/Prefabs/Bullet.prefab
+  artifactKey: Guid(ee5eedf1f9405ff4eabe07973ecc441a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Bullet.prefab using Guid(ee5eedf1f9405ff4eabe07973ecc441a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a1489260559821b1451417d6efe2cc0') in 0.036922 seconds
+  Import took 0.042189 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.340815 seconds.
+  path: Assets/Prefabs/Bullet.prefab
+  artifactKey: Guid(ee5eedf1f9405ff4eabe07973ecc441a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Bullet.prefab using Guid(ee5eedf1f9405ff4eabe07973ecc441a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f89ef58d609a789e83656b42a471b471') in 0.018701 seconds
+  Import took 0.024719 seconds .
+
