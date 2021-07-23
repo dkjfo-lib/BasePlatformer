@@ -10,6 +10,8 @@ public class QuestController : MonoBehaviour
     public List<QuestProgress> questsInProgress;
     private QuestProgress displayedQuest;
 
+    public Pipe_Quest pipe_Quest;
+
     private void Start()
     {
         controller = this;
@@ -33,6 +35,7 @@ public class QuestController : MonoBehaviour
     {
         StartCoroutine(questProgress.ActiveQuest());
         displayedQuest = questProgress;
+        pipe_Quest.SetQuest(displayedQuest);
     }
 
     public static void EndQuest(QuestProgress quest)
@@ -45,7 +48,10 @@ public class QuestController : MonoBehaviour
         // TODO: DisplayUIMessage();
         questsInProgress.Remove(quest);
         if (displayedQuest == quest)
+        {
             displayedQuest = questsInProgress.LastOrDefault();
+            pipe_Quest.SetQuest(displayedQuest);
+        }
     }
 
     public static void OnEvent(EventDescription eventDescription)

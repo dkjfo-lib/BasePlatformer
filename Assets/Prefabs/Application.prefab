@@ -47,6 +47,7 @@ MonoBehaviour:
   - questDescription: {fileID: 11400000, guid: 9b6c6f2910fd400458a7e35d038996c3, type: 2}
     currentStepId: 0
     currentStepHappenedTimes: 0
+  pipe_Quest: {fileID: 11400000, guid: e43d1fb888d84814797c5e129e2f3232, type: 2}
 --- !u!1 &1255547994
 GameObject:
   m_ObjectHideFlags: 0
