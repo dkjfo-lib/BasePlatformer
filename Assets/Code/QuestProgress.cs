@@ -46,5 +46,9 @@ public class QuestProgress
     {
         Debug.Log("QUEST END!");
         QuestController.EndQuest(this);
+        foreach (var nextQuest in questDescription.NextQuests)
+        {
+            QuestController.AddQuest(nextQuest);
+        }
     }
 }

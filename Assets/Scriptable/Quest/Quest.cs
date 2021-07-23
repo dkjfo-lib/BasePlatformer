@@ -7,4 +7,5 @@ public class Quest : ScriptableObject
 {
     public QuestObjective[] questObjectives;
     public int Length => questObjectives.Length;
+    public Quest[] NextQuests;
 }
