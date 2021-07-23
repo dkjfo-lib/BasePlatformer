@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab34e656d52bea34d957ba183924c147, type: 3}
   m_Name: Hello Netural
   m_EditorClassIdentifier: 
+  authorName: Girl
   sentenceVariant:
-  - yeah
   - hi
   - hello
+  - -_-

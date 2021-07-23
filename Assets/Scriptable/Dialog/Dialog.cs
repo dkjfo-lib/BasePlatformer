@@ -10,5 +10,6 @@ public class Dialog : ScriptableObject
 
 public abstract class ReplicaBase : ScriptableObject
 {
+    public string authorName;
     public abstract string Sentence { get; }
 }

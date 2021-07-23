@@ -6,11 +6,11 @@ using UnityEngine;
 public class Pipe_Dialog : ScriptableObject
 {
     public bool needsUpdate;
-    public ReplicaBase replica;
+    public Dialog dialog;
 
-    public void SetText(ReplicaBase newReplica)
+    public void SetText(Dialog newDialog)
     {
         needsUpdate = true;
-        replica = newReplica;
+        dialog = newDialog;
     }
 }
