@@ -8,6 +8,8 @@ public class DialogController : MonoBehaviour
 
     Coroutine currentDialog;
     public float timeForReplica = 4;
+    public Pipe_Dialog dialogPipe;
+
 
     private void Start()
     {
@@ -24,7 +26,7 @@ public class DialogController : MonoBehaviour
     {
         for (int i = 0; i < dialog.replicas.Length; i++)
         {
-            controller.currentReplica = dialog.replicas[i].Sentence;
+            dialogPipe.SetText(replicas[i]);
             yield return new WaitForSeconds(timeForReplica);
         }
     }
