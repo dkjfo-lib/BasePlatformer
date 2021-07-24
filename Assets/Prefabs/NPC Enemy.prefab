@@ -153,6 +153,7 @@ MonoBehaviour:
     health: 1
     isRight: 1
     inAttack: 0
+    timeLastAttack: -1
   attackStats: {fileID: 11400000, guid: 2628c440d555b0748a5d90e6afe00a20, type: 2}
   characterType: 3
   hitSounds: {fileID: 11400000, guid: 1da00febe55d45c40a42e0352afdc040, type: 2}
@@ -178,7 +179,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   gizmosColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  detected: 0
   contacts: []
   lastOverlapTime: -1
 --- !u!114 &3956060514516091036
@@ -193,13 +193,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d13a5b93674b84aaa4423145606799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 6, y: 3}
-  offset: {x: 2.8, y: 0}
+  size: {x: 7, y: 4}
+  offset: {x: 2.75, y: 0.5}
   layerMask:
     serializedVersion: 2
     m_Bits: 128
   gizmosColor: {r: 1, g: 0.015686274, b: 0.9857616, a: 1}
-  detected: 0
   contacts: []
   lastOverlapTime: -1
 --- !u!95 &2077174024

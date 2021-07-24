@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6df8cfae859e8094aa880f2d073c38f9, type: 3}
-  m_Name: TalkTo Girl
+  m_Name: S Talk Girl
   m_EditorClassIdentifier: 
   eventDescription:
     who: 1

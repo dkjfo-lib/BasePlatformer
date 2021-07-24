@@ -12,6 +12,7 @@ public class UIQuest : MonoBehaviour
 
     private void Start()
     {
+        DisplayReplica(pipe_Quest.currentQuest);
         StartCoroutine(KeepDialogUpdated());
     }
 
@@ -19,7 +20,9 @@ public class UIQuest : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitUntil(() => pipe_Quest.needsUpdate || pipe_Quest.currentQuest.StepCompleted);
+            yield return new WaitUntil(() =>
+                pipe_Quest.needsUpdate ||
+                (pipe_Quest.currentQuest != null && pipe_Quest.currentQuest.StepCompleted));
             pipe_Quest.needsUpdate = false;
             DisplayReplica(pipe_Quest.currentQuest);
         }
@@ -27,16 +30,15 @@ public class UIQuest : MonoBehaviour
 
     void DisplayReplica(QuestProgress questProgress)
     {
-        if (questProgress != null)
+        if (questProgress != null && questProgress.notEmpty)
         {
             textQuestName.text = questProgress.questDescription.questName;
             textStepDescription.text = questProgress.CurrentStepDescription;
         }
         else
         {
-            //TODO: close
-            textQuestName.text = "None";
-            textStepDescription.text = "";
+            textQuestName.text = "No quest";
+            textStepDescription.text = "Currently no tasks";
         }
     }
 }
