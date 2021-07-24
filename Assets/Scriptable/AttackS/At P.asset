@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c370a1055af1b594d96a4e1c30a503bb, type: 3}
   m_Name: At P
   m_EditorClassIdentifier: 
-  offset: {x: 2, y: 0}
-  size: {x: 2, y: 0.75}
+  offset: {x: 1.05, y: 0}
+  size: {x: 0.5, y: 2}
   characterLayerMask:
     serializedVersion: 2
     m_Bits: 640

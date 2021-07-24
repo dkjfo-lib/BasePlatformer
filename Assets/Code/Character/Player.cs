@@ -105,6 +105,8 @@ public class Player : CharacterAbstract
     }
     protected override void AddOnDrawGizmos()
     {
+        base.AddOnDrawGizmos();
+        Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(transform.position + (Vector3)activationOffset, activationSize);
     }
 }

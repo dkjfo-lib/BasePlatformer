@@ -218,8 +218,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d13a5b93674b84aaa4423145606799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 8.61, y: 4}
-  offset: {x: 3.69, y: 0.5}
+  size: {x: 9, y: 4}
+  offset: {x: 3.5, y: 0.5}
   layerMask:
     serializedVersion: 2
     m_Bits: 128

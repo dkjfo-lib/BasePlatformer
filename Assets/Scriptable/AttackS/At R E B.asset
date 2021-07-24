@@ -17,6 +17,6 @@ MonoBehaviour:
   characterLayerMask:
     serializedVersion: 2
     m_Bits: 640
-  cooldown: 1
+  cooldown: 2
   shootOffset: {x: 0.65, y: 0.06}
   projectile: {fileID: 1069016302816915457, guid: ee5eedf1f9405ff4eabe07973ecc441a, type: 3}
