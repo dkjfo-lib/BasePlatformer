@@ -28,18 +28,26 @@ public class Enemy : CharacterAbstract
         float movement_H = 0;
         if (playerDetector.Detected)
         {
-            var target = GetClosest(playerDetector.GetContacts(s => s.transform));
-            if (target.position.x > transform.position.x && !charState.isRight)
-                Flip_H();
-            if (target.position.x < transform.position.x && charState.isRight)
-                Flip_H();
-            if (target.position.x > transform.position.x + attackStats.GetOffset(charState.isRight).x + attackStats.size.x / 2)
+            var enemies = playerDetector.contacts.
+                Select(s => s.gameObject.GetComponent<CharacterAbstract>()).
+                Where(s => s != null).
+                Where(s => enemyFactions.Contains(s.faction)).
+                Select(s => s.transform);
+            var target = GetClosest(enemies);
+            if (target != null)
             {
-                movement_H = +1;
-            }
-            if (target.position.x < transform.position.x + attackStats.GetOffset(charState.isRight).x - attackStats.size.x / 2)
-            {
-                movement_H = -1;
+                if (target.position.x > transform.position.x && !charState.isRight)
+                    Flip_H();
+                if (target.position.x < transform.position.x && charState.isRight)
+                    Flip_H();
+                if (target.position.x > transform.position.x + attackStats.GetOffset(charState.isRight).x + attackStats.size.x / 2)
+                {
+                    movement_H = +1;
+                }
+                if (target.position.x < transform.position.x + attackStats.GetOffset(charState.isRight).x - attackStats.size.x / 2)
+                {
+                    movement_H = -1;
+                }
             }
         }
         if (movement_H != 0)
@@ -62,7 +70,7 @@ public class Enemy : CharacterAbstract
     {
         if (charState.IsDead) return;
         if (attackStats == null) return;
-        if (attackStats.HasEnemies(transform.position, charState.isRight).Length > 0)
+        if (attackStats.HasEnemies(transform.position, charState.isRight, enemyFactions).Length > 0)
         {
             DoAttack(attackAnimName);
         }

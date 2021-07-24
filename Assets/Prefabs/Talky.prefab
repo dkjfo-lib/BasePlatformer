@@ -178,6 +178,10 @@ MonoBehaviour:
   attackScreams: {fileID: 11400000, guid: a263d6f62cd9b3d4693df2588248d46b, type: 2}
   hitScreams: {fileID: 11400000, guid: 5fc95cab4bb8cbd448f8d107dbf381be, type: 2}
   deathScreams: {fileID: 11400000, guid: 0ffddff59c735cf4dbb1bb1b0de5d1a2, type: 2}
+  faction: 0
+  enemyFactions: 
+  corpseFaction: 2
+  corpseLayer: Items
   dialog: {fileID: 11400000, guid: 5d49a71b3ac3be14a8d23969889ddd50, type: 2}
   dialogPipe: {fileID: 11400000, guid: ed2794ef57af51d42aaaa8f9845b4b6c, type: 2}
 --- !u!114 &3245528741539679239

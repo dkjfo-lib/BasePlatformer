@@ -161,6 +161,10 @@ MonoBehaviour:
   attackScreams: {fileID: 11400000, guid: a263d6f62cd9b3d4693df2588248d46b, type: 2}
   hitScreams: {fileID: 11400000, guid: 5fc95cab4bb8cbd448f8d107dbf381be, type: 2}
   deathScreams: {fileID: 11400000, guid: 940905514f047e3449560e83cfcc1cb8, type: 2}
+  faction: 0
+  enemyFactions: 
+  corpseFaction: 2
+  corpseLayer: Items
   activationSize: {x: 1.5, y: 1.85}
   activationOffset: {x: 0, y: 0.25}
   activationLayerMask:
@@ -218,9 +222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f154b3febfcf7714cb0cd7bc0c1c5d8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthSlider: {fileID: 5857447080838403113}
-  statusImage: {fileID: 0}
   canvas: {fileID: 3575867134056797971}
+  healthSlider: {fileID: 5857447080838403113}
 --- !u!1001 &1733367415365826609
 PrefabInstance:
   m_ObjectHideFlags: 0

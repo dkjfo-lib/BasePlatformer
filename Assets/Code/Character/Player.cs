@@ -100,6 +100,7 @@ public class Player : CharacterAbstract
 
     protected override void OnDeath(Hit hit)
     {
+        base.OnDeath(hit);
         respawn = true;
     }
     protected override void AddOnDrawGizmos()

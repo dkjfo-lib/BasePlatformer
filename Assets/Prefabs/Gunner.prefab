@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2115945488653422537}
   - component: {fileID: 2832433201594664067}
   - component: {fileID: 2499270938201008529}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Gunner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,6 +155,10 @@ MonoBehaviour:
   attackScreams: {fileID: 11400000, guid: d4b6780e11cb21b43bf145d5027b01ac, type: 2}
   hitScreams: {fileID: 11400000, guid: 5fc95cab4bb8cbd448f8d107dbf381be, type: 2}
   deathScreams: {fileID: 11400000, guid: 0ffddff59c735cf4dbb1bb1b0de5d1a2, type: 2}
+  faction: 1
+  enemyFactions: 00000000
+  corpseFaction: 2
+  corpseLayer: Items
   attackAnimName: attack
 --- !u!61 &5407826591183461953
 BoxCollider2D:
@@ -235,9 +239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f154b3febfcf7714cb0cd7bc0c1c5d8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthSlider: {fileID: 4103258094127513572}
-  statusImage: {fileID: 0}
   canvas: {fileID: 6347945030476496094}
+  healthSlider: {fileID: 4103258094127513572}
 --- !u!1001 &8193822411803530236
 PrefabInstance:
   m_ObjectHideFlags: 0

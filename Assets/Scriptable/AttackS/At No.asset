@@ -14,12 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 2, y: 0}
   size: {x: 2, y: 0.75}
-  triggerLayerMask:
+  characterLayerMask:
     serializedVersion: 2
-    m_Bits: 0
-  attackLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 640
   cooldown: 1000
   damage: 0
   force: 0
