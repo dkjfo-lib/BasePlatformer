@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : CharacterAbstract
 {
     public static Player thePlayer;
-    public static bool firstSpawn = true;
+    public static bool respawn = true;
 
     public Vector2 activationSize = Vector2.one;
     public Vector2 activationOffset = Vector2.zero;
@@ -22,11 +22,12 @@ public class Player : CharacterAbstract
     protected override void Init()
     {
         base.Init();
-        if (!firstSpawn)
+        if (!respawn)
         {
             pipe_BetweenScenesData.ApplyData(this);
         }
-        firstSpawn = false;
+        respawn = false;
+        UpdateGUI(true);
     }
 
     protected override void OnFixedUpdate()
@@ -95,6 +96,11 @@ public class Player : CharacterAbstract
                 });
             }
         }
+    }
+
+    protected override void OnDeath(Hit hit)
+    {
+        respawn = true;
     }
     protected override void AddOnDrawGizmos()
     {

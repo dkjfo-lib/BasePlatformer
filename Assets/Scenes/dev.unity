@@ -306,6 +306,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1901662130101177707, guid: 626a38efbb92d7440b07bf91f315c98e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1901662130101177707, guid: 626a38efbb92d7440b07bf91f315c98e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2469682732009625289, guid: 626a38efbb92d7440b07bf91f315c98e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -363,6 +371,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 98966097, guid: 29c88bb993ad84e42b312e43af2efef3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 705593698712350757, guid: 29c88bb993ad84e42b312e43af2efef3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5771507320906517403, guid: 29c88bb993ad84e42b312e43af2efef3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
