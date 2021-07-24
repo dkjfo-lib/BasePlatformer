@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3956060514516091036}
   - component: {fileID: 2077174024}
   - component: {fileID: 5425065477998058341}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: NPC Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,6 +162,10 @@ MonoBehaviour:
   attackScreams: {fileID: 11400000, guid: a263d6f62cd9b3d4693df2588248d46b, type: 2}
   hitScreams: {fileID: 11400000, guid: 5fc95cab4bb8cbd448f8d107dbf381be, type: 2}
   deathScreams: {fileID: 11400000, guid: 0ffddff59c735cf4dbb1bb1b0de5d1a2, type: 2}
+  faction: 1
+  enemyFactions: 00000000
+  corpseFaction: 2
+  corpseLayer: Items
   attackAnimName: b_attack
 --- !u!114 &1132134102
 MonoBehaviour:
@@ -195,8 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d13a5b93674b84aaa4423145606799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 7, y: 4}
-  offset: {x: 2.75, y: 0.5}
+  size: {x: 9, y: 4}
+  offset: {x: 3.5, y: 0.5}
   layerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -234,9 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f154b3febfcf7714cb0cd7bc0c1c5d8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthSlider: {fileID: 2804489826613135218}
-  statusImage: {fileID: 0}
   canvas: {fileID: 5044684155725513800}
+  healthSlider: {fileID: 2804489826613135218}
 --- !u!1001 &8046931765683645290
 PrefabInstance:
   m_ObjectHideFlags: 0

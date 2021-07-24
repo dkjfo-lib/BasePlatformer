@@ -10,11 +10,16 @@ public class CharacterAbstract : PhysicalItem
     public CharState charState;
     public AttackStatsBase attackStats;
     public ObjectType characterType = ObjectType.UNDEFINED;
-
+    [Space]
     public ClipsCollection hitSounds;
     public ClipsCollection attackScreams;
     public ClipsCollection hitScreams;
     public ClipsCollection deathScreams;
+    [Space]
+    public Faction faction;
+    public Faction[] enemyFactions;
+    public Faction corpseFaction;
+    public string corpseLayer = "Items";
 
     CharacterGUI characterGUI;
 
@@ -80,7 +85,11 @@ public class CharacterAbstract : PhysicalItem
         }
     }
     protected virtual void OnHit(Hit hit) { }
-    protected virtual void OnDeath(Hit hit) { }
+    protected virtual void OnDeath(Hit hit)
+    {
+        gameObject.layer = LayerMask.NameToLayer(corpseLayer);
+        faction = corpseFaction;
+    }
 
     public void PlayHitSound() => hitSounds.PlayRandomClip();
     public void PlayAttackScream() => attackScreams.PlayRandomClip();

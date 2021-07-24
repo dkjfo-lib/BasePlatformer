@@ -100,10 +100,13 @@ public class Player : CharacterAbstract
 
     protected override void OnDeath(Hit hit)
     {
+        base.OnDeath(hit);
         respawn = true;
     }
     protected override void AddOnDrawGizmos()
     {
+        base.AddOnDrawGizmos();
+        Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(transform.position + (Vector3)activationOffset, activationSize);
     }
 }
