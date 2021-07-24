@@ -5,6 +5,7 @@ using UnityEngine;
 public class Talky : CharacterAbstract, IActivate
 {
     public Dialog dialog;
+    public Pipe_Dialog dialogPipe;
 
     public void Activate(ActivationParams values)
     {
@@ -14,7 +15,7 @@ public class Talky : CharacterAbstract, IActivate
             didWhat = EventType.talk,
             toWhom = characterType
         });
-        DialogController.StartDialog(dialog);
+        dialogPipe.SetText(dialog);
     }
 }
 

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : CharacterAbstract
 {
     public static Player thePlayer;
-    public static bool firstSpawn = true;
+    public static bool respawn = true;
 
     public Vector2 activationSize = Vector2.one;
     public Vector2 activationOffset = Vector2.zero;
@@ -22,11 +22,12 @@ public class Player : CharacterAbstract
     protected override void Init()
     {
         base.Init();
-        if (!firstSpawn)
+        if (!respawn)
         {
             pipe_BetweenScenesData.ApplyData(this);
         }
-        firstSpawn = false;
+        respawn = false;
+        UpdateGUI(true);
     }
 
     protected override void OnFixedUpdate()
@@ -87,11 +88,19 @@ public class Player : CharacterAbstract
             var activatesA = items.Select(s => s.transform.GetComponent<IActivate>()).Where(s => s != null).ToArray();
             var activatesAT = items.Select(s => s.transform);
             var tr = GetClosest(activatesAT);
-            tr.GetComponent<IActivate>().Activate(new ActivationParams
+            if (tr != null)
             {
-                character = this
-            });
+                tr.GetComponent<IActivate>().Activate(new ActivationParams
+                {
+                    character = this
+                });
+            }
         }
+    }
+
+    protected override void OnDeath(Hit hit)
+    {
+        respawn = true;
     }
     protected override void AddOnDrawGizmos()
     {

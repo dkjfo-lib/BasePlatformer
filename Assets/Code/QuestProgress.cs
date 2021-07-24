@@ -13,6 +13,8 @@ public class QuestProgress
     public int currentStepHappenedTimes;
 
     private bool stepCompleted = false;
+    public bool StepCompleted => stepCompleted;
+    public bool notEmpty => questDescription != null;
 
     public QuestProgress(Quest questDescription)
     {

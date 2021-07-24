@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterGUI))]
 public class CharacterAbstract : PhysicalItem
 {
     public CharStats charStats;
@@ -15,6 +16,14 @@ public class CharacterAbstract : PhysicalItem
     public ClipsCollection hitScreams;
     public ClipsCollection deathScreams;
 
+    CharacterGUI characterGUI;
+
+    protected override void GetComponents()
+    {
+        base.GetComponents();
+        characterGUI = GetComponent<CharacterGUI>();
+    }
+
     protected override void Init()
     {
         base.Init();
@@ -24,6 +33,7 @@ public class CharacterAbstract : PhysicalItem
             Flip_H();
             charState.isRight = !charState.isRight;
         }
+        characterGUI.Init(charStats, charState);
     }
 
     protected void DoAttack(string attackName)
@@ -52,21 +62,25 @@ public class CharacterAbstract : PhysicalItem
         AddVelocityH(force);
         if (charState.IsDead)
         {
+            UpdateGUI(false);
             QuestController.OnEvent(new EventDescription
             {
                 who = hit.attackerType,
                 didWhat = EventType.kill,
-                toWhom= characterType
+                toWhom = characterType
             });
             Anim_SetTrigger("die");
+            OnDeath(hit);
         }
         else
         {
+            UpdateGUI(true);
             Anim_SetTrigger("hurt");
             OnHit(hit);
         }
     }
     protected virtual void OnHit(Hit hit) { }
+    protected virtual void OnDeath(Hit hit) { }
 
     public void PlayHitSound() => hitSounds.PlayRandomClip();
     public void PlayAttackScream() => attackScreams.PlayRandomClip();
@@ -91,5 +105,10 @@ public class CharacterAbstract : PhysicalItem
     protected override void AddOnDrawGizmos()
     {
         if (attackStats != null) attackStats.OnGizmos(transform.position, charState.isRight);
+    }
+
+    protected void UpdateGUI(bool isDisplayed)
+    {
+        characterGUI.UpdateUI(charState, isDisplayed);
     }
 }

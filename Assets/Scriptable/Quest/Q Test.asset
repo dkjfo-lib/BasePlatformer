@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6df8cfae859e8094aa880f2d073c38f9, type: 3}
-  m_Name: TalkTo Girl
+  m_Script: {fileID: 11500000, guid: 159109f3009301d4d9f6961ba1200af7, type: 3}
+  m_Name: Q Test
   m_EditorClassIdentifier: 
-  eventDescription:
-    who: 1
-    didWhat: 1
-    toWhom: 2
-  times: 1
-  description: 
+  questName: Q Test
+  questObjectives:
+  - {fileID: 11400000, guid: ce7651671b7e7bc4a91714f23f272c1e, type: 2}
+  NextQuests: []
