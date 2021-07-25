@@ -60,6 +60,7 @@ public class CharacterAbstract : PhysicalItem
 
     public void GetHit(Hit hit)
     {
+        bool wasDead = charState.IsDead;
         charState.health -= hit.damage;
         var force = hit.position.x < transform.position.x ?
             hit.force :
@@ -67,15 +68,18 @@ public class CharacterAbstract : PhysicalItem
         AddVelocityH(force);
         if (charState.IsDead)
         {
-            UpdateGUI(false);
-            QuestController.OnEvent(new EventDescription
+            if (!wasDead)
             {
-                who = hit.attackerType,
-                didWhat = EventType.kill,
-                toWhom = characterType
-            });
-            Anim_SetTrigger("die");
-            OnDeath(hit);
+                UpdateGUI(false);
+                QuestController.OnEvent(new EventDescription
+                {
+                    who = hit.attackerType,
+                    didWhat = EventType.kill,
+                    toWhom = characterType
+                });
+                Anim_SetTrigger("die");
+                OnDeath(hit);
+            }
         }
         else
         {

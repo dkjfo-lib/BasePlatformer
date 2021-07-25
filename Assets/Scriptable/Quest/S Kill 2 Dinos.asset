@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eef70255b89f7a4a8ce45fde1a5d98c, type: 3}
-  m_Name: D hi
+  m_Script: {fileID: 11500000, guid: 6df8cfae859e8094aa880f2d073c38f9, type: 3}
+  m_Name: S Kill 2 Dinos
   m_EditorClassIdentifier: 
-  replicas:
-  - authorName: Girl
-    sentence: WADUP
+  eventDescription:
+    who: 0
+    didWhat: 2
+    toWhom: 3
+  times: 2
+  description: Kill 2 evil Dinos

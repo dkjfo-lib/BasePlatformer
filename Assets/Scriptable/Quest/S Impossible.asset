@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6df8cfae859e8094aa880f2d073c38f9, type: 3}
-  m_Name: S Kill Dinos
+  m_Name: S Impossible
   m_EditorClassIdentifier: 
   eventDescription:
     who: 1
-    didWhat: 2
-    toWhom: 3
-  times: 2
-  description: 
+    didWhat: 3
+    toWhom: 2
+  times: 999
+  description: It's time to STOP!

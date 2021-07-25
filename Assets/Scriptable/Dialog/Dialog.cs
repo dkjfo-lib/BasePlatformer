@@ -8,8 +8,10 @@ public class Dialog : ScriptableObject
     public ReplicaBase[] replicas;
 }
 
-public abstract class ReplicaBase : ScriptableObject
+[System.Serializable]
+public class ReplicaBase 
 {
     public string authorName;
-    public abstract string Sentence { get; }
+    [TextArea]
+    public string sentence;
 }

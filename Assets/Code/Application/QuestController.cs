@@ -62,14 +62,13 @@ public class QuestController : MonoBehaviour
     {
         foreach (var activeQuest in questsInProgress)
         {
-            activeQuest.CheckOut(eventDescription);
+            if (activeQuest.CheckOut(eventDescription))
+            {
+                if (activeQuest == displayedQuest)
+                {
+                    pipe_Quest.SetQuest(displayedQuest);
+                }
+            }
         }
-    }
-
-    private void OnGUI()
-    {
-        string message = displayedQuest == null ? null :
-            displayedQuest.CurrentStepDescription;
-        GUI.Label(new Rect(10 + 75, 10 + 75, 300, 75), message);
     }
 }

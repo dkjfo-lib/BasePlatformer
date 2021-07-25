@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Enemy : CharacterAbstract
+public class NPC : CharacterAbstract
 {
     public string attackAnimName = "b_attack";
 

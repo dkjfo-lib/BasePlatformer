@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 159109f3009301d4d9f6961ba1200af7, type: 3}
-  m_Name: Q 2
+  m_Name: Q End
   m_EditorClassIdentifier: 
-  questName: Doubling the effort
+  questName: No more quests
   questObjectives:
-  - {fileID: 11400000, guid: ce7651671b7e7bc4a91714f23f272c1e, type: 2}
-  - {fileID: 11400000, guid: 69d3dd6f1ccb4ab4da88a5a5f1ea35ce, type: 2}
-  NextQuests:
-  - {fileID: 11400000, guid: 1ea90a36a7e55dc4682ef0fd81c9a0b5, type: 2}
+  - {fileID: 11400000, guid: 4e3edfc70a72f6a4ca0d36fb1b4dca7c, type: 2}
+  - {fileID: 11400000, guid: bcf1d2a97390fe641a4dae74ac8b484e, type: 2}
+  - {fileID: 11400000, guid: 142d9961f2c650b4697276c5da378e0d, type: 2}
+  NextQuests: []

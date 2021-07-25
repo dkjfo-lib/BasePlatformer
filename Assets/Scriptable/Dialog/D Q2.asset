@@ -10,8 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2eef70255b89f7a4a8ce45fde1a5d98c, type: 3}
-  m_Name: D hi
+  m_Name: D Q2
   m_EditorClassIdentifier: 
   replicas:
   - authorName: Girl
-    sentence: WADUP
+    sentence: GOOOOD JOB!
+  - authorName: Girl
+    sentence: They sure deserved it!
+  - authorName: Girl
+    sentence: Now it is only appropriate to continue our efforts and kill a bit more
+      of those pesky Dinos!

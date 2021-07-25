@@ -7,6 +7,7 @@ public class QuestObjective : ScriptableObject
 {
     public EventDescription eventDescription;
     public int times = 1;
+    [TextArea]
     public string description;
     public bool NoDescription => string.IsNullOrWhiteSpace(description);
     public string Description => NoDescription ?

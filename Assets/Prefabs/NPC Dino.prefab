@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2077174024}
   - component: {fileID: 5425065477998058341}
   m_Layer: 7
-  m_Name: NPC Enemy
+  m_Name: NPC Dino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

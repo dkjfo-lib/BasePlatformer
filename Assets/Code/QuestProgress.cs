@@ -9,7 +9,7 @@ public class QuestProgress
     public int currentStepId;
 
     public QuestObjective CurrentStep => questDescription.questObjectives[currentStepId];
-    public string CurrentStepDescription => string.Join(" ", CurrentStep.Description, "already did", currentStepHappenedTimes, "times");
+    public string CurrentStepDescription => CurrentStep.Description;
     public int currentStepHappenedTimes;
 
     private bool stepCompleted = false;
@@ -34,7 +34,7 @@ public class QuestProgress
         QuestEnd();
     }
 
-    public void CheckOut(EventDescription eventDescription)
+    public bool CheckOut(EventDescription eventDescription)
     {
         bool questEventHappened = EventDescription.ChecksOut(CurrentStep.eventDescription, eventDescription);
         if (questEventHappened)
@@ -42,6 +42,7 @@ public class QuestProgress
             currentStepHappenedTimes++;
         }
         stepCompleted = currentStepHappenedTimes >= CurrentStep.times;
+        return stepCompleted;
     }
 
     public void QuestEnd()
