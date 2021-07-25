@@ -34,7 +34,7 @@ public class QuestProgress
         QuestEnd();
     }
 
-    public void CheckOut(EventDescription eventDescription)
+    public bool CheckOut(EventDescription eventDescription)
     {
         bool questEventHappened = EventDescription.ChecksOut(CurrentStep.eventDescription, eventDescription);
         if (questEventHappened)
@@ -42,6 +42,7 @@ public class QuestProgress
             currentStepHappenedTimes++;
         }
         stepCompleted = currentStepHappenedTimes >= CurrentStep.times;
+        return stepCompleted;
     }
 
     public void QuestEnd()

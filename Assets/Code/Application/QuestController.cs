@@ -62,7 +62,13 @@ public class QuestController : MonoBehaviour
     {
         foreach (var activeQuest in questsInProgress)
         {
-            activeQuest.CheckOut(eventDescription);
+            if (activeQuest.CheckOut(eventDescription))
+            {
+                if (activeQuest == displayedQuest)
+                {
+                    pipe_Quest.SetQuest(displayedQuest);
+                }
+            }
         }
     }
 }
