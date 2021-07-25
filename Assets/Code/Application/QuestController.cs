@@ -65,11 +65,4 @@ public class QuestController : MonoBehaviour
             activeQuest.CheckOut(eventDescription);
         }
     }
-
-    private void OnGUI()
-    {
-        string message = displayedQuest == null ? null :
-            displayedQuest.CurrentStepDescription;
-        GUI.Label(new Rect(10 + 75, 10 + 75, 300, 75), message);
-    }
 }

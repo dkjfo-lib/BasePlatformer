@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: S Kill Dinos
   m_EditorClassIdentifier: 
   eventDescription:
-    who: 1
+    who: 0
     didWhat: 2
     toWhom: 3
   times: 2

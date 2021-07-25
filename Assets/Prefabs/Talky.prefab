@@ -13,8 +13,10 @@ GameObject:
   - component: {fileID: 3245528741539679243}
   - component: {fileID: 3245528741539679240}
   - component: {fileID: 3245528741539679241}
-  - component: {fileID: 3245528741539679236}
+  - component: {fileID: 8861792468255074242}
   - component: {fileID: 3245528741539679239}
+  - component: {fileID: 5115193225513075009}
+  - component: {fileID: 691617641598238612}
   m_Layer: 9
   m_Name: Talky
   m_TagString: Untagged
@@ -153,7 +155,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3245528741539679236
+--- !u!114 &8861792468255074242
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,7 +164,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3245528741539679246}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8ede755cafcb24409fda25008168d67, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a14a68f587451544850313fa0ba430e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   physicalStats: {fileID: 11400000, guid: 43b7dcd150020da4aae9bc0da7fe63c8, type: 2}
@@ -182,8 +184,18 @@ MonoBehaviour:
   enemyFactions: 
   corpseFaction: 2
   corpseLayer: Items
-  dialog: {fileID: 11400000, guid: 5d49a71b3ac3be14a8d23969889ddd50, type: 2}
+  attackAnimName: 
+  noramalDialog: {fileID: 0}
+  deadDialog: {fileID: 0}
   dialogPipe: {fileID: 11400000, guid: ed2794ef57af51d42aaaa8f9845b4b6c, type: 2}
+  dupes:
+  - dialog: {fileID: 11400000, guid: 5b65038fefa89b8429fc572b9698428b, type: 2}
+    quest: {fileID: 11400000, guid: 842d7f605043a6641a74a196c4ca1695, type: 2}
+  - dialog: {fileID: 11400000, guid: 215311d8ab24f924e909e5d3fc7410dc, type: 2}
+    quest: {fileID: 11400000, guid: ebff1b480c380a340b5795fb9457a70e, type: 2}
+  - dialog: {fileID: 11400000, guid: 9c904541e0c064f4db576feb3aa77ec5, type: 2}
+    quest: {fileID: 11400000, guid: 1ea90a36a7e55dc4682ef0fd81c9a0b5, type: 2}
+  pipe_Quest: {fileID: 11400000, guid: e43d1fb888d84814797c5e129e2f3232, type: 2}
 --- !u!114 &3245528741539679239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,3 +216,37 @@ MonoBehaviour:
   gizmosColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   contacts: []
   lastOverlapTime: -1
+--- !u!114 &5115193225513075009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3245528741539679246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d13a5b93674b84aaa4423145606799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: {x: 9, y: 4}
+  offset: {x: 3.5, y: 0.5}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  gizmosColor: {r: 1, g: 0.015686274, b: 0.9857616, a: 1}
+  contacts: []
+  lastOverlapTime: -1
+--- !u!114 &691617641598238612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3245528741539679246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f154b3febfcf7714cb0cd7bc0c1c5d8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  healthSlider: {fileID: 0}

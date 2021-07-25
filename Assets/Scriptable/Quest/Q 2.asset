@@ -16,5 +16,5 @@ MonoBehaviour:
   questObjectives:
   - {fileID: 11400000, guid: ce7651671b7e7bc4a91714f23f272c1e, type: 2}
   - {fileID: 11400000, guid: 69d3dd6f1ccb4ab4da88a5a5f1ea35ce, type: 2}
-  - {fileID: 11400000, guid: ce7651671b7e7bc4a91714f23f272c1e, type: 2}
-  NextQuests: []
+  NextQuests:
+  - {fileID: 11400000, guid: 1ea90a36a7e55dc4682ef0fd81c9a0b5, type: 2}
