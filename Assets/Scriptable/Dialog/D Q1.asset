@@ -13,4 +13,12 @@ MonoBehaviour:
   m_Name: D Q1
   m_EditorClassIdentifier: 
   replicas:
-  - {fileID: 11400000, guid: 99c45db2452b68a44b99a93b8fd9a8ab, type: 2}
+  - authorName: Girl
+    sentence: Listen boy scout, see those heretic dinos across the bridge...
+  - authorName: Girl
+    sentence: 'Kill em!..
+
+      Yeah go kill em!'
+  - authorName: Girl
+    sentence: They are most definitely evil and it is our duty to bring justice upon
+      them!

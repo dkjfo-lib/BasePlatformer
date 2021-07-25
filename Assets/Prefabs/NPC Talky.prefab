@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5115193225513075009}
   - component: {fileID: 691617641598238612}
   m_Layer: 9
-  m_Name: Talky
+  m_Name: NPC Talky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1246926345
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 2d414b37f3de74d2494564eb6ca8b8cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -185,8 +185,10 @@ MonoBehaviour:
   corpseFaction: 2
   corpseLayer: Items
   attackAnimName: 
-  noramalDialog: {fileID: 0}
-  deadDialog: {fileID: 0}
+  noramalDialog:
+  - {fileID: 11400000, guid: 5d49a71b3ac3be14a8d23969889ddd50, type: 2}
+  deadDialog:
+  - {fileID: 11400000, guid: 3d20bcbc6a26892439dc4c43574ca0a9, type: 2}
   dialogPipe: {fileID: 11400000, guid: ed2794ef57af51d42aaaa8f9845b4b6c, type: 2}
   dupes:
   - dialog: {fileID: 11400000, guid: 5b65038fefa89b8429fc572b9698428b, type: 2}

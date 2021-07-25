@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab34e656d52bea34d957ba183924c147, type: 3}
-  m_Name: Hello Netural
+  m_Script: {fileID: 11500000, guid: 6df8cfae859e8094aa880f2d073c38f9, type: 3}
+  m_Name: S Kill 2 Dinos
   m_EditorClassIdentifier: 
-  authorName: Girl
-  sentenceVariant:
-  - hi
-  - hello
-  - -_-
+  eventDescription:
+    who: 0
+    didWhat: 2
+    toWhom: 3
+  times: 2
+  description: Kill 2 evil Dinos

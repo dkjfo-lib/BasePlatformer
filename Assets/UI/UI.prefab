@@ -54,7 +54,7 @@ MonoBehaviour:
   image: {fileID: 742165865607846049}
   textAuthorName: {fileID: 5251182087828142759}
   textSentence: {fileID: 1980641162067650134}
-  timeForReplica: 3
+  timeForReplica: 60
 --- !u!95 &3447153676496405065
 Animator:
   serializedVersion: 3
@@ -521,6 +521,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3492883962555177032, guid: dfb260a0710adbb4fbbfed1c16532d02, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492883962555177032, guid: dfb260a0710adbb4fbbfed1c16532d02, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492883962555177032, guid: dfb260a0710adbb4fbbfed1c16532d02, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492883962555177032, guid: dfb260a0710adbb4fbbfed1c16532d02, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492883962555177032, guid: dfb260a0710adbb4fbbfed1c16532d02, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492883962555177032, guid: dfb260a0710adbb4fbbfed1c16532d02, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363832214353209636, guid: dfb260a0710adbb4fbbfed1c16532d02, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eed8ca65778554b47aabd29280ee021b, type: 3}
     - target: {fileID: 6391111419681706357, guid: dfb260a0710adbb4fbbfed1c16532d02, type: 3}
       propertyPath: m_Name
       value: Panel wImage
@@ -687,8 +715,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 4026713598770688921}
     m_Modifications:
     - target: {fileID: 1231846919415244896, guid: 1edee1acdce727f44a3cf538cff1df2d, type: 3}
+      propertyPath: m_Text
+      value: Quest Name And
+      objectReference: {fileID: 0}
+    - target: {fileID: 1231846919415244896, guid: 1edee1acdce727f44a3cf538cff1df2d, type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 26
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 1231846919415244896, guid: 1edee1acdce727f44a3cf538cff1df2d, type: 3}
       propertyPath: m_FontData.m_FontStyle

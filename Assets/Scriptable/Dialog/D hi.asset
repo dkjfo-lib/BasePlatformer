@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: D hi
   m_EditorClassIdentifier: 
   replicas:
-  - {fileID: 11400000, guid: ac5e119bb282bd941a54b4860f1970b3, type: 2}
+  - authorName: Girl
+    sentence: WADUP

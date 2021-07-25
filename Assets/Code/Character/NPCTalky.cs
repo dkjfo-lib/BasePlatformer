@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class NPCTalky : NPC, IActivate
 {
-    public Dialog noramalDialog;
-    public Dialog deadDialog;
+    public Dialog[] noramalDialog;
+    public Dialog[] deadDialog;
     public Pipe_Dialog dialogPipe;
 
     protected virtual Dialog GetDialog()
     {
         Dialog dialog = null;
         if (charState.IsDead)
-            dialog = deadDialog;
+            dialog = deadDialog[Random.Range(0, deadDialog.Length)];
         else
-            dialog = noramalDialog;
+            dialog = noramalDialog[Random.Range(0, noramalDialog.Length)];
         return dialog;
     }
 

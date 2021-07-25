@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Girl : NPCTalky
+public class NPCTalkyByQuest : NPCTalky
 {
     public Dupe[] dupes;
     public Pipe_Quest pipe_Quest;
@@ -13,7 +13,7 @@ public class Girl : NPCTalky
         Dialog dialog = null;
         if (charState.IsDead)
         {
-            dialog = deadDialog;
+            dialog = deadDialog[Random.Range(0, deadDialog.Length)];
         }
         else
         {
@@ -26,12 +26,12 @@ public class Girl : NPCTalky
                 }
                 else
                 {
-                    dialog = noramalDialog;
+                    dialog = noramalDialog[Random.Range(0, noramalDialog.Length)];
                 }
             }
             else
             {
-                dialog = noramalDialog;
+                dialog = noramalDialog[Random.Range(0, noramalDialog.Length)];
             }
         }
         return dialog;

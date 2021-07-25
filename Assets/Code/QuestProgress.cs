@@ -9,7 +9,7 @@ public class QuestProgress
     public int currentStepId;
 
     public QuestObjective CurrentStep => questDescription.questObjectives[currentStepId];
-    public string CurrentStepDescription => string.Join(" ", CurrentStep.Description, "already did", currentStepHappenedTimes, "times");
+    public string CurrentStepDescription => CurrentStep.Description;
     public int currentStepHappenedTimes;
 
     private bool stepCompleted = false;

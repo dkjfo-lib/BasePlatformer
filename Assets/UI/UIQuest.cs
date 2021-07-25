@@ -37,7 +37,7 @@ public class UIQuest : MonoBehaviour
         }
         else
         {
-            textQuestName.text = "No quest";
+            textQuestName.text = "No quests";
             textStepDescription.text = "Currently no tasks";
         }
     }

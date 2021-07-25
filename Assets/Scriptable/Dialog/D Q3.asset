@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: D Q3
   m_EditorClassIdentifier: 
   replicas:
-  - {fileID: 11400000, guid: 44b7496f6525630418494f1ce537bf5e, type: 2}
+  - authorName: Girl
+    sentence: YeahBOI! you sure love killing most definitely evil creatures!
+  - authorName: Girl
+    sentence: Keep it up Good Boi!

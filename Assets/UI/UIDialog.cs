@@ -51,6 +51,6 @@ public class UIDialog : MonoBehaviour
     void DisplayReplica(ReplicaBase replica)
     {
         textAuthorName.text = replica.authorName;
-        textSentence.text = replica.Sentence;
+        textSentence.text = replica.sentence;
     }
 }
