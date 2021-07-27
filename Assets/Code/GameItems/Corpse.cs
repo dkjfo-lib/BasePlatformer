@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Corpse : PhysicalItem
 {
-
+    public override bool isRight => false;
 }

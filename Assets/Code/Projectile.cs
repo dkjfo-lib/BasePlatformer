@@ -7,7 +7,8 @@ public class Projectile : PhysicalItem
 {
     public ObjectType attackerType;
     public AttackStatsMelee attackStats;
-    public bool isRight = true;
+    public bool facesRight = true;
+    public override bool isRight => facesRight;
     [Space]
     public ParticleSystem addonParticleSystem;
     public ClipsCollection addonHitSound;
@@ -15,7 +16,7 @@ public class Projectile : PhysicalItem
     protected override void Init()
     {
         base.Init();
-        if (!isRight)
+        if (!facesRight)
         {
             Flip_H();
         }
@@ -25,7 +26,7 @@ public class Projectile : PhysicalItem
     {
         base.OnFixedUpdate();
 
-        float movement_H = isRight ? 1 : -1;
+        float movement_H = facesRight ? 1 : -1;
         SetVelocityH(movement_H * physicalStats.Acceleration_H);
 
         if (OnGround)
@@ -50,11 +51,12 @@ public class Projectile : PhysicalItem
 
     private void CastAttack()
     {
-        attackStats.DoAttack(transform.position, isRight, attackerType);
+        attackStats.DoAttack(null, transform.position, facesRight, attackerType);
     }
 
     protected override void AddOnDrawGizmos()
     {
-        attackStats.OnGizmos(transform.position, isRight);
+        base.AddOnDrawGizmos();
+        attackStats.OnGizmos(transform.position, facesRight);
     }
 }

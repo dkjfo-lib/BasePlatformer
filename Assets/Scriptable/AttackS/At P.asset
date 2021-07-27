@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c370a1055af1b594d96a4e1c30a503bb, type: 3}
   m_Name: At P
   m_EditorClassIdentifier: 
-  offset: {x: 1.05, y: 0}
-  size: {x: 0.5, y: 2}
-  characterLayerMask:
-    serializedVersion: 2
-    m_Bits: 640
+  attackRect:
+    myRect:
+      size: {x: 1.82, y: 1.63}
+      offset: {x: 0.54, y: -0.01}
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 640
   cooldown: 0.5
   damage: 1
   force: 1000

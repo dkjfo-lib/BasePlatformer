@@ -74,18 +74,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0
-    functionName: PlayHitScream
-    data: 
-    objectReferenceParameter: {fileID: 8300000, guid: baaadef0317fb774f8deb8a6b724e185, type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0
-    functionName: PlayHitSound
-    data: 
-    objectReferenceParameter: {fileID: 8300000, guid: 21a4a00074ef6bc47a2d9059d5368082, type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

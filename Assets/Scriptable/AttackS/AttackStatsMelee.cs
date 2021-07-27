@@ -12,22 +12,24 @@ public class AttackStatsMelee : AttackStatsBase
     public int Damage => damage;
     public int Force => force;
 
-    public CharacterAbstract[] CastAttack(Vector2 position, bool isRight)
+    public CharacterAbstract[] CastAttack(CharacterAbstract performer, Vector2 position, bool isRight)
     {
-        var hits = Physics2D.OverlapBoxAll(position + GetOffset(isRight), Size, 0, characterLayerMask);
-        var characterHits = hits.Select(s => s.gameObject.GetComponent<CharacterAbstract>()).Where(s => s != null).ToArray();
+        var hits = attackRect.Cast(position, isRight);
+        var characterHits = hits.
+            Select(s => s.gameObject.GetComponent<CharacterAbstract>()).
+            Where(s => s != null && s != performer).ToArray();
         return characterHits;
     }
 
-    public override void DoAttack(Vector2 position, bool isRight, ObjectType attackerType)
+    public override void DoAttack(CharacterAbstract performer, Vector2 position, bool isRight, ObjectType attackerType)
     {
-        var hits = CastAttack(position, isRight);
+        var hits = CastAttack(performer, position, isRight);
         foreach (var hit in hits)
         {
             hit.GetHit(new Hit
             {
                 attackerType = attackerType,
-                position = position,
+                isRight = isRight,
                 damage = Damage,
                 force = Force,
             });

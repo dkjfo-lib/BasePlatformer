@@ -10,12 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3926509777148684300}
   - component: {fileID: 2937913634312664301}
-  - component: {fileID: 2396103530540448923}
   - component: {fileID: 4767893791729413712}
   - component: {fileID: 2110608259}
-  - component: {fileID: 2110608264}
   - component: {fileID: 1760805937}
   - component: {fileID: 925508105139869782}
+  - component: {fileID: 229704428958752255}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -78,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: -1873702429
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2615874204119335, guid: c87ffd3f372eb4142b46cc32b2fad662, type: 3}
-  m_Color: {r: 0.021415234, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 2844528613685417467, guid: bc59f09d441ee2e4f8904a483ad2491c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -89,32 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2396103530540448923
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2469682732009625289}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: b262a4f905cc92c4db6b26af0df29213, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.5}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!50 &4767893791729413712
 Rigidbody2D:
   serializedVersion: 4
@@ -149,6 +122,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   physicalStats: {fileID: 11400000, guid: 726e9b18726fd2f49a3dabf4b23f731f, type: 2}
+  detectGroundLayer:
+    detectorRect:
+      myRect:
+        size: {x: 0.41, y: 0.1}
+        offset: {x: 0, y: -0.97}
+      layerMask:
+        serializedVersion: 2
+        m_Bits: 64
+    gizmosColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    contacts: []
+    lastOverlapTime: -1
   charStats: {fileID: 11400000, guid: 7fc79d22464bd7445aa85ad7ad01677d, type: 2}
   charState:
     health: 1
@@ -158,39 +142,21 @@ MonoBehaviour:
   attackStats: {fileID: 11400000, guid: 3f0d6e47d8d50a449958e52fc822ca72, type: 2}
   characterType: 1
   hitSounds: {fileID: 11400000, guid: 1da00febe55d45c40a42e0352afdc040, type: 2}
-  attackScreams: {fileID: 11400000, guid: a263d6f62cd9b3d4693df2588248d46b, type: 2}
   hitScreams: {fileID: 11400000, guid: 5fc95cab4bb8cbd448f8d107dbf381be, type: 2}
+  attackScreams: {fileID: 11400000, guid: a263d6f62cd9b3d4693df2588248d46b, type: 2}
+  attackSound: {fileID: 11400000, guid: a263d6f62cd9b3d4693df2588248d46b, type: 2}
   deathScreams: {fileID: 11400000, guid: 940905514f047e3449560e83cfcc1cb8, type: 2}
   faction: 0
-  enemyFactions: 
   corpseFaction: 2
   corpseLayer: Items
-  activationSize: {x: 1.5, y: 1.85}
-  activationOffset: {x: 0, y: 0.25}
-  activationLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
+  activationRect:
+    myRect:
+      size: {x: 1.34, y: 1.56}
+      offset: {x: 0, y: -0.31}
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 512
   pipe_BetweenScenesData: {fileID: 11400000, guid: 69395d1d59ab95b48a6dcba16e4f4f50, type: 2}
---- !u!114 &2110608264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2469682732009625289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85d13a5b93674b84aaa4423145606799, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  size: {x: 0.8, y: 0.1}
-  offset: {x: 0, y: -0.5}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 320
-  gizmosColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  contacts: []
-  lastOverlapTime: 0
 --- !u!95 &1760805937
 Animator:
   serializedVersion: 3
@@ -201,7 +167,7 @@ Animator:
   m_GameObject: {fileID: 2469682732009625289}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ed0a18d9ec946144290df8776128682f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 99adfe62006ba0c44a22a5a9927dc078, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -224,6 +190,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 3575867134056797971}
   healthSlider: {fileID: 5857447080838403113}
+--- !u!70 &229704428958752255
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2469682732009625289}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: b262a4f905cc92c4db6b26af0df29213, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.48}
+  m_Size: {x: 0.67, y: 0.95}
+  m_Direction: 0
 --- !u!1001 &1733367415365826609
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,33 +6,34 @@ using UnityEngine;
 public class NPC : CharacterAbstract
 {
     public string attackAnimName = "b_attack";
+    [Space]
+    public Faction[] enemyFactions;
+    public DetectLayer enemyDetector;
+    public DetectLayer wallDetector;
 
-    DetectLayer playerDetector;
-    protected override void GetComponents()
-    {
-        base.GetComponents();
-        playerDetector = GetComponents<DetectLayer>()[1];
-    }
+    protected bool EnemyDetected => enemyDetector.Detected;
+    protected IEnumerable<CharacterAbstract> EnemiesInSight => enemyDetector.contacts.
+                Select(s => s.gameObject.GetComponent<CharacterAbstract>()).
+                Where(s => s != null).
+                Where(s => enemyFactions.Contains(s.faction));
 
     protected override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
+        enemyDetector.UpdateDetector(transform.position, isRight);
+        wallDetector.UpdateDetector(transform.position, isRight);
         Attack();
-        Move();
-        Jump();
+        bool isMoving = Move();
+        Jump(isMoving);
     }
 
-    void Move()
+    bool Move()
     {
-        if (!charState.CanMove) return;
-        float movement_H = 0;
-        if (playerDetector.Detected)
+        if (!charState.CanMove) return false;
+        int movement_H = 0;
+        if (EnemyDetected)
         {
-            var enemies = playerDetector.contacts.
-                Select(s => s.gameObject.GetComponent<CharacterAbstract>()).
-                Where(s => s != null).
-                Where(s => enemyFactions.Contains(s.faction)).
-                Select(s => s.transform);
+            var enemies = EnemiesInSight.Select(s => s.transform);
             var target = GetClosest(enemies);
             if (target != null)
             {
@@ -40,31 +41,32 @@ public class NPC : CharacterAbstract
                     Flip_H();
                 if (target.position.x < transform.position.x && charState.isRight)
                     Flip_H();
-                if (target.position.x > transform.position.x + attackStats.GetOffset(charState.isRight).x + attackStats.size.x / 2)
+                if (target.position.x > transform.position.x + attackStats.GetOffset(charState.isRight).x + attackStats.Size.x / 2)
                 {
                     movement_H = +1;
                 }
-                if (target.position.x < transform.position.x + attackStats.GetOffset(charState.isRight).x - attackStats.size.x / 2)
+                if (target.position.x < transform.position.x + attackStats.GetOffset(charState.isRight).x - attackStats.Size.x / 2)
                 {
                     movement_H = -1;
                 }
             }
         }
-        if (movement_H != 0)
+        bool isMoving = movement_H != 0;
+        if (isMoving)
         {
             var addVelocity = OnGround ?
                 movement_H * physicalStats.Acceleration_H :
                 movement_H * physicalStats.Acceleration_H * physicalStats.Speed_controll_inAir;
             AddVelocityH(addVelocity);
         }
-        Anim_SetBool("run", movement_H != 0 && OnGround);
+        Anim_SetBool("run", isMoving && OnGround);
+        return isMoving;
     }
-    void Jump()
+    void Jump(bool isMoving)
     {
-        if (charState.IsDead) return;
-        //if (OnGround)
-        //    if (Input.GetKeyDown(KeyCode.W))
-        //        SetVelocityV(speed_V);
+        if (OnGround)
+            if (wallDetector.Detected && isMoving)
+                SetVelocityV(physicalStats.JumpSpeed);
     }
     void Attack()
     {
@@ -77,20 +79,17 @@ public class NPC : CharacterAbstract
     }
     protected override void OnHit(Hit hit)
     {
-        if (hit.position.x < transform.position.x && charState.isRight)
-        {
-            Flip_H();
-        }
-        if (hit.position.x > transform.position.x && !charState.isRight)
+        if (hit.isRight != charState.isRight)
         {
             Flip_H();
         }
     }
 
-    public override void Flip_H()
+    protected override void AddOnDrawGizmos()
     {
-        base.Flip_H();
-        playerDetector.Flip_H();
+        base.AddOnDrawGizmos();
+        enemyDetector.OnGizmos(transform.position, isRight);
+        wallDetector.OnGizmos(transform.position, isRight);
     }
 }
 

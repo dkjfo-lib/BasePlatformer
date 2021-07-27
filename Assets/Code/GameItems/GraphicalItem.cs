@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public abstract class GraphicalItem : Base
 {
+    public abstract bool isRight { get; }
+
     SpriteRenderer spriteRenderer;
     Animator animator;
 

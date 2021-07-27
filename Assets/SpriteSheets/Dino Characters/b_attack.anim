@@ -73,13 +73,6 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.125
-    functionName: PlayAttackScream
-    data: 
-    objectReferenceParameter: {fileID: 8300000, guid: 47022fd34763d6d4c9d3bfc46ca09c76, type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.125
     functionName: CastAttack
     data: 
     objectReferenceParameter: {fileID: 0}

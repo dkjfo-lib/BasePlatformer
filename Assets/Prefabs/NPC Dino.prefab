@@ -9,14 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4650172271171481317}
-  - component: {fileID: 8409631649612201672}
-  - component: {fileID: 6508227892541143136}
-  - component: {fileID: 1785384648558787086}
   - component: {fileID: 1132134097}
-  - component: {fileID: 1132134102}
-  - component: {fileID: 3956060514516091036}
+  - component: {fileID: 8409631649612201672}
+  - component: {fileID: 1785384648558787086}
   - component: {fileID: 2077174024}
   - component: {fileID: 5425065477998058341}
+  - component: {fileID: 3844143108288409253}
   m_Layer: 7
   m_Name: NPC Dino
   m_TagString: Untagged
@@ -39,6 +37,70 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1132134097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392315066970843594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43e4f7f80e14f294686b80951e9c44a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  physicalStats: {fileID: 11400000, guid: 726e9b18726fd2f49a3dabf4b23f731f, type: 2}
+  detectGroundLayer:
+    detectorRect:
+      myRect:
+        size: {x: 0.41, y: 0.1}
+        offset: {x: -0.03, y: -0.54}
+      layerMask:
+        serializedVersion: 2
+        m_Bits: 64
+    gizmosColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    contacts: []
+    lastOverlapTime: -1
+  charStats: {fileID: 11400000, guid: 3900547283e6ae74397c50317a672083, type: 2}
+  charState:
+    health: 1
+    isRight: 1
+    inAttack: 0
+    timeLastAttack: -1
+  attackStats: {fileID: 11400000, guid: 2628c440d555b0748a5d90e6afe00a20, type: 2}
+  characterType: 3
+  hitSounds: {fileID: 11400000, guid: 1da00febe55d45c40a42e0352afdc040, type: 2}
+  hitScreams: {fileID: 11400000, guid: 5fc95cab4bb8cbd448f8d107dbf381be, type: 2}
+  attackScreams: {fileID: 11400000, guid: a263d6f62cd9b3d4693df2588248d46b, type: 2}
+  attackSound: {fileID: 0}
+  deathScreams: {fileID: 11400000, guid: 0ffddff59c735cf4dbb1bb1b0de5d1a2, type: 2}
+  faction: 1
+  enemyFactions: 00000000
+  corpseFaction: 2
+  corpseLayer: Items
+  attackAnimName: b_attack
+  enemyDetector:
+    detectorRect:
+      myRect:
+        size: {x: 10, y: 3}
+        offset: {x: 2, y: 0.5}
+      layerMask:
+        serializedVersion: 2
+        m_Bits: 128
+    gizmosColor: {r: 1, g: 0.43928567, b: 0.015686274, a: 1}
+    contacts: []
+    lastOverlapTime: -1
+  wallDetector:
+    detectorRect:
+      myRect:
+        size: {x: 0.28, y: 0.64}
+        offset: {x: 0.59, y: -0.04}
+      layerMask:
+        serializedVersion: 2
+        m_Bits: 64
+    gizmosColor: {r: 1, g: 1, b: 1, a: 1}
+    contacts: []
+    lastOverlapTime: -1
 --- !u!212 &8409631649612201672
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -80,7 +142,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -2615874204119335, guid: c87ffd3f372eb4142b46cc32b2fad662, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -90,32 +152,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &6508227892541143136
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392315066970843594}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: b262a4f905cc92c4db6b26af0df29213, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.5}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!50 &1785384648558787086
 Rigidbody2D:
   serializedVersion: 4
@@ -137,76 +173,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1132134097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392315066970843594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43e4f7f80e14f294686b80951e9c44a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  physicalStats: {fileID: 11400000, guid: 726e9b18726fd2f49a3dabf4b23f731f, type: 2}
-  charStats: {fileID: 11400000, guid: 3900547283e6ae74397c50317a672083, type: 2}
-  charState:
-    health: 1
-    isRight: 1
-    inAttack: 0
-    timeLastAttack: -1
-  attackStats: {fileID: 11400000, guid: 2628c440d555b0748a5d90e6afe00a20, type: 2}
-  characterType: 3
-  hitSounds: {fileID: 11400000, guid: 1da00febe55d45c40a42e0352afdc040, type: 2}
-  attackScreams: {fileID: 11400000, guid: a263d6f62cd9b3d4693df2588248d46b, type: 2}
-  hitScreams: {fileID: 11400000, guid: 5fc95cab4bb8cbd448f8d107dbf381be, type: 2}
-  deathScreams: {fileID: 11400000, guid: 0ffddff59c735cf4dbb1bb1b0de5d1a2, type: 2}
-  faction: 1
-  enemyFactions: 00000000
-  corpseFaction: 2
-  corpseLayer: Items
-  attackAnimName: b_attack
---- !u!114 &1132134102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392315066970843594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85d13a5b93674b84aaa4423145606799, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  size: {x: 0.8, y: 0.1}
-  offset: {x: 0, y: -0.5}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 192
-  gizmosColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  contacts: []
-  lastOverlapTime: -1
---- !u!114 &3956060514516091036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392315066970843594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85d13a5b93674b84aaa4423145606799, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  size: {x: 9, y: 4}
-  offset: {x: 3.5, y: 0.5}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 128
-  gizmosColor: {r: 1, g: 0.015686274, b: 0.9857616, a: 1}
-  contacts: []
-  lastOverlapTime: -1
 --- !u!95 &2077174024
 Animator:
   serializedVersion: 3
@@ -240,6 +206,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 5044684155725513800}
   healthSlider: {fileID: 2804489826613135218}
+--- !u!70 &3844143108288409253
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392315066970843594}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: b262a4f905cc92c4db6b26af0df29213, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.048992395}
+  m_Size: {x: 0.84210235, y: 1.0261314}
+  m_Direction: 0
 --- !u!1001 &8046931765683645290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -254,6 +236,14 @@ PrefabInstance:
     - target: {fileID: 173995356108076378, guid: 04d84ea6881b9c74f8a444e57256c8ee, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3003373518523920162, guid: 04d84ea6881b9c74f8a444e57256c8ee, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3003373518523920162, guid: 04d84ea6881b9c74f8a444e57256c8ee, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1246926345
       objectReference: {fileID: 0}
     - target: {fileID: 3408885633627158634, guid: 04d84ea6881b9c74f8a444e57256c8ee, type: 3}
       propertyPath: m_Pivot.x
@@ -325,7 +315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3408885633627158634, guid: 04d84ea6881b9c74f8a444e57256c8ee, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.783
       objectReference: {fileID: 0}
     - target: {fileID: 3408885633627158634, guid: 04d84ea6881b9c74f8a444e57256c8ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -344,8 +334,12 @@ PrefabInstance:
       value: CharGUI
       objectReference: {fileID: 0}
     - target: {fileID: 8921862900512485390, guid: 04d84ea6881b9c74f8a444e57256c8ee, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8921862900512485390, guid: 04d84ea6881b9c74f8a444e57256c8ee, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 75
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04d84ea6881b9c74f8a444e57256c8ee, type: 3}

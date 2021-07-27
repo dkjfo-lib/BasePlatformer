@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class Item : GraphicalItem
 {
+    public override bool isRight => true;
     protected override void OnFixedUpdate() { }
 }
