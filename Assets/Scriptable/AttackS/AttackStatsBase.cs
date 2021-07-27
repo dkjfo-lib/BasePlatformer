@@ -3,22 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public abstract class AttackStatsBase : ScriptableObject
+public abstract class AttackStatsBase : ScriptableObject, IMyRect
 {
-    public Vector2 offset = new Vector2(2, 0);
-    public Vector2 size = new Vector2(2, .75f);
-    public LayerMask characterLayerMask;
+    public MyCastRect attackRect;
     public float cooldown = 1;
 
-    public Vector2 Offset => offset;
-    public Vector2 Size => size;
+    public Vector2 Size => attackRect.Size;
+    public Vector2 GetOffset(bool isRight) => attackRect.GetOffset(isRight);
     public float Cooldown => cooldown;
-
-    public Vector2 GetOffset(bool isRight) => isRight ? Offset : -Offset;
 
     public CharacterAbstract[] HasEnemies(Vector2 position, bool isRight, Faction[] enemyFactions)
     {
-        var hits = Physics2D.OverlapBoxAll(position + GetOffset(isRight), Size, 0, characterLayerMask);
+        var hits = attackRect.Cast(position, isRight);
         var characterHits = hits.
             Select(s => s.gameObject.GetComponent<CharacterAbstract>()).
             Where(s => s != null).
@@ -27,7 +23,7 @@ public abstract class AttackStatsBase : ScriptableObject
         return characterHits;
     }
 
-    public abstract void DoAttack(Vector2 position, bool isRight, ObjectType attackerType);
+    public abstract void DoAttack(CharacterAbstract performer, Vector2 position, bool isRight, ObjectType attackerType);
 
     public virtual void OnGizmos(Vector2 position, bool isRight)
     {

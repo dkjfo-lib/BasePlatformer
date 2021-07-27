@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(DetectLayer))]
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Collider2D))]
 public abstract class PhysicalItem : GraphicalItem
 {
     public PhysicalStats physicalStats;
 
-    DetectLayer detectGroundLayer;
+    public DetectLayer detectGroundLayer;
     new Rigidbody2D rigidbody;
+    new Collider2D collider;
+
 
     public Vector2 Velocity => rigidbody.velocity;
     protected float Velocity_H
@@ -79,8 +81,8 @@ public abstract class PhysicalItem : GraphicalItem
     protected override void GetComponents()
     {
         base.GetComponents();
+        collider = GetComponent<Collider2D>();
         rigidbody = GetComponent<Rigidbody2D>();
-        detectGroundLayer = GetComponents<DetectLayer>()[0];
     }
     protected override void Init()
     {
@@ -90,12 +92,17 @@ public abstract class PhysicalItem : GraphicalItem
 
     protected override void OnFixedUpdate()
     {
+        detectGroundLayer.UpdateDetector(transform.position, isRight);
         DampVelocity();
     }
 
     public override void Flip_H()
     {
         base.Flip_H();
-        detectGroundLayer.Flip_H();
+        collider.offset = new Vector2(-collider.offset.x, collider.offset.y);
+    }
+    protected override void AddOnDrawGizmos()
+    {
+        detectGroundLayer.OnGizmos(transform.position, isRight);
     }
 }

@@ -11,11 +11,11 @@ public class AttackStatsRange : AttackStatsBase
 
     public Vector2 GetShootOffset(bool isRight) => isRight ? shootOffset : -shootOffset;
 
-    public override void DoAttack(Vector2 position, bool isRight, ObjectType attackerType)
+    public override void DoAttack(CharacterAbstract performer, Vector2 position, bool isRight, ObjectType attackerType)
     {
         var newProjectile = GameObject.Instantiate(projectile, position + GetShootOffset(isRight), Quaternion.identity);
         newProjectile.attackerType = attackerType;
-        newProjectile.isRight = isRight;
+        newProjectile.facesRight = isRight;
     }
 
     public override void OnGizmos(Vector2 position, bool isRight)

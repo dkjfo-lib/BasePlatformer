@@ -7,14 +7,13 @@ public class CameraFollower : MonoBehaviour
     public Player currentPlayer;
     [Space]
     public Vector2 offset = Vector2.zero;
+    public float directionOffset = 2;
     [Space]
     [Range(0f, 1f)] public float stickness = .5f;
-    public float velocityDump = .1f;
-    public float velocityMult = .1f;
-    public Vector2 MaxVelocityOffset = Vector2.one;
-    private Vector2 velocityOffset = Vector2.zero;
+    public bool isRight => currentPlayer.isRight;
 
-    Vector3 offsetV3 => new Vector3(offset.x, offset.y, -10);
+    Vector3 Offset => new Vector3(offset.x, offset.y, -10);
+    Vector3 DirectionOffset => isRight ? Vector3.right * directionOffset : -Vector3.right * directionOffset;
 
     private void Start()
     {
@@ -22,7 +21,7 @@ public class CameraFollower : MonoBehaviour
         {
             currentPlayer = Player.thePlayer;
         }
-        transform.position = currentPlayer.transform.position + offsetV3;
+        transform.position = currentPlayer.transform.position + Offset;
         StartCoroutine(KeepPlayerActive());
     }
 
@@ -37,18 +36,7 @@ public class CameraFollower : MonoBehaviour
 
     void FixedUpdate()
     {
-        velocityOffset *= velocityDump;
-        velocityOffset += currentPlayer.Velocity * velocityMult;
-        velocityOffset = new Vector2(
-            Mathf.Clamp(velocityOffset.x, -MaxVelocityOffset.x, MaxVelocityOffset.x),
-            Mathf.Clamp(velocityOffset.y, -MaxVelocityOffset.y, MaxVelocityOffset.y));
-
-        Vector3 targetPosition = currentPlayer.transform.position + (Vector3)velocityOffset + offsetV3;
+        Vector3 targetPosition = currentPlayer.transform.position + Offset + DirectionOffset;
         transform.position = Vector3.Lerp(transform.position, targetPosition, stickness * stickness);
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(transform.position, MaxVelocityOffset);
     }
 }

@@ -8,9 +8,7 @@ public class Player : CharacterAbstract
     public static Player thePlayer;
     public static bool respawn = true;
 
-    public Vector2 activationSize = Vector2.one;
-    public Vector2 activationOffset = Vector2.zero;
-    public LayerMask activationLayerMask;
+    public MyCastRect activationRect;
 
     public Pipe_BetweenScenesData pipe_BetweenScenesData;
 
@@ -53,7 +51,7 @@ public class Player : CharacterAbstract
                 movement_H * physicalStats.Acceleration_H :
                 movement_H * physicalStats.Acceleration_H * physicalStats.Speed_controll_inAir;
             AddVelocityH(addVelocity);
-            if (Velocity_H < 0 && charState.isRight || Velocity_H > 0 && !charState.isRight)
+            if (movement_H < 0 && isRight || movement_H > 0 && !isRight)
             {
                 Flip_H();
             }
@@ -84,7 +82,7 @@ public class Player : CharacterAbstract
         if (charState.IsDead) return;
         if (Input.GetKeyDown(KeyCode.E))
         {
-            var items = Physics2D.OverlapBoxAll(transform.position, activationSize, 0, activationLayerMask);
+            var items = activationRect.Cast(transform.position, isRight);
             var activatesA = items.Select(s => s.transform.GetComponent<IActivate>()).Where(s => s != null).ToArray();
             var activatesAT = items.Select(s => s.transform);
             var tr = GetClosest(activatesAT);
@@ -107,6 +105,6 @@ public class Player : CharacterAbstract
     {
         base.AddOnDrawGizmos();
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(transform.position + (Vector3)activationOffset, activationSize);
+        Gizmos.DrawWireCube(transform.position + (Vector3)activationRect.GetOffset(isRight), activationRect.Size);
     }
 }

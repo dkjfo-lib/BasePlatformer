@@ -3,34 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class DetectLayer : MonoBehaviour
+[System.Serializable]
+public class DetectLayer : IMyRect
 {
-    public Vector2 size = Vector2.one;
-    public Vector2 offset = Vector2.zero;
-    public LayerMask layerMask;
+    public MyCastRect detectorRect;
     public Color gizmosColor = Color.yellow;
 
     [HideInInspector] public Collider2D[] contacts = new Collider2D[0];
     [HideInInspector] public bool Detected => contacts.Length > 0;
     [HideInInspector] public T[] GetContacts<T>(System.Func<Collider2D, T> func) => contacts.Select(s => func(s)).ToArray();
     [HideInInspector] public float lastOverlapTime = -1;
-    void Update()
+
+    public Vector2 Size => detectorRect.Size;
+    public Vector2 GetOffset(bool isRight) => detectorRect.GetOffset(isRight);
+
+    public void UpdateDetector(Vector2 position, bool isRight)
     {
-        contacts = Physics2D.OverlapBoxAll((Vector2)transform.position + offset, size, 0, layerMask);
+        contacts = detectorRect.Cast(position, isRight);
         if (Detected)
         {
             lastOverlapTime = Time.timeSinceLevelLoad;
         }
     }
 
-    private void OnDrawGizmos()
+    public void OnGizmos(Vector2 position, bool isRight)
     {
         Gizmos.color = gizmosColor;
-        Gizmos.DrawWireCube((Vector2)transform.position + offset, size);
-    }
-
-    public void Flip_H()
-    {
-        offset = new Vector2(-offset.x, offset.y);
+        Gizmos.DrawWireCube(position + GetOffset(isRight), Size);
     }
 }

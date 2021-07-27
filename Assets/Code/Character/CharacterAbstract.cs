@@ -12,15 +12,16 @@ public class CharacterAbstract : PhysicalItem
     public ObjectType characterType = ObjectType.UNDEFINED;
     [Space]
     public ClipsCollection hitSounds;
-    public ClipsCollection attackScreams;
     public ClipsCollection hitScreams;
+    public ClipsCollection attackScreams;
+    public ClipsCollection attackSound;
     public ClipsCollection deathScreams;
     [Space]
     public Faction faction;
-    public Faction[] enemyFactions;
     public Faction corpseFaction;
     public string corpseLayer = "Items";
 
+    public override bool isRight => charState.isRight;
     CharacterGUI characterGUI;
 
     protected override void GetComponents()
@@ -49,9 +50,13 @@ public class CharacterAbstract : PhysicalItem
             charState.inAttack = true;
             Anim_SetTrigger("attack");
             StartCoroutine(WaitWhileAttack(attackName));
+            PlaySound(attackScreams);
         }
     }
-    public void CastAttack() => attackStats.DoAttack(transform.position, charState.isRight, characterType);
+    public void CastAttack()
+    {
+        attackStats.DoAttack(this, transform.position, charState.isRight, characterType);
+    }
     IEnumerator WaitWhileAttack(string attackName)
     {
         yield return WaitWhileAnim(attackName);
@@ -62,10 +67,8 @@ public class CharacterAbstract : PhysicalItem
     {
         bool wasDead = charState.IsDead;
         charState.health -= hit.damage;
-        var force = hit.position.x < transform.position.x ?
-            hit.force :
-            -hit.force;
-        AddVelocityH(force);
+        AddVelocityH(hit.GetForce);
+        PlaySound(hitSounds);
         if (charState.IsDead)
         {
             if (!wasDead)
@@ -79,6 +82,7 @@ public class CharacterAbstract : PhysicalItem
                 });
                 Anim_SetTrigger("die");
                 OnDeath(hit);
+                PlaySound(deathScreams);
             }
         }
         else
@@ -86,6 +90,7 @@ public class CharacterAbstract : PhysicalItem
             UpdateGUI(true);
             Anim_SetTrigger("hurt");
             OnHit(hit);
+            PlaySound(hitScreams);
         }
     }
     protected virtual void OnHit(Hit hit) { }
@@ -95,14 +100,16 @@ public class CharacterAbstract : PhysicalItem
         faction = corpseFaction;
     }
 
-    public void PlayHitSound() => hitSounds.PlayRandomClip();
-    public void PlayAttackScream() => attackScreams.PlayRandomClip();
-    public void PlayHitScream() => hitScreams.PlayRandomClip();
-    public void PlayDeathScream() => deathScreams.PlayRandomClip();
-    public void PlaySound(ClipsCollection collection)
+
+    protected void PlaySound(ClipsCollection collection)
     {
-        collection.PlayRandomClip();
+        collection?.PlayRandomClip();
     }
+    protected void UpdateGUI(bool isDisplayed)
+    {
+        characterGUI.UpdateUI(charState, isDisplayed);
+    }
+
 
     public override void Flip_H()
     {
@@ -117,11 +124,7 @@ public class CharacterAbstract : PhysicalItem
 
     protected override void AddOnDrawGizmos()
     {
+        base.AddOnDrawGizmos();
         if (attackStats != null) attackStats.OnGizmos(transform.position, charState.isRight);
-    }
-
-    protected void UpdateGUI(bool isDisplayed)
-    {
-        characterGUI.UpdateUI(charState, isDisplayed);
     }
 }
