@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : PhysicalItem
+/// <summary>
+/// spawns from RangedAttack and performs it's attack upon OnGround signal
+/// animations: idle die
+/// </summary>
+public class Projectile : PhysicalItem<StatsProjectile, SoundsWeapon, StateWeapon>
 {
     public ObjectType attackerType;
-    public AttackStatsMelee attackStats;
     public bool facesRight = true;
     public override bool isRight => facesRight;
     [Space]
@@ -27,7 +30,7 @@ public class Projectile : PhysicalItem
         base.OnFixedUpdate();
 
         float movement_H = facesRight ? 1 : -1;
-        SetVelocityH(movement_H * physicalStats.Acceleration_H);
+        Velocity_H = movement_H * stats.acceleration_H;
 
         if (OnGround)
         {
@@ -51,12 +54,12 @@ public class Projectile : PhysicalItem
 
     private void CastAttack()
     {
-        attackStats.DoAttack(null, transform.position, facesRight, attackerType);
+        stats.attack.DoAttack(null, transform.position, facesRight, attackerType);
     }
 
     protected override void AddOnDrawGizmos()
     {
         base.AddOnDrawGizmos();
-        attackStats.OnGizmos(transform.position, facesRight);
+        stats.attack.OnGizmos(transform.position, facesRight);
     }
 }

@@ -9,14 +9,14 @@ public class CharacterGUI : MonoBehaviour
     public Canvas canvas;
     public Slider healthSlider;
 
-    public void Init(CharStats charStats, CharState charState)
+    public void Init(int maxHealth, StateItem charState)
     {
         if (healthSlider != null)
-            healthSlider.maxValue = charStats.MaxHealth;
+            healthSlider.maxValue = maxHealth;
         SetHP(charState.health);
     }
 
-    public void UpdateUI(CharState charState, bool isDisplay)
+    public void UpdateUI(StateItem charState, bool isDisplay)
     {
         SetHP(charState.health);
         DisplayGUI(isDisplay);

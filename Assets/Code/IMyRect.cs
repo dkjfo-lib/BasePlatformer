@@ -19,13 +19,19 @@ public class MyRect : IMyRect
 }
 
 [System.Serializable]
-public class MyCastRect : IMyRect
+public abstract class MyCastRect : MyRect
 {
-    public MyRect myRect;
-    public LayerMask layerMask;
+    public abstract LayerMask LayerMask { get; }
+    public abstract Color GizmosColor { get; }
 
-    public Vector2 Size => myRect.Size;
-    public Vector2 GetOffset(bool isRight) => myRect.GetOffset(isRight);
+    public Collider2D[] Cast(Vector2 position, bool isRight)
+    {
+        return Physics2D.OverlapBoxAll(position + GetOffset(isRight), Size, 0, LayerMask);
+    }
 
-    public Collider2D[] Cast(Vector2 position, bool isRight) => Physics2D.OverlapBoxAll(position + GetOffset(isRight), myRect.size, 0, layerMask);
+    public void OnGizmos(Vector2 position, bool isRight)
+    {
+        Gizmos.color = GizmosColor;
+        Gizmos.DrawWireCube(position + GetOffset(isRight), Size);
+    }
 }

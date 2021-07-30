@@ -29,7 +29,7 @@ public class CameraFollower : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitUntil(() => currentPlayer == null || currentPlayer.charState.IsDead);
+            yield return new WaitUntil(() => currentPlayer == null || currentPlayer.state.IsDead);
             currentPlayer = Player.thePlayer;
         }
     }

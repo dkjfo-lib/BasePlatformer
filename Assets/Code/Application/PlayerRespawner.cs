@@ -28,7 +28,7 @@ public class PlayerRespawner : MonoBehaviour
 
     bool PlayerNeedsRespawn()
     {
-        return Player.thePlayer == null || Player.thePlayer.charState.IsDead;
+        return Player.thePlayer == null || Player.thePlayer.state.IsDead;
     }
 
     private void RespawnPlayer()
