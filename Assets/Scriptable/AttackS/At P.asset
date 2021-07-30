@@ -13,12 +13,10 @@ MonoBehaviour:
   m_Name: At P
   m_EditorClassIdentifier: 
   attackRect:
-    myRect:
-      size: {x: 1.82, y: 1.63}
-      offset: {x: 0.54, y: -0.01}
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 640
+    size: {x: 4.06, y: 1}
+    offset: {x: 0, y: 0}
+    contacts: []
+    lastOverlapTime: -1
   cooldown: 0.5
   damage: 1
   force: 1000

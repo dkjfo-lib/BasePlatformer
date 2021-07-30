@@ -9,20 +9,20 @@ public abstract class GraphicalItem : Base
     public abstract bool isRight { get; }
 
     SpriteRenderer spriteRenderer;
-    Animator animator;
+    protected Animator Animator { get; private set; }
 
-    protected void Anim_SetBool(string name, bool value) => animator.SetBool(name, value);
-    protected void Anim_SetTrigger(string name) => animator.SetTrigger(name);
+    protected void Anim_SetBool(string name, bool value) => Animator.SetBool(name, value);
+    protected void Anim_SetTrigger(string name) => Animator.SetTrigger(name);
     protected IEnumerator WaitWhileAnim(string animationName)
     {
-        yield return new WaitWhile(() => animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == animationName);
+        yield return new WaitWhile(() => Animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == animationName);
     }
 
 
     protected override void GetComponents()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
+        Animator = GetComponent<Animator>();
     }
     protected override void Init()
     {
