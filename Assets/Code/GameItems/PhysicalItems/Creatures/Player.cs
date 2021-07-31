@@ -9,6 +9,15 @@ public class Player : Creature
     public static bool respawn = true;
 
     public DetectActive activationRect;
+    public override Vector2 LimbsDirection
+    {
+        get
+        {
+            Vector2 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 direction = (mouseScreenPosition - (Vector2)transform.position).normalized;
+            return direction;
+        }
+    }
 
     public Pipe_BetweenScenesData pipe_BetweenScenesData;
 
@@ -31,6 +40,8 @@ public class Player : Creature
     protected override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
+        if (state.IsDead) return;
+
         Attack();
         Move();
         Jump();
@@ -39,17 +50,25 @@ public class Player : Creature
 
     void Move()
     {
-        if (!state.CanMove) return;
         int movement_H = 0;
         if (Input.GetKey(KeyCode.D))
+        {
             movement_H += 1;
+            //if (!isRight) Flip_H(true);
+        }
         if (Input.GetKey(KeyCode.A))
+        {
             movement_H -= 1;
+            //if (isRight) Flip_H(false);
+        }
+        if (LimbsDirection.x < 0 && isRight)
+            Flip_H(false);
+        if (LimbsDirection.x > 0 && !isRight)
+            Flip_H(true);
         DoMove(movement_H);
     }
     void Jump()
     {
-        if (state.IsDead) return;
         if (OnGround)
             if (Input.GetKey(KeyCode.W))
                 DoJump();
@@ -57,7 +76,6 @@ public class Player : Creature
 
     void Attack()
     {
-        if (state.IsDead) return;
         if (Input.GetMouseButton(0))
         {
             DoAttack();
@@ -65,7 +83,6 @@ public class Player : Creature
     }
     void Activate()
     {
-        if (state.IsDead) return;
         if (Input.GetKeyDown(KeyCode.E))
         {
             var items = activationRect.Cast(transform.position, isRight);

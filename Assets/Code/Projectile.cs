@@ -21,7 +21,7 @@ public class Projectile : PhysicalItem<StatsProjectile, SoundsWeapon, StateWeapo
         base.Init();
         if (!facesRight)
         {
-            Flip_H();
+            Flip_H(!facesRight);
         }
     }
 
@@ -54,12 +54,14 @@ public class Projectile : PhysicalItem<StatsProjectile, SoundsWeapon, StateWeapo
 
     private void CastAttack()
     {
-        stats.attack.DoAttack(null, transform.position, facesRight, attackerType);
+        // TODO animations
+        //stats.attack.DoAttack(null, transform.position, facesRight, attackerType);
     }
 
     protected override void AddOnDrawGizmos()
     {
         base.AddOnDrawGizmos();
-        stats.attack.OnGizmos(transform.position, facesRight);
+        // TODO colliders
+        //stats.attack.OnGizmos(transform.position, facesRight);
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewSoundCollection", menuName = "MySounds/Collection")]
 public class ClipsCollection : ScriptableObject
 {
+    public SoundType type;
+    [Space]
     public AudioClip[] clips;
 
     public AudioClip GetRandomClip()

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e95b1df63a6a1641bf2c29c6da25b02, type: 3}
   m_Name: Sc Death
   m_EditorClassIdentifier: 
+  type: 2
   clips:
   - {fileID: 8300000, guid: 0948e22bd1d463e4983546c86bdeefac, type: 3}
   - {fileID: 8300000, guid: 3fd141259e90fc141b19a4565611755e, type: 3}

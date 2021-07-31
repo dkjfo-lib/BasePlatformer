@@ -15,6 +15,5 @@ public abstract class StatsBase<TSounds> : ScriptableObject
     [Space]
     public StatsPhysics physics;
     public RuntimeAnimatorController animator;
-    public string attackAnimationName;
     public TSounds sounds;
 }

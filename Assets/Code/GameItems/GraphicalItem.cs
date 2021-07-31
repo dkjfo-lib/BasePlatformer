@@ -27,10 +27,11 @@ public abstract class GraphicalItem : Base
     protected override void Init()
     {
         inited = true;
+        Flip_H(isRight);
     }
 
-    public virtual void Flip_H()
+    public virtual void Flip_H(bool faceRight)
     {
-        spriteRenderer.flipX = !spriteRenderer.flipX;
+        transform.localScale = new Vector3(faceRight ? 1 : -1, 1, 1);
     }
 }

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e95b1df63a6a1641bf2c29c6da25b02, type: 3}
   m_Name: S Bullet Hits
   m_EditorClassIdentifier: 
+  type: 4
   clips:
   - {fileID: 8300000, guid: 0a95f63bfdb10c34db5d22852c3573be, type: 3}

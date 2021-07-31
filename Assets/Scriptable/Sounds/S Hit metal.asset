@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e95b1df63a6a1641bf2c29c6da25b02, type: 3}
   m_Name: S Hit metal
   m_EditorClassIdentifier: 
+  type: 3
   clips:
-  - {fileID: 8300000, guid: 21a4a00074ef6bc47a2d9059d5368082, type: 3}
+  - {fileID: 8300000, guid: ea22377fbaaf1a840911fa146ea2651e, type: 3}
