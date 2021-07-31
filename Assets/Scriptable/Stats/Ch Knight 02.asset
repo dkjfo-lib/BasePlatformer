@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Ch Knight 02
   m_EditorClassIdentifier: 
   entityType: 3
-  animator: {fileID: 9100000, guid: ca7bddd4fc52cd244a9cb41c57a3e5e4, type: 2}
-  attackAnimationName: 
   maxHealth: 4
-  sounds: {fileID: 0}
+  physics: {fileID: 11400000, guid: 6d711e9053ebadf4fbf5ae4583d23b7b, type: 2}
+  animator: {fileID: 9100000, guid: ca7bddd4fc52cd244a9cb41c57a3e5e4, type: 2}
+  sounds: {fileID: 11400000, guid: cccd108476d05144bade038c68928479, type: 2}
+  attackAnimationName: 
   statsMovement: {fileID: 11400000, guid: 9cb4345cbbe176041b09045430e40733, type: 2}

@@ -8,12 +8,12 @@ using UnityEngine;
 /// can attack and move
 /// </summary>
 [RequireComponent(typeof(CharacterGUI))]
-public class Creature : PhysicalItem<StatsCharacter, SoundsCharacter, StateCharacter>
+public abstract class Creature : PhysicalItem<StatsCharacter, SoundsCharacter, StateCharacter>, IHittable
 {
-    public AttackStatsBase attackStats;
     public Limb[] limbs;
-    [HideInInspector] public Faction corpseFaction = Faction.Item;
-    [HideInInspector] public int corpseLayer => Layers.Items;
+    public FactionAlignment corpseAlignment;
+    public LayerMask corpseLayer => LayerMask.NameToLayer("Items");
+    public abstract Vector2 LimbsDirection { get; }
 
     protected override void GetComponents()
     {
@@ -32,23 +32,14 @@ public class Creature : PhysicalItem<StatsCharacter, SoundsCharacter, StateChara
 
     protected void DoAttack()
     {
-        if (state.CanAttack(attackStats.cooldown))
+        if (state.CanAttack())
         {
-            state.timeLastAttack = Time.timeSinceLevelLoad;
-            state.inAttack = true;
-            Anim_SetTrigger("attack");
-            StartCoroutine(WaitWhileAttack());
-            PlaySound(stats.sounds.onAttackScreams);
+            foreach (var limb in limbs)
+            {
+                limb.UseWeapon();
+            }
+            //PlaySound(stats.sounds.onAttackScreams);
         }
-    }
-    public void CastAttack()
-    {
-        attackStats.DoAttack(this, transform.position, state.isRight, stats.entityType);
-    }
-    IEnumerator WaitWhileAttack()
-    {
-        yield return WaitWhileAnim(stats.attackAnimationName);
-        state.inAttack = false;
     }
 
     protected void DoMove(int movement_H)
@@ -59,10 +50,6 @@ public class Creature : PhysicalItem<StatsCharacter, SoundsCharacter, StateChara
                 movement_H * stats.statsMovement.acceleration_H :
                 movement_H * stats.statsMovement.acceleration_H * stats.statsMovement.speed_controll_inAir;
             Velocity_H += addVelocity;
-            if (movement_H < 0 && isRight || movement_H > 0 && !isRight)
-            {
-                Flip_H();
-            }
         }
         Anim_SetBool("run", movement_H != 0 && OnGround);
     }
@@ -72,22 +59,36 @@ public class Creature : PhysicalItem<StatsCharacter, SoundsCharacter, StateChara
     {
         PlaySound(stats.sounds.onHitScreams);
     }
-    protected override void OnDeath(Hit hit) { }
-
-    public override void Flip_H()
+    protected override void OnDeath(Hit hit) 
     {
-        base.Flip_H();
-        state.isRight = !state.isRight;
+        state.alignment = corpseAlignment;
+        gameObject.layer = corpseLayer;
+    }
+
+    public override void Flip_H(bool faceRight)
+    {
+        base.Flip_H(faceRight);
+        state.isRight = faceRight;
     }
 
     protected Transform GetClosest(IEnumerable<Transform> transforms)
     {
-        return transforms?.FirstOrDefault();
+        Transform closest = null;
+        float closestDistance = float.MaxValue;
+        foreach (var tr in transforms)
+        {
+            var distance = Vector2.Distance(tr.position, transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closest = tr;
+            }
+        }
+        return closest;
     }
 
     protected override void AddOnDrawGizmos()
     {
         base.AddOnDrawGizmos();
-        if (attackStats != null) attackStats.OnGizmos(transform.position, state.isRight);
     }
 }

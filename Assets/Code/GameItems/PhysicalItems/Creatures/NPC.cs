@@ -8,12 +8,21 @@ public class NPC : Creature
     public DetectHittable enemyDetector;
     public DetectGround wallDetector;
 
+    public Limb preferedLimb => limbs.FirstOrDefault();
+    public AttackStatsBase preferedWeaponStats => preferedLimb.weapon.stats.attack;
+
     protected IEnumerable<Creature> EnemiesInSight => enemyDetector.Contacts.
-        Where(s => state.alignment.enemyFactions.Contains(s.state.alignment.faction));
+        Where(s => state.alignment.IsEnemy(s.state.alignment.faction));
+    public Transform target;
+    public Vector2 DefaultPosition => isRight ? Vector3.right : -Vector3.right;
+    public Vector2 TargetVector => target.position - transform.position;
+    public override Vector2 LimbsDirection => target == null ? DefaultPosition : TargetVector;
 
     protected override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
+        if (state.IsDead) return;
+
         enemyDetector.UpdateDetector(transform.position, isRight);
         wallDetector.UpdateDetector(transform.position, isRight);
         Attack();
@@ -23,27 +32,51 @@ public class NPC : Creature
 
     bool Move()
     {
-        if (!state.CanMove) return false;
         int movement_H = 0;
         var enemiesTr = EnemiesInSight.Select(s => s.transform);
-        var target = GetClosest(enemiesTr);
+        target = GetClosest(enemiesTr);
         if (target != null)
         {
-            if (target.position.x > transform.position.x && !state.isRight)
-                Flip_H();
-            if (target.position.x < transform.position.x && state.isRight)
-                Flip_H();
-            if (target.position.x > transform.position.x + attackStats.GetOffset(state.isRight).x + attackStats.Size.x / 2)
+            // no weapon == run away
+            if (preferedLimb == null)
             {
-                movement_H = +1;
+                if (target.position.x > transform.position.x)
+                {
+                    movement_H = -1;
+                    if (isRight)
+                        Flip_H(false);
+                }
+                if (target.position.x < transform.position.x)
+                {
+                    movement_H = +1;
+                    if (!isRight)
+                        Flip_H(true);
+                }
             }
-            if (target.position.x < transform.position.x + attackStats.GetOffset(state.isRight).x - attackStats.Size.x / 2)
+            // with weapon == attack
+            else
             {
-                movement_H = -1;
+                float targetsDistance = TargetVector.magnitude;
+                if (target.position.x > transform.position.x)
+                {
+                    if (targetsDistance > preferedWeaponStats.farBorder)
+                        movement_H = +1;
+                    if (targetsDistance < preferedWeaponStats.closeBorder)
+                        movement_H = -1;
+                    if (!isRight)
+                        Flip_H(true);
+                }
+                if (target.position.x < transform.position.x)
+                {
+                    if (targetsDistance > preferedWeaponStats.farBorder)
+                        movement_H = -1;
+                    if (targetsDistance < preferedWeaponStats.closeBorder)
+                        movement_H = +1;
+                    if (isRight)
+                        Flip_H(false);
+                }
             }
-            Debug.Log("D" + movement_H);
         }
-        Debug.Log("D" + EnemiesInSight.ToArray().Length);
         bool isMoving = movement_H != 0;
         DoMove(movement_H);
         return isMoving;
@@ -56,19 +89,25 @@ public class NPC : Creature
     }
     void Attack()
     {
-        if (state.IsDead) return;
-        if (attackStats == null) return;
-        if (attackStats.HasEnemies(transform.position, state.isRight, state.alignment.enemyFactions).Length > 0)
+        if (target == null) return;
+        if (preferedLimb == null) return;
+        float targetsDistance = TargetVector.magnitude;
+        if (preferedWeaponStats.closeBorder < targetsDistance && targetsDistance < preferedWeaponStats.farBorder)
         {
             DoAttack();
         }
+    }
+    protected override void OnDeath(Hit hit)
+    {
+        base.OnDeath(hit);
+        target = null;
     }
     protected override void OnHit(Hit hit)
     {
         base.OnHit(hit);
         if (hit.isRight != state.isRight)
         {
-            Flip_H();
+            Flip_H(!isRight);
         }
     }
 

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Ch Player
   m_EditorClassIdentifier: 
   entityType: 1
-  animator: {fileID: 9100000, guid: 99adfe62006ba0c44a22a5a9927dc078, type: 2}
-  attackAnimationName: 
   maxHealth: 10
-  sounds: {fileID: 0}
+  physics: {fileID: 11400000, guid: 726e9b18726fd2f49a3dabf4b23f731f, type: 2}
+  animator: {fileID: 9100000, guid: 99adfe62006ba0c44a22a5a9927dc078, type: 2}
+  sounds: {fileID: 11400000, guid: cccd108476d05144bade038c68928479, type: 2}
+  attackAnimationName: 
   statsMovement: {fileID: 11400000, guid: ba226cef54b4b024d81c078962fe016f, type: 2}

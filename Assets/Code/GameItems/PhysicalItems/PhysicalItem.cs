@@ -24,6 +24,7 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem
 
     public override bool isRight => state.isRight;
     public bool OnGround => detectGroundLayer.Detected;
+    public Faction Faction => state.alignment.faction;
 
     public Vector2 Velocity
     {
@@ -91,7 +92,7 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem
         Velocity_H *= dampValue;
     }
 
-    public void GetHit(Hit hit)
+    public float GetHit(Hit hit)
     {
         bool wasDead = state.IsDead;
         state.health -= hit.damage;
@@ -119,6 +120,7 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem
             Anim_SetTrigger("hurt");
             OnHit(hit);
         }
+        return hit.force * stats.physics.toughness;
     }
     protected virtual void OnHit(Hit hit) { }
     protected virtual void OnDeath(Hit hit) { }
@@ -130,7 +132,42 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem
 
     protected void PlaySound(ClipsCollection collection)
     {
-        collection?.PlayRandomClip(transform.position, transform);
+        if (collection == null) return;
+        if (collection.type == SoundType.UNDEFINED ||
+            collection.type == SoundType.Spawnable)
+        {
+            collection.PlayRandomClip(transform.position, transform);
+        }
+        else
+        {
+            var audioSources = GetComponents<AudioSource>();
+            AudioSource audioSource = null;
+            switch (collection.type)
+            {
+                case SoundType.HitSound:
+                    audioSource = audioSources[0];
+                    break;
+                case SoundType.Step:
+                    audioSource = audioSources[1];
+                    break;
+                case SoundType.Voice:
+                    audioSource = audioSources[2];
+                    break;
+            }
+            var newClip = collection.GetRandomClip();
+            if (audioSource.clip == newClip)
+            {
+                if (audioSource.isPlaying)
+                    audioSource.time = 0;
+                else
+                    audioSource.Play();
+            }
+            else
+            {
+                audioSource.clip = collection.GetRandomClip();
+                audioSource.Play();
+            }
+        }
     }
 
 
@@ -145,13 +182,8 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem
     {
         base.Init();
         state.Init(stats.maxHealth);
-        Rigidbody.gravityScale = stats.physics.gravity.number;
+        Rigidbody.gravityScale = stats.physics.gravity.value;
         Animator.runtimeAnimatorController = stats.animator;
-        if (!state.isRight)
-        {
-            Flip_H();
-            state.isRight = !state.isRight;
-        }
         CharacterGUI.Init(stats.maxHealth, state);
     }
 
@@ -161,10 +193,9 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem
         DampVelocity();
     }
 
-    public override void Flip_H()
+    public override void Flip_H(bool faceRight)
     {
-        base.Flip_H();
-        Collider.offset = new Vector2(-Collider.offset.x, Collider.offset.y);
+        base.Flip_H(faceRight);
     }
     protected override void AddOnDrawGizmos()
     {

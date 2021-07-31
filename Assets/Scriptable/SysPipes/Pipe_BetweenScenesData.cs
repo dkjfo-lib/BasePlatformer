@@ -22,8 +22,6 @@ public class Pipe_BetweenScenesData : ScriptableObject
     {
         player.transform.position = new Vector2(player.transform.position.x, player.transform.position.y + positionY);
         player.state.health = hp;
-        if (isRight != player.state.isRight)
-            player.Flip_H();
         player.Velocity = velocity;
     }
 }

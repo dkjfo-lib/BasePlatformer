@@ -5,5 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewCharacterStats", menuName = "MyStats/CharacterStats")]
 public class StatsCharacter : StatsBase<SoundsCharacter>
 {
+    public string attackAnimationName;
     public StatsMovement statsMovement;
 }

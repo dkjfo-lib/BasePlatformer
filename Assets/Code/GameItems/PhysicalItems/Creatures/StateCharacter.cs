@@ -7,6 +7,7 @@ public class StateItem
 {
     public int health = 5;
     public bool isRight = true;
+    public FactionAlignment alignment;
 
     public bool IsDead => health < 1;
 
@@ -19,27 +20,18 @@ public class StateItem
 [System.Serializable]
 public class StateCharacter : StateItem
 {
-    [HideInInspector] public bool inAttack = false;
-    [HideInInspector] public float timeLastAttack = -1;
-    public FactionAlignment alignment;
-
-    public bool CanMove => !inAttack && !IsDead;
-    public bool CanAttack(float attackCooldown)
+    public bool CanAttack()
     {
-        bool cooldownIsOver = Time.timeSinceLevelLoad - timeLastAttack > attackCooldown;
-        return !inAttack && !IsDead && cooldownIsOver;
+        return !IsDead;
     }
 }
 
 [System.Serializable]
 public class StateWeapon : StateItem
 {
-    public float timeLastAttack = -1;
-
-    public bool CanAttack(float attackCooldown)
+    public bool CanAttack()
     {
-        bool cooldownIsOver = Time.timeSinceLevelLoad - timeLastAttack > attackCooldown;
-        return !IsDead && cooldownIsOver;
+        return !IsDead;
     }
 }
 

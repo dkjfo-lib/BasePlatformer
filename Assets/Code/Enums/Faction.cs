@@ -4,7 +4,9 @@ using UnityEngine;
 
 public enum Faction 
 {
-    Friendly,
-    Enemy,
-    Item
+    Item_NoDamage,
+    Item_AllDamage,
+
+    Team_Player,
+    Team_Enemy,
 }

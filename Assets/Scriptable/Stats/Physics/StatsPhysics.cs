@@ -6,6 +6,7 @@ using UnityEngine;
 public class StatsPhysics : ScriptableObject
 {
     public int mass = 10;
+    [Range(0, 1)] public float toughness = .25f;
     public Number gravity;
     [Space]
     public float maxSpeed_H = 20;
