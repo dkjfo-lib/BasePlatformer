@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42afa56fbc83c5643bff430274c88889, type: 3}
-  m_Name: S Sword Swing
+  m_Script: {fileID: 11500000, guid: 3e95b1df63a6a1641bf2c29c6da25b02, type: 3}
+  m_Name: S Swing
   m_EditorClassIdentifier: 
-  onHitSounds: {fileID: 0}
-  onDeathAudio: {fileID: 0}
-  onAttackSounds: {fileID: 0}
+  type: 4
+  clips:
+  - {fileID: 8300000, guid: 13e86d93984c68c49b7bdfaa91c96efe, type: 3}

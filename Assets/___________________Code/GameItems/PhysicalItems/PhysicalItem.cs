@@ -19,7 +19,7 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem
     public DetectGround detectGroundLayer;
 
     Rigidbody2D Rigidbody { get; set; }
-    CharacterGUI CharacterGUI { get; set; }
+    CharacterGUI addon_CharacterGUI { get; set; }
 
     public override bool isRight => state.isRight;
     public bool OnGround => detectGroundLayer.Detected;
@@ -138,7 +138,7 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem
 
     protected void UpdateGUI(bool isDisplayed)
     {
-        CharacterGUI.UpdateUI(state, isDisplayed);
+        addon_CharacterGUI?.UpdateUI(state, isDisplayed);
     }
 
     protected void PlaySound(ClipsCollection collection)
@@ -166,18 +166,7 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem
                     break;
             }
             var newClip = collection.GetRandomClip();
-            if (audioSource.clip == newClip)
-            {
-                if (audioSource.isPlaying)
-                    audioSource.time = 0;
-                else
-                    audioSource.Play();
-            }
-            else
-            {
-                audioSource.clip = collection.GetRandomClip();
-                audioSource.Play();
-            }
+            PlaySound(audioSource, newClip);
         }
     }
 
@@ -186,7 +175,7 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem
     {
         base.GetComponents();
         Rigidbody = GetComponent<Rigidbody2D>();
-        CharacterGUI = GetComponent<CharacterGUI>();
+        addon_CharacterGUI = GetComponentInChildren<CharacterGUI>();
     }
     protected override void Init()
     {
@@ -194,7 +183,7 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem
         state.Init(stats.maxHealth);
         Rigidbody.gravityScale = stats.physics.gravity.value;
         Animator.runtimeAnimatorController = stats.animator;
-        CharacterGUI.Init(stats.maxHealth, state);
+        addon_CharacterGUI?.Init(stats.maxHealth, state);
     }
 
     protected override void OnFixedUpdate()

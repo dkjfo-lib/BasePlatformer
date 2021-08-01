@@ -30,7 +30,6 @@ public class CharacterGUI : MonoBehaviour
 
     void DisplayGUI(bool isDisplay)
     {
-        if (canvas == null) return;
         if (canvas.gameObject.activeSelf != isDisplay)
             canvas.gameObject.SetActive(isDisplay);
     }

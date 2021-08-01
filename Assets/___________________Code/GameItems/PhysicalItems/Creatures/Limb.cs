@@ -5,23 +5,28 @@ using UnityEngine;
 /// <summary>
 /// World object for creature to hold items
 /// </summary>
-public class Limb : MonoBehaviour
+public class Limb : GraphicalItem
 {
     public WeaponDescription defaultWeapon;
     public WeaponDescription weapon;
 
     Creature Father { get; set; }
-    Animator Animator { get; set; }
     AudioSource AudioSource { get; set; }
     BoxCollider2D Collider { get; set; }
 
-    private void Start()
+    public override bool isRight => Father.isRight;
+
+    protected override void Init()
+    {
+        inited = true;
+        Equip(weapon.stats != null ? weapon : defaultWeapon);
+    }
+    protected override void GetComponents()
     {
         Father = GetComponentInParent<Creature>();
         Animator = GetComponentInChildren<Animator>();
         AudioSource = GetComponentInChildren<AudioSource>();
         Collider = GetComponentInChildren<BoxCollider2D>();
-        Equip(weapon.stats != null ? weapon : defaultWeapon);
     }
 
     private void Update()
@@ -40,20 +45,18 @@ public class Limb : MonoBehaviour
 
     public void UseWeapon()
     {
-        PlaySound();
+        if (Anim_ClipName("attack")) return;
+        if (weapon.stats.sounds.onAttackSounds != null)
+        {
+            PlaySound(AudioSource, weapon.stats.sounds.onAttackSounds.GetRandomClip());
+        }
         StartCoroutine(KickStartAnimation());
-    }
-    void PlaySound()
-    {
-        AudioSource.Stop();
-        AudioSource.clip = weapon.stats.sounds.onAttackSounds?.GetRandomClip();
-        AudioSource.Play();
     }
     IEnumerator KickStartAnimation()
     {
-        Animator.SetBool("attack", true);
+        Anim_SetBool("attack", true);
         yield return new WaitForEndOfFrame();
-        Animator.SetBool("attack", false);
+        Anim_SetBool("attack", false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -89,6 +92,11 @@ public class Limb : MonoBehaviour
         bool alwaysHitted = hittable.Faction == Faction.Item_AllDamage;
         if (alwaysHitted) return alwaysHitted;
         return false;
+    }
+
+    public void DropWeapon()
+    {
+
     }
 }
 
