@@ -10,14 +10,14 @@ public abstract class Base : MonoBehaviour
         GetComponents();
         Init();
     }
-    protected abstract void GetComponents();
-    protected abstract void Init();
+    protected virtual void GetComponents() { }
+    protected virtual void Init() { }
 
     private void FixedUpdate()
     {
         OnFixedUpdate();
     }
-    protected abstract void OnFixedUpdate();
+    protected virtual void OnFixedUpdate() { }
 
     protected void DestroySelf()
     {
@@ -28,5 +28,23 @@ public abstract class Base : MonoBehaviour
     {
         AddOnDrawGizmos();
     }
+
+
     protected virtual void AddOnDrawGizmos() { }
+
+    protected void PlaySound(AudioSource audioSource, AudioClip newClip)
+    {
+        if (audioSource.clip == newClip)
+        {
+            if (audioSource.isPlaying)
+                audioSource.time = 0;
+            else
+                audioSource.Play();
+        }
+        else
+        {
+            audioSource.clip = newClip;
+            audioSource.Play();
+        }
+    }
 }

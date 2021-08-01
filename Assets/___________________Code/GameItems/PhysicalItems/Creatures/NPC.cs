@@ -8,8 +8,10 @@ public class NPC : Creature
     public DetectHittable enemyDetector;
     public DetectGround wallDetector;
 
-    public Limb preferedLimb => limbs.FirstOrDefault();
-    public AttackStatsBase preferedWeaponStats => preferedLimb.weapon.stats.attack;
+    public Limb PreferedLimb => limbs.FirstOrDefault();
+    public AttackStatsBase PreferedWeaponStats => PreferedLimb.weapon.stats.attack;
+    public float PreferedWeaponCloseBorder => PreferedLimb.transform.localPosition.x + PreferedWeaponStats.closeBorder;
+    public float PreferedWeaponFarBorder => PreferedLimb.transform.localPosition.x + PreferedWeaponStats.farBorder;
 
     protected IEnumerable<Creature> EnemiesInSight => enemyDetector.Contacts.
         Where(s => state.alignment.IsEnemy(s.state.alignment.faction));
@@ -38,7 +40,7 @@ public class NPC : Creature
         if (target != null)
         {
             // no weapon == run away
-            if (preferedLimb == null)
+            if (PreferedLimb == null)
             {
                 if (target.position.x > transform.position.x)
                 {
@@ -59,18 +61,18 @@ public class NPC : Creature
                 float targetsDistance = TargetVector.magnitude;
                 if (target.position.x > transform.position.x)
                 {
-                    if (targetsDistance > preferedWeaponStats.farBorder)
+                    if (targetsDistance > PreferedWeaponFarBorder)
                         movement_H = +1;
-                    if (targetsDistance < preferedWeaponStats.closeBorder)
+                    if (targetsDistance < PreferedWeaponCloseBorder)
                         movement_H = -1;
                     if (!isRight)
                         Flip_H(true);
                 }
                 if (target.position.x < transform.position.x)
                 {
-                    if (targetsDistance > preferedWeaponStats.farBorder)
+                    if (targetsDistance > PreferedWeaponFarBorder)
                         movement_H = -1;
-                    if (targetsDistance < preferedWeaponStats.closeBorder)
+                    if (targetsDistance < PreferedWeaponCloseBorder)
                         movement_H = +1;
                     if (isRight)
                         Flip_H(false);
@@ -90,9 +92,9 @@ public class NPC : Creature
     void Attack()
     {
         if (target == null) return;
-        if (preferedLimb == null) return;
+        if (PreferedLimb == null) return;
         float targetsDistance = TargetVector.magnitude;
-        if (preferedWeaponStats.closeBorder < targetsDistance && targetsDistance < preferedWeaponStats.farBorder)
+        if (PreferedWeaponCloseBorder < targetsDistance && targetsDistance < PreferedWeaponFarBorder)
         {
             DoAttack();
         }

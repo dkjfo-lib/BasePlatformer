@@ -7,7 +7,6 @@ using UnityEngine;
 /// People
 /// can attack and move
 /// </summary>
-[RequireComponent(typeof(CharacterGUI))]
 public abstract class Creature : PhysicalItem<StatsCharacter, SoundsCharacter, StateCharacter>, IHittable
 {
     public Limb[] limbs;
@@ -63,6 +62,10 @@ public abstract class Creature : PhysicalItem<StatsCharacter, SoundsCharacter, S
     {
         state.alignment = corpseAlignment;
         gameObject.layer = corpseLayer;
+        foreach (var limb in limbs)
+        {
+            limb.DropWeapon();
+        }
     }
 
     public override void Flip_H(bool faceRight)
