@@ -19,12 +19,13 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem
     public DetectGround detectGroundLayer;
 
     Rigidbody2D Rigidbody { get; set; }
-    Collider2D Collider { get; set; }
     CharacterGUI CharacterGUI { get; set; }
 
     public override bool isRight => state.isRight;
     public bool OnGround => detectGroundLayer.Detected;
     public Faction Faction => state.alignment.faction;
+
+    public ParticleSystem OnHitParticles;
 
     public Vector2 Velocity
     {
@@ -98,6 +99,16 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem
         state.health -= hit.damage;
         Inertia_H += hit.GetForce;
         PlaySound(stats.sounds.onHitSounds);
+        if (OnHitParticles != null)
+        {
+            var newParticle = Instantiate(OnHitParticles,
+                transform.position + Vector3.up * .5f,
+                hit.isRight
+                    ? OnHitParticles.transform.rotation
+                    : Quaternion.Euler(180 - OnHitParticles.transform.rotation.eulerAngles.x, OnHitParticles.transform.rotation.eulerAngles.y, OnHitParticles.transform.rotation.eulerAngles.z),
+                transform.parent);
+            Destroy(newParticle.gameObject, 5);
+        }
         if (state.IsDead)
         {
             if (!wasDead)
@@ -174,7 +185,6 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem
     protected override void GetComponents()
     {
         base.GetComponents();
-        Collider = GetComponent<Collider2D>();
         Rigidbody = GetComponent<Rigidbody2D>();
         CharacterGUI = GetComponent<CharacterGUI>();
     }

@@ -87,7 +87,7 @@ public class Limb : MonoBehaviour
         if (shoulHitOther) return true;
 
         bool alwaysHitted = hittable.Faction == Faction.Item_AllDamage;
-        if (shoulHitOther) return alwaysHitted;
+        if (alwaysHitted) return alwaysHitted;
         return false;
     }
 }

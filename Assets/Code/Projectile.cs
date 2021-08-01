@@ -43,8 +43,8 @@ public class Projectile : PhysicalItem<StatsProjectile, SoundsWeapon, StateWeapo
         Anim_SetTrigger("die");
         if (addonParticleSystem != null)
         {
-            addonParticleSystem.transform.parent = transform.parent;
-            Destroy(addonParticleSystem.gameObject, 5);
+            var newParticle = Instantiate(addonParticleSystem, transform.position, addonParticleSystem.transform.rotation, transform.parent);
+            Destroy(newParticle.gameObject, 5);
         }
         if (addonHitSound)
         {
