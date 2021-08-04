@@ -2,14 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pod : PhysicalItem<StatsPhysicalItem, SoundsItem, StateItem>
+public class Pod : PhysicalItem<StatsPhysicalItem, SoundsPhysicalItem, StateItem>
 {
-    public SpawnerOnce[] crewSpawners;
+    protected SpawnerOnce[] CrewSpawners { get; set; }
+
+    protected override void GetComponents()
+    {
+        base.GetComponents();
+        CrewSpawners = GetComponentsInChildren<SpawnerOnce>();
+    }
 
     protected override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
-        if (OnGround)
+        if (OnGround && !state.IsDead)
         {
             Open();
         }
@@ -18,11 +24,23 @@ public class Pod : PhysicalItem<StatsPhysicalItem, SoundsItem, StateItem>
     public void Open()
     {
         Anim_SetTrigger("open");
+        // kills the pod triggering landing sounds and particles
+        // TODO: if somehow killed before landing => BUG
+        GetHit(new Hit
+        {
+            attackerType = ObjectType.UNDEFINED,
+            damage = stats.maxHealth,
+            force = 0,
+            isRight = true
+        });
     }
 
+    /// <summary>
+    /// Use In Animation
+    /// </summary>
     public void Spawn()
     {
-        foreach (var spawn in crewSpawners)
+        foreach (var spawn in CrewSpawners)
         {
             spawn.PerformSpawn();
         }

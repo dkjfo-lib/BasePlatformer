@@ -8,11 +8,11 @@ using UnityEngine;
 /// playes sounds of getting hit and destroyed
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Collider2D))]
-public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem
+[RequireComponent(typeof(CapsuleCollider2D))]
+public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem, IHittable
     where TStats : StatsBase<TSounds>
     where TState : StateItem
-    where TSounds : SoundsItem
+    where TSounds : SoundsPhysicalItem
 {
     public TStats stats;
     public TState state;
@@ -21,11 +21,14 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem
     Rigidbody2D Rigidbody { get; set; }
     CharacterGUI addon_CharacterGUI { get; set; }
 
+    CapsuleCollider2D Collider2D { get; set; }
+
     public override bool isRight => state.isRight;
     public bool OnGround => detectGroundLayer.Detected;
     public Faction Faction => state.alignment.faction;
 
     public ParticleSystem OnHitParticles;
+    public ParticleSystem OnDestroyParticles;
 
     public Vector2 Velocity
     {
@@ -82,7 +85,7 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem
         }
         else
         {
-            maxSpeed_H = Mathf.Max(stats.physics.minSpeedInAir_H, Velocity_H);
+            maxSpeed_H = Mathf.Max(stats.physics.minSpeedInAir_H, Velocity_H, -Velocity_H);
         }
         Rigidbody.velocity = new Vector2(Mathf.Clamp(Rigidbody.velocity.x, -maxSpeed_H, maxSpeed_H), Rigidbody.velocity.y);
     }
@@ -93,45 +96,48 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem
         Velocity_H *= dampValue;
     }
 
-    public float GetHit(Hit hit)
+    public Vector2 GetHit(Hit hit)
     {
         bool wasDead = state.IsDead;
+        var hitForce = hit.GetForce((Vector2)transform.position + Collider2D.offset);
         state.health -= hit.damage;
-        Inertia_H += hit.GetForce;
-        PlaySound(stats.sounds.onHitSounds);
-        if (OnHitParticles != null)
-        {
-            var newParticle = Instantiate(OnHitParticles,
-                transform.position + Vector3.up * .5f,
-                hit.isRight
-                    ? OnHitParticles.transform.rotation
-                    : Quaternion.Euler(180 - OnHitParticles.transform.rotation.eulerAngles.x, OnHitParticles.transform.rotation.eulerAngles.y, OnHitParticles.transform.rotation.eulerAngles.z),
-                transform.parent);
-            Destroy(newParticle.gameObject, 5);
-        }
+        Inertia += hitForce;
+        BaseExt.SpawnParticles(transform, OnHitParticles, hit.isRight);
+
         if (state.IsDead)
         {
             if (!wasDead)
             {
-                UpdateGUI(false);
                 QuestController.OnEvent(new EventDescription
                 {
                     who = hit.attackerType,
                     didWhat = EventType.kill,
                     toWhom = stats.entityType
                 });
+                UpdateGUI(false);
                 Anim_SetTrigger("die");
+                PlayAudio(stats.sounds.onDeathAudio);
                 OnDeath(hit);
-                PlaySound(stats.sounds.onDeathAudio);
+            }
+            else
+            {
+                PlayAudio(stats.sounds.onHitSounds);
+            }
+            // Destroy object
+            if (state.health < -stats.maxHealth)
+            {
+                BaseExt.SpawnParticles(transform, OnDestroyParticles, hit.isRight);
+                Destroy(gameObject);
             }
         }
         else
         {
             UpdateGUI(true);
             Anim_SetTrigger("hurt");
+            PlayAudio(stats.sounds.onHitSounds);
             OnHit(hit);
         }
-        return hit.force * stats.physics.toughness;
+        return -hitForce * stats.physics.toughness;
     }
     protected virtual void OnHit(Hit hit) { }
     protected virtual void OnDeath(Hit hit) { }
@@ -141,40 +147,11 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem
         addon_CharacterGUI?.UpdateUI(state, isDisplayed);
     }
 
-    protected void PlaySound(ClipsCollection collection)
-    {
-        if (collection == null) return;
-        if (collection.type == SoundType.UNDEFINED ||
-            collection.type == SoundType.Spawnable)
-        {
-            collection.PlayRandomClip(transform.position, transform);
-        }
-        else
-        {
-            var audioSources = GetComponents<AudioSource>();
-            AudioSource audioSource = null;
-            switch (collection.type)
-            {
-                case SoundType.HitSound:
-                    audioSource = audioSources[0];
-                    break;
-                case SoundType.Step:
-                    audioSource = audioSources[1];
-                    break;
-                case SoundType.Voice:
-                    audioSource = audioSources[2];
-                    break;
-            }
-            var newClip = collection.GetRandomClip();
-            PlaySound(audioSource, newClip);
-        }
-    }
-
-
     protected override void GetComponents()
     {
         base.GetComponents();
         Rigidbody = GetComponent<Rigidbody2D>();
+        Collider2D = GetComponent<CapsuleCollider2D>();
         addon_CharacterGUI = GetComponentInChildren<CharacterGUI>();
     }
     protected override void Init()

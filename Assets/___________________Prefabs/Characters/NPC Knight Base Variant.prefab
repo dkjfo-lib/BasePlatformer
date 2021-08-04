@@ -63,6 +63,10 @@ PrefabInstance:
       propertyPath: OnHitParticles
       value: 
       objectReference: {fileID: 1752277761188710304, guid: 6fcd787e80a1ce9449d154e9d3070ba4, type: 3}
+    - target: {fileID: 1845882391321316163, guid: 9ca2b4cf2d9dc9d4ea88a24d75a9b56b, type: 3}
+      propertyPath: OnDestroyParticles
+      value: 
+      objectReference: {fileID: 9016459303696241561, guid: d39856a2eb7b09c40a822bb4134aec2f, type: 3}
     - target: {fileID: 1845882391321316217, guid: 9ca2b4cf2d9dc9d4ea88a24d75a9b56b, type: 3}
       propertyPath: m_Name
       value: NPC Knight Base Variant

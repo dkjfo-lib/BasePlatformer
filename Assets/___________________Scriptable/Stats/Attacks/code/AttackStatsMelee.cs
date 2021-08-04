@@ -7,7 +7,7 @@ using UnityEngine;
 public class AttackStatsMelee : AttackStatsBase
 {
     public int damage = 1;
-    public int force = 500;
+    public int force = 20;
 
     public int Damage => damage;
     public int Force => force;

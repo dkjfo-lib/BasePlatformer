@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1575a2ca40e455e41b5b00196b7c0c41, type: 3}
+  m_Name: St-Ph Pod
+  m_EditorClassIdentifier: 
+  entityType: 4
+  maxHealth: 10
+  physics: {fileID: 11400000, guid: 43b7dcd150020da4aae9bc0da7fe63c8, type: 2}
+  animator: {fileID: 9100000, guid: 3589136cdcee44848b20cc198510b287, type: 2}
+  sounds:
+    idleSounds: {fileID: 0}
+    onHitSounds: {fileID: 11400000, guid: 8ec9bd08455bb434dab3cca5e6a0d437, type: 2}
+    onDeathAudio: {fileID: 11400000, guid: 0a1d479fc2813844abb371f8abe6fca2, type: 2}

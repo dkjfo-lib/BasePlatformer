@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0fd437cc0a08e4594684f152e72696, type: 3}
+  m_Name: Bullet
+  m_EditorClassIdentifier: 
+  entityType: 6
+  maxHealth: 1
+  physics: {fileID: 11400000, guid: ff8dbc764315dc64197d6144788da985, type: 2}
+  animator: {fileID: 9100000, guid: 577a949e9952b0241a5bf1f2d08952cb, type: 2}
+  sounds:
+    idleSounds: {fileID: 0}
+    onHitSounds: {fileID: 0}
+    onDeathAudio: {fileID: 0}
+    onAttackSounds: {fileID: 11400000, guid: 1da00febe55d45c40a42e0352afdc040, type: 2}
+  isFriendlyDamageOn: {fileID: 11400000, guid: d77f9e77ffb023b4db121908452070fe, type: 2}
+  isSelfDamageOn: {fileID: 11400000, guid: 4791d9c40e5c4e443ae4639e3eaa98b6, type: 2}
+  attack: {fileID: 11400000, guid: a9f813b3254d47b4dbf8077bd9318261, type: 2}
+  acceleration_H: 30
+  detonationDelay: 0
