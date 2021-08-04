@@ -6,11 +6,13 @@ public enum ObjectType
 {
     UNDEFINED,
 
-    unique_Player,
-    unique_Girl,
+    UNIQUE_Player,
+    UNIQUE_Quest,
 
-    npc_Dino,
-    npc_SWAT,
+    NPC,
 
-    item_Bullet,
+    OBJECT,
+
+    ITEM,
+    ITEM_WEAPON,
 }

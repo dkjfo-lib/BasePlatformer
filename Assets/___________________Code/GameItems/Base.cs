@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Base : MonoBehaviour
 {
+    public Pipe_SoundsPlay soundsPipe;
+
     public bool inited { get; protected set; } = false;
     private void Start()
     {
@@ -29,22 +31,16 @@ public abstract class Base : MonoBehaviour
         AddOnDrawGizmos();
     }
 
+    protected void PlayAudio(ClipsCollection collection)
+    {
+        if (collection == null) return;
+
+        soundsPipe.awaitingClips.Add(new PlayClipData
+        {
+            clip = collection.GetRandomClip(),
+            position = transform.position
+        });
+    }
 
     protected virtual void AddOnDrawGizmos() { }
-
-    protected void PlaySound(AudioSource audioSource, AudioClip newClip)
-    {
-        if (audioSource.clip == newClip)
-        {
-            if (audioSource.isPlaying)
-                audioSource.time = 0;
-            else
-                audioSource.Play();
-        }
-        else
-        {
-            audioSource.clip = newClip;
-            audioSource.Play();
-        }
-    }
 }

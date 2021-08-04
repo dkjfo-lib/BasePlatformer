@@ -5,14 +5,16 @@ using UnityEngine;
 /// <summary>
 /// World object for creature to hold items
 /// </summary>
-public class Limb : GraphicalItem
+public class Limb : GraphicalItem, ISlot
 {
     public WeaponDescription defaultWeapon;
     public WeaponDescription weapon;
 
-    Creature Father { get; set; }
+    public Creature Father { get; protected set; }
     AudioSource AudioSource { get; set; }
     BoxCollider2D Collider { get; set; }
+    SpriteRenderer SpriteRenderer { get; set; }
+    Transform FirePoint { get; set; }
 
     public override bool isRight => Father.isRight;
 
@@ -27,11 +29,17 @@ public class Limb : GraphicalItem
         Animator = GetComponentInChildren<Animator>();
         AudioSource = GetComponentInChildren<AudioSource>();
         Collider = GetComponentInChildren<BoxCollider2D>();
+        SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        FirePoint = transform.GetChild(0).GetChild(0);
     }
 
     private void Update()
     {
-        transform.up = Father.LimbsDirection;
+        Vector2 aim = weapon.stats.attack is AttackStatsRange ?
+            FirePoint.position : transform.position;
+        transform.right = isRight ?
+            Father.LimbsDirection - aim :
+            aim - Father.LimbsDirection;
     }
 
     public void Equip(WeaponDescription newWeapon)
@@ -48,55 +56,40 @@ public class Limb : GraphicalItem
         if (Anim_ClipName("attack")) return;
         if (weapon.stats.sounds.onAttackSounds != null)
         {
-            PlaySound(AudioSource, weapon.stats.sounds.onAttackSounds.GetRandomClip());
+            PlayAudio(weapon.stats.sounds.onAttackSounds);
         }
-        StartCoroutine(KickStartAnimation());
-    }
-    IEnumerator KickStartAnimation()
-    {
-        Anim_SetBool("attack", true);
-        yield return new WaitForEndOfFrame();
-        Anim_SetBool("attack", false);
+        /// Range Attack
+        if (weapon.stats.attack is AttackStatsRange)
+        {
+            var newProjectile = Instantiate((weapon.stats.attack as AttackStatsRange).projectile, FirePoint.position, FirePoint.transform.rotation);
+            newProjectile.state.isRight = Father.isRight;
+            newProjectile.state.alignment = Father.state.alignment;
+        }
+        Anim_SetTrigger("attack");
     }
 
+    /// <summary>
+    /// Melee Attack
+    /// </summary>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var target = collision.GetComponent<IHittable>();
-        if (ShouldHit(target))
+        if (BaseExt.ShouldHit(this, target))
         {
-            float returnForce = target.GetHit(new Hit
+            Vector2 returnForce = target.GetHit(new Hit
             {
                 attackerType = Father.stats.entityType,
                 isRight = Father.isRight,
                 damage = (weapon.stats.attack as AttackStatsMelee).damage,
                 force = (weapon.stats.attack as AttackStatsMelee).force,
             });
-            Father.Inertia_H += Father.isRight ? -returnForce : returnForce;
+            Father.Inertia += returnForce;
         }
     }
 
-    bool ShouldHit(IHittable hittable)
+    public void OnDeath()
     {
-        if (hittable == null) return false;
-
-        bool isOneself = Father == (Object)hittable;
-        bool selfDamageIsOn = weapon.stats.isSelfDamageOn.value;
-        bool shoulHitSelf = isOneself && selfDamageIsOn;
-        if (shoulHitSelf) return true;
-
-        bool friendlyFireIsOn = weapon.stats.isFriendlyDamageOn.value;
-        bool isEnemy = Father.state.alignment.IsEnemy(hittable.Faction);
-        bool shoulHitOther = !isOneself && (friendlyFireIsOn || isEnemy);
-        if (shoulHitOther) return true;
-
-        bool alwaysHitted = hittable.Faction == Faction.Item_AllDamage;
-        if (alwaysHitted) return alwaysHitted;
-        return false;
-    }
-
-    public void DropWeapon()
-    {
-
+        SpriteRenderer.enabled = false;
     }
 }
 
@@ -113,5 +106,6 @@ public class WeaponDescription
 public interface IHittable
 {
     Faction Faction { get; }
-    float GetHit(Hit hit);
+    Vector2 GetHit(Hit hit);
 }
+

@@ -8,6 +8,12 @@ public class Hit
     public int damage;
     public int force;
     public bool isRight;
+    public Vector2 hitPosition;
 
-    public float GetForce => isRight ? force : -force;
+    public Vector2 GetForce(Vector2 hittedObjPosition)
+    {
+        return isRight ?
+            (hittedObjPosition - hitPosition).normalized * force :
+            -(hittedObjPosition - hitPosition).normalized * force;
+    }
 }

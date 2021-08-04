@@ -16,9 +16,12 @@ public class NPC : Creature
     protected IEnumerable<Creature> EnemiesInSight => enemyDetector.Contacts.
         Where(s => state.alignment.IsEnemy(s.state.alignment.faction));
     public Transform target;
-    public Vector2 DefaultPosition => isRight ? Vector3.right : -Vector3.right;
+    public CapsuleCollider2D targetCol;
+    public Vector2 DefaultPosition => isRight ? transform.position + 1000 * Vector3.right : transform.position - 1000 * Vector3.right;
     public Vector2 TargetVector => target.position - transform.position;
-    public override Vector2 LimbsDirection => target == null ? DefaultPosition : TargetVector;
+    public override Vector2 LimbsDirection => target != null ?
+        (Vector2)target.position + targetCol.offset :
+        DefaultPosition;
 
     protected override void OnFixedUpdate()
     {
@@ -39,6 +42,7 @@ public class NPC : Creature
         target = GetClosest(enemiesTr);
         if (target != null)
         {
+            targetCol = target.GetComponent<CapsuleCollider2D>();
             // no weapon == run away
             if (PreferedLimb == null)
             {
@@ -107,9 +111,9 @@ public class NPC : Creature
     protected override void OnHit(Hit hit)
     {
         base.OnHit(hit);
-        if (hit.isRight != state.isRight)
+        if (hit.isRight == state.isRight)
         {
-            Flip_H(!isRight);
+            Flip_H(!hit.isRight);
         }
     }
 

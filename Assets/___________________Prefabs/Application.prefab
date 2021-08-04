@@ -280,7 +280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 792b4c9f95560b84ab8252ca3d473503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundPrefab: {fileID: 7803024026549532185, guid: e7077bb5a25e2b843b1c1178cd498576, type: 3}
+  pipe: {fileID: 11400000, guid: 49c7055d96e6a844d8e1e445464b45ca, type: 2}
+  soundPrefab: {fileID: 8443059416276052465, guid: f988fdcf728a80b43bc0463a2c5fbb79, type: 3}
+  playersPoolSize: 30
 --- !u!1 &1734169231355744868
 GameObject:
   m_ObjectHideFlags: 0

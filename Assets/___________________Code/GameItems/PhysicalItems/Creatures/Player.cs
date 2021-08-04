@@ -9,15 +9,8 @@ public class Player : Creature
     public static bool respawn = true;
 
     public DetectActive activationRect;
-    public override Vector2 LimbsDirection
-    {
-        get
-        {
-            Vector2 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 direction = (mouseScreenPosition - (Vector2)transform.position).normalized;
-            return direction;
-        }
-    }
+    public override Vector2 LimbsDirection => Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    public Vector2 MouseRelativePosition => LimbsDirection - (Vector2)transform.position;
 
     public Pipe_BetweenScenesData pipe_BetweenScenesData;
 
@@ -61,9 +54,9 @@ public class Player : Creature
             movement_H -= 1;
             //if (isRight) Flip_H(false);
         }
-        if (LimbsDirection.x < 0 && isRight)
+        if (MouseRelativePosition.x < 0 && isRight)
             Flip_H(false);
-        if (LimbsDirection.x > 0 && !isRight)
+        if (MouseRelativePosition.x > 0 && !isRight)
             Flip_H(true);
         DoMove(movement_H);
     }

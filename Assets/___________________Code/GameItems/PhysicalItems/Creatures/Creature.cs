@@ -7,9 +7,10 @@ using UnityEngine;
 /// People
 /// can attack and move
 /// </summary>
-public abstract class Creature : PhysicalItem<StatsCharacter, SoundsCharacter, StateCharacter>, IHittable
+public abstract class Creature : PhysicalItem<StatsCharacter, SoundsCharacter, StateCharacter>
 {
-    public Limb[] limbs;
+    protected ISlot[] slots;
+    protected Limb[] limbs;
     public FactionAlignment corpseAlignment;
     public LayerMask corpseLayer => LayerMask.NameToLayer("Items");
     public abstract Vector2 LimbsDirection { get; }
@@ -17,6 +18,8 @@ public abstract class Creature : PhysicalItem<StatsCharacter, SoundsCharacter, S
     protected override void GetComponents()
     {
         base.GetComponents();
+        slots = GetComponentsInChildren<ISlot>();
+        limbs = GetComponentsInChildren<Limb>();
     }
 
     protected override void Init()
@@ -37,7 +40,6 @@ public abstract class Creature : PhysicalItem<StatsCharacter, SoundsCharacter, S
             {
                 limb.UseWeapon();
             }
-            //PlaySound(stats.sounds.onAttackScreams);
         }
     }
 
@@ -56,15 +58,17 @@ public abstract class Creature : PhysicalItem<StatsCharacter, SoundsCharacter, S
 
     protected override void OnHit(Hit hit)
     {
-        PlaySound(stats.sounds.onHitScreams);
+        if (!state.IsDead)
+            PlayAudio(stats.sounds.onHitScreams);
     }
-    protected override void OnDeath(Hit hit) 
+
+    protected override void OnDeath(Hit hit)
     {
         state.alignment = corpseAlignment;
         gameObject.layer = corpseLayer;
-        foreach (var limb in limbs)
+        foreach (var slot in slots)
         {
-            limb.DropWeapon();
+            slot.OnDeath();
         }
     }
 
