@@ -9,11 +9,11 @@ public static class BaseExt
         if (hitted == null) return false;
 
         bool isOneself = limb.Father == (Object)hitted;
-        bool selfDamageIsOn = limb.weapon.stats.isSelfDamageOn.value;
+        bool selfDamageIsOn = limb.equipedWeapon.stats.isSelfDamageOn.value;
         bool shoulHitSelf = isOneself && selfDamageIsOn;
         if (shoulHitSelf) return true;
 
-        bool friendlyFireIsOn = limb.weapon.stats.isFriendlyDamageOn.value;
+        bool friendlyFireIsOn = limb.equipedWeapon.stats.isFriendlyDamageOn.value;
         bool isEnemy = limb.Father.state.alignment.IsEnemy(hitted.Faction);
         bool shoulHitOther = !isOneself && (friendlyFireIsOn || isEnemy);
         if (shoulHitOther) return true;

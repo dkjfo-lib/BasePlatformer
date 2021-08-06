@@ -8,26 +8,24 @@ using UnityEngine;
 public class Limb : GraphicalItem, ISlot
 {
     public WeaponDescription defaultWeapon;
-    public WeaponDescription weapon;
-
-    public Creature Father { get; protected set; }
-    AudioSource AudioSource { get; set; }
-    BoxCollider2D Collider { get; set; }
-    SpriteRenderer SpriteRenderer { get; set; }
-    Transform FirePoint { get; set; }
+    public WeaponDescription equipedWeapon;
 
     public override bool isRight => Father.isRight;
+
+    public Creature Father { get; protected set; }
+    public BoxCollider2D Collider { get; protected set; }
+    SpriteRenderer SpriteRenderer { get; set; }
+    public Transform FirePoint { get; protected set; }
 
     protected override void Init()
     {
         inited = true;
-        Equip(weapon.stats != null ? weapon : defaultWeapon);
+        Equip(equipedWeapon.stats != null ? equipedWeapon : defaultWeapon);
     }
     protected override void GetComponents()
     {
         Father = GetComponentInParent<Creature>();
         Animator = GetComponentInChildren<Animator>();
-        AudioSource = GetComponentInChildren<AudioSource>();
         Collider = GetComponentInChildren<BoxCollider2D>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         FirePoint = transform.GetChild(0).GetChild(0);
@@ -35,7 +33,7 @@ public class Limb : GraphicalItem, ISlot
 
     private void Update()
     {
-        Vector2 aim = weapon.stats.attack is AttackStatsRange ?
+        Vector2 aim = equipedWeapon.stats.attack is AttackStatsRange ?
             FirePoint.position : transform.position;
         transform.right = isRight ?
             Father.LimbsDirection - aim :
@@ -44,47 +42,29 @@ public class Limb : GraphicalItem, ISlot
 
     public void Equip(WeaponDescription newWeapon)
     {
-        weapon = newWeapon;
-        weapon.state = newWeapon.state;
-        Animator.runtimeAnimatorController = weapon.stats.animator;
-        Collider.offset = weapon.stats.attack.offset;
-        Collider.size = weapon.stats.attack.size;
+        equipedWeapon = newWeapon;
+        equipedWeapon.state = newWeapon.state;
+        Animator.runtimeAnimatorController = equipedWeapon.stats.animator;
+        // Melee Attack Collider Setup
+        equipedWeapon.stats.attack.SetUp(this);
     }
 
     public void UseWeapon()
     {
         if (Anim_ClipName("attack")) return;
-        if (weapon.stats.sounds.onAttackSounds != null)
+        if (equipedWeapon.stats.sounds.onAttackSounds != null)
         {
-            PlayAudio(weapon.stats.sounds.onAttackSounds);
+            PlayAudio(equipedWeapon.stats.sounds.onAttackSounds);
         }
-        /// Range Attack
-        if (weapon.stats.attack is AttackStatsRange)
-        {
-            var newProjectile = Instantiate((weapon.stats.attack as AttackStatsRange).projectile, FirePoint.position, FirePoint.transform.rotation);
-            newProjectile.state.isRight = Father.isRight;
-            newProjectile.state.alignment = Father.state.alignment;
-        }
+        // Range Attack
+        equipedWeapon.stats.attack.StartAttack(this);
         Anim_SetTrigger("attack");
     }
 
-    /// <summary>
-    /// Melee Attack
-    /// </summary>
+    // Melee Attack
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var target = collision.GetComponent<IHittable>();
-        if (BaseExt.ShouldHit(this, target))
-        {
-            Vector2 returnForce = target.GetHit(new Hit
-            {
-                attackerType = Father.stats.entityType,
-                isRight = Father.isRight,
-                damage = (weapon.stats.attack as AttackStatsMelee).damage,
-                force = (weapon.stats.attack as AttackStatsMelee).force,
-            });
-            Father.Inertia += returnForce;
-        }
+        equipedWeapon.stats.attack.OnTrigger(this, collision);
     }
 
     public void OnDeath()

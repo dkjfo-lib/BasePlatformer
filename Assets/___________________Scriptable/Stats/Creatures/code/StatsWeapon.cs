@@ -10,5 +10,6 @@ public class StatsWeapon : StatsBase<SoundsWeapon>
 {
     public Bool isFriendlyDamageOn;
     public Bool isSelfDamageOn;
+    [Space]
     public AttackStatsBase attack;
 }
