@@ -37,7 +37,7 @@ public abstract class Base : MonoBehaviour
 
         soundsPipe.awaitingClips.Add(new PlayClipData
         {
-            clip = collection.GetRandomClip(),
+            clipCollection = collection,
             position = transform.position
         });
     }
