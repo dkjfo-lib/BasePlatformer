@@ -6,6 +6,10 @@ using UnityEngine;
 public class SoundController : MonoBehaviour
 {
     public Pipe_SoundsPlay pipe;
+    private Player currentPlayer;
+    [Space]
+    public int maxDistance = 20;
+    public int identicalClipsCount = 1;
     [Space]
     public AudioSource soundPrefab;
     public int playersPoolSize = 30;
@@ -19,17 +23,42 @@ public class SoundController : MonoBehaviour
         {
             soundPlayers[i] = Instantiate(soundPrefab, transform);
         }
+        StartCoroutine(KeepPlayerActive());
+    }
+
+    private IEnumerator KeepPlayerActive()
+    {
+        if (currentPlayer == null)
+        {
+            currentPlayer = Player.thePlayer;
+        }
+        while (true)
+        {
+            yield return new WaitUntil(() => currentPlayer == null || currentPlayer.state.IsDead);
+            currentPlayer = Player.thePlayer;
+        }
     }
 
     private void Update()
     {
+        if (currentPlayer == null) return;
+
         // TODO
-        /// разбей на группы по одинаковому клипу 
-        /// внутри группы сортировка по расстоянию от игрока
-        /// по порядку запускай из каждой следующий клип 
-        foreach (var audioclip in pipe.awaitingClips)
+        // [x] убери слишком далекие клипы
+        // [x] разбей на группы по одинаковому клипу 
+        // [ ] внутри группы сортировка по расстоянию от игрока
+        // [ ] по порядку запускай из каждой следующий клип 
+        var clipsInRange = pipe.awaitingClips.Where(s => (s.position - currentPlayer.transform.position).sqrMagnitude < maxDistance * maxDistance);
+        var identicalClips = clipsInRange.GroupBy(s => s.clipCollection);
+        foreach (var sameClipsCollections in identicalClips)
         {
-            PlaySound(audioclip.clip, audioclip.position);
+            int playCount = Mathf.Min(sameClipsCollections.Count(), identicalClipsCount);
+            for (int i = 0; i < playCount; i++)
+            {
+                PlaySound(
+                    sameClipsCollections.ElementAt(i).clipCollection.GetRandomClip(),
+                    sameClipsCollections.ElementAt(i).position);
+            }
         }
         pipe.awaitingClips.Clear();
     }

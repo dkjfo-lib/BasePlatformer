@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Sc Hit Human
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: 7b3b805acdd3f1546a216560df261491, type: 3}
   - {fileID: 8300000, guid: ae52a65c45070894e95242cde38647a2, type: 3}

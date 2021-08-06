@@ -11,6 +11,6 @@ public class Pipe_SoundsPlay : ScriptableObject
 [System.Serializable]
 public class PlayClipData
 {
-    public AudioClip clip;
+    public ClipsCollection clipCollection;
     public Vector3 position;
 }
