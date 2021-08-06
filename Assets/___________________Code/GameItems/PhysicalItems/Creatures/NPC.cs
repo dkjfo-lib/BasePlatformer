@@ -9,7 +9,7 @@ public class NPC : Creature
     public DetectGround wallDetector;
 
     public Limb PreferedLimb => limbs.FirstOrDefault();
-    public AttackStatsBase PreferedWeaponStats => PreferedLimb.weapon.stats.attack;
+    public AttackStatsBase PreferedWeaponStats => PreferedLimb.equipedWeapon.stats.attack;
     public float PreferedWeaponCloseBorder => PreferedLimb.transform.localPosition.x + PreferedWeaponStats.closeBorder;
     public float PreferedWeaponFarBorder => PreferedLimb.transform.localPosition.x + PreferedWeaponStats.farBorder;
 

@@ -6,13 +6,20 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewRangeAttack", menuName = "My/AttackStats Range")]
 public class AttackStatsRange : AttackStatsBase
 {
-    public Vector2 shootOffset = new Vector2(1.2f, 0);
     public Projectile projectile;
 
-    //public override void DoAttack(Creature performer, Vector2 position, bool isRight, ObjectType attackerType)
-    //{
-    //    var newProjectile = GameObject.Instantiate(projectile, position + GetShootOffset(isRight), Quaternion.identity);
-    //    newProjectile.attackerType = attackerType;
-    //    newProjectile.facesRight = isRight;
-    //}
+    public override void SetUp(Limb limb)
+    {
+
+    }
+    public override void StartAttack(Limb limb)
+    {
+        var newProjectile = Instantiate(projectile, limb.FirePoint.position, limb.FirePoint.transform.rotation);
+        newProjectile.state.isRight = limb.Father.isRight;
+        newProjectile.state.alignment = limb.Father.state.alignment;
+    }
+    public override void OnTrigger(Limb limb, Collider2D collision)
+    {
+
+    }
 }
