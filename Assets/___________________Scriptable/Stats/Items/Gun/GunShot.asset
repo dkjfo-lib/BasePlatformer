@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76aabfc244fd14743a560376ac6b8e54, type: 3}
   m_Name: GunShot
   m_EditorClassIdentifier: 
-  size: {x: 0, y: 0}
-  offset: {x: 0, y: 0}
   closeBorder: 1
-  farBorder: 99999
-  shootOffset: {x: 0, y: 0}
+  farBorder: 5
   projectile: {fileID: 1069016302816915457, guid: ee5eedf1f9405ff4eabe07973ecc441a, type: 3}

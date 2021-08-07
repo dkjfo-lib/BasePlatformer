@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: St-Ch Mr.D
   m_EditorClassIdentifier: 
   entityType: 3
-  maxHealth: 50
+  maxHealth: 30
   physics: {fileID: 11400000, guid: 2edb7fd74a17efc49a3b38cdc08b6f36, type: 2}
-  animator: {fileID: 0}
+  animator: {fileID: 9100000, guid: ca7bddd4fc52cd244a9cb41c57a3e5e4, type: 2}
   sounds:
     idleSounds: {fileID: 0}
     onHitSounds: {fileID: 11400000, guid: 8ec9bd08455bb434dab3cca5e6a0d437, type: 2}

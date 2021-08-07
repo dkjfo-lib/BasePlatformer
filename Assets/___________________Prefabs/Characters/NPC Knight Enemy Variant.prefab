@@ -11,9 +11,13 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 6330755285068027874, guid: 16978456c8756544dbe545789b75db31, type: 3}
+    - target: {fileID: 8924480172673752411, guid: 4870907f69d496e4f825bf3ffcdfc6fb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8924480172673752414, guid: 4870907f69d496e4f825bf3ffcdfc6fb, type: 3}
       propertyPath: m_Name
-      value: NPC Knight Enemy Variant Variant
+      value: NPC Knight Enemy Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8924480172673752420, guid: 4870907f69d496e4f825bf3ffcdfc6fb, type: 3}
       propertyPath: state.alignment

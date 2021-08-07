@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCTalky : NPC, IActivate
+public class NPCTalky : NPC, IInetractable
 {
     public Dialog[] noramalDialog;
     public Dialog[] deadDialog;
@@ -18,7 +18,7 @@ public class NPCTalky : NPC, IActivate
         return dialog;
     }
 
-    public void Activate(ActivationParams values)
+    public void Inetract(InetractionParams values)
     {
         QuestController.OnEvent(new EventDescription
         {
@@ -26,16 +26,16 @@ public class NPCTalky : NPC, IActivate
             didWhat = EventType.talk,
             toWhom = stats.entityType
         });
-        dialogPipe.SetText(GetDialog());
+        dialogPipe.SetDialog(GetDialog());
     }
 }
 
-public interface IActivate
+public interface IInetractable
 {
-    void Activate(ActivationParams values);
+    void Inetract(InetractionParams values);
 }
 
-public class ActivationParams
+public class InetractionParams
 {
     public Creature character;
 }

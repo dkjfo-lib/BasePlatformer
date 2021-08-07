@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5560969910624513266}
   - component: {fileID: 2295677490094239298}
   - component: {fileID: 733457015128764815}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: SmokeByDistance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3783,7 +3783,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 64
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5

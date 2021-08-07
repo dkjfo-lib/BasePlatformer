@@ -56,10 +56,11 @@ MonoBehaviour:
     alignment: {fileID: 0}
   detectGroundLayer:
     size: {x: 0.4, y: 0.2}
-    offset: {x: 0, y: 0.1225}
+    offset: {x: 0, y: 0}
     contacts: []
     lastOverlapTime: -1
   OnHitParticles: {fileID: 0}
+  OnDestroyParticles: {fileID: 0}
   attackerType: 6
   addonLiveParticles: {fileID: 379507912698277261}
   addonOnDeathParticles: {fileID: 0}
@@ -125,7 +126,7 @@ SpriteRenderer:
   m_SortingLayerID: -613827491
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4136300395856015383, guid: c99e4f1dabc5e694497acb37d5dc2b27, type: 3}
+  m_Sprite: {fileID: 2590606729651084605, guid: c99e4f1dabc5e694497acb37d5dc2b27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -168,7 +169,7 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 4.2351647e-22, y: 0.125}
+  m_Offset: {x: 4.2351647e-22, y: 0}
   m_Size: {x: 0.6234419, y: 0.22081552}
   m_Direction: 1
 --- !u!1001 &1918439897781879759

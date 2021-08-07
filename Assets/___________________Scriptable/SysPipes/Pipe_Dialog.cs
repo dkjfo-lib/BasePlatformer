@@ -8,7 +8,7 @@ public class Pipe_Dialog : ScriptableObject
     public bool needsUpdate;
     public Dialog dialog;
 
-    public void SetText(Dialog newDialog)
+    public void SetDialog(Dialog newDialog)
     {
         needsUpdate = true;
         dialog = newDialog;

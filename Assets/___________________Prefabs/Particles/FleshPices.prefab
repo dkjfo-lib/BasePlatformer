@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9016459303696241562}
   - component: {fileID: 9016459303696241561}
   - component: {fileID: 9016459303696241560}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: FleshPices
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4015,7 +4015,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 64
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
