@@ -26,6 +26,7 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem, IHi
     public override bool isRight => state.isRight;
     public bool OnGround => detectGroundLayer.Detected;
     public Faction Faction => state.alignment.faction;
+    public Vector3 ObjectCenter => (Vector3)Collider2D.offset + transform.position;
 
     public ParticleSystem OnHitParticles;
     public ParticleSystem OnDestroyParticles;
@@ -99,7 +100,7 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem, IHi
     public Vector2 GetHit(Hit hit)
     {
         bool wasDead = state.IsDead;
-        var hitForce = hit.GetForce((Vector2)transform.position + Collider2D.offset);
+        var hitForce = hit.GetForce(ObjectCenter);
         state.health -= hit.damage;
         Inertia += hitForce;
         BaseExt.SpawnParticles(transform, OnHitParticles, hit.isRight);

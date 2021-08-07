@@ -13,7 +13,6 @@ public class CameraFollower : MonoBehaviour
     public bool isRight => currentPlayer.isRight;
 
     Vector3 Offset => new Vector3(offset.x, offset.y, -10);
-    Vector3 DirectionOffset => isRight ? Vector3.right * directionOffset : -Vector3.right * directionOffset;
 
     private void Start()
     {
@@ -36,7 +35,10 @@ public class CameraFollower : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 targetPosition = currentPlayer.transform.position + Offset + DirectionOffset;
+        var pX = Input.mousePosition.x / Screen.width * 2 - 1;
+        var pY = Input.mousePosition.y / Screen.height * 2 - 1;
+        var directionOffset = new Vector3(pX, pY, 0) * this.directionOffset;
+        Vector3 targetPosition = currentPlayer.transform.position + Offset + directionOffset;
         transform.position = Vector3.Lerp(transform.position, targetPosition, stickness * stickness);
     }
 }

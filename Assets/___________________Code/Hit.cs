@@ -9,6 +9,7 @@ public class Hit
     public int force;
     public bool isRight;
     public Vector2 hitPosition;
+    public Vector2 hitDirection;
 
     public Vector2 GetForce(Vector2 hittedObjPosition)
     {
