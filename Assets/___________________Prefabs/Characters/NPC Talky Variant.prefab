@@ -78,6 +78,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7644485607652175027, guid: 8cfcedeae4512f94ebe7809cebc6a7bf, type: 3}
+      propertyPath: stats
+      value: 
+      objectReference: {fileID: 11400000, guid: b1605628d78849e41919fe670ff77da6, type: 2}
+    - target: {fileID: 7644485607652175027, guid: 8cfcedeae4512f94ebe7809cebc6a7bf, type: 3}
       propertyPath: enemyDetector.size.x
       value: 0
       objectReference: {fileID: 0}
