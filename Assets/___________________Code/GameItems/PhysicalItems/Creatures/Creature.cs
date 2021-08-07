@@ -93,6 +93,21 @@ public abstract class Creature : PhysicalItem<StatsCharacter, SoundsCharacter, S
         }
         return closest;
     }
+    protected Vector3? GetClosest(IEnumerable<Vector3> positions)
+    {
+        Vector3? closest = null;
+        float closestDistance = float.MaxValue;
+        foreach (var pos in positions)
+        {
+            var distance = Vector2.Distance(pos, transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closest = pos;
+            }
+        }
+        return closest;
+    }
 
     protected override void AddOnDrawGizmos()
     {

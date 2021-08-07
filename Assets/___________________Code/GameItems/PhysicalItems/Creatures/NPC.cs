@@ -5,55 +5,64 @@ using UnityEngine;
 
 public class NPC : Creature
 {
-    public DetectHittable enemyDetector;
     public DetectGround wallDetector;
     public bool isFlying = false;
 
-    public Limb PreferedLimb => limbs.FirstOrDefault();
-    public AttackStatsBase PreferedWeaponStats => PreferedLimb.equipedWeapon.stats.attack;
-    public float PreferedWeaponCloseBorder => PreferedLimb.transform.localPosition.x + PreferedWeaponStats.closeBorder;
-    public float PreferedWeaponFarBorder => PreferedLimb.transform.localPosition.x + PreferedWeaponStats.farBorder;
+    // Weapon Stuff
+    private Limb PreferedLimb => limbs.FirstOrDefault();
+    private AttackStatsBase PreferedWeaponStats => PreferedLimb.equipedWeapon.stats.attack;
+    private float PreferedWeaponCloseBorder => PreferedLimb.transform.localPosition.x + PreferedWeaponStats.closeBorder;
+    private float PreferedWeaponFarBorder => PreferedLimb.transform.localPosition.x + PreferedWeaponStats.farBorder;
 
-    protected IEnumerable<Creature> EnemiesInSight => enemyDetector.Contacts.
-        Where(s => state.alignment.IsEnemy(s.state.alignment.faction));
-    public Transform target;
-    public CapsuleCollider2D targetCol;
-    public Vector2 DefaultPosition => isRight ? transform.position + 1000 * Vector3.right : transform.position - 1000 * Vector3.right;
-    public Vector2 TargetVector => target.position - transform.position;
+    // Enemy Aim Stuff
+    public Transform enemySight;
+    private List<Creature> enemiesInSight = new List<Creature>();
+    private Vector3? target;
+    private Vector3 DefaultTarget => isRight ? transform.position + 1000 * Vector3.right : transform.position - 1000 * Vector3.right;
+    private Vector2 TargetVector => target.Value - transform.position;
     public override Vector2 LimbsDirection => target != null ?
-        (Vector2)target.position + targetCol.offset :
-        DefaultPosition;
+        target.Value :
+        DefaultTarget;
 
     protected override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
         if (state.IsDead) return;
 
-        enemyDetector.UpdateDetector(transform.position, isRight);
+        HandleEnemySight();
         wallDetector.UpdateDetector(transform.position, isRight);
+
         Attack();
         bool isMoving = Move();
         Jump(isMoving);
     }
 
+    void HandleEnemySight()
+    {
+        var enemiesCenters = enemiesInSight.Where(s =>
+        {
+            var vect = s.ObjectCenter - ObjectCenter;
+            var hit = Physics2D.Raycast(ObjectCenter, vect, vect.magnitude, Layers.Ground);
+            return hit.transform == null;
+        }).Select(s => s.ObjectCenter);
+        target = GetClosest(enemiesCenters);
+    }
+
     bool Move()
     {
         int movement_H = 0;
-        var enemiesTr = EnemiesInSight.Select(s => s.transform);
-        target = GetClosest(enemiesTr);
         if (target != null)
         {
-            targetCol = target.GetComponent<CapsuleCollider2D>();
             // no weapon == run away
             if (PreferedLimb == null)
             {
-                if (target.position.x > transform.position.x)
+                if (target.Value.x > transform.position.x)
                 {
                     movement_H = -1;
                     if (isRight)
                         Flip_H(false);
                 }
-                if (target.position.x < transform.position.x)
+                if (target.Value.x < transform.position.x)
                 {
                     movement_H = +1;
                     if (!isRight)
@@ -64,7 +73,7 @@ public class NPC : Creature
             else
             {
                 float targetsDistance = TargetVector.magnitude;
-                if (target.position.x > transform.position.x)
+                if (target.Value.x > transform.position.x)
                 {
                     if (targetsDistance > PreferedWeaponFarBorder)
                         movement_H = +1;
@@ -73,7 +82,7 @@ public class NPC : Creature
                     if (!isRight)
                         Flip_H(true);
                 }
-                if (target.position.x < transform.position.x)
+                if (target.Value.x < transform.position.x)
                 {
                     if (targetsDistance > PreferedWeaponFarBorder)
                         movement_H = -1;
@@ -99,6 +108,7 @@ public class NPC : Creature
         if (target == null) return;
         if (PreferedLimb == null) return;
         float targetsDistance = TargetVector.magnitude;
+        enemySight.right = isRight ? target.Value - enemySight.position : enemySight.position - target.Value;
         if (PreferedWeaponCloseBorder < targetsDistance && targetsDistance < PreferedWeaponFarBorder)
         {
             DoAttack();
@@ -116,13 +126,38 @@ public class NPC : Creature
         {
             Flip_H(!hit.isRight);
         }
+        // if not in battle
+        if (target == null)
+        {
+            enemySight.right = hit.hitDirection;
+        }
     }
 
     protected override void AddOnDrawGizmos()
     {
         base.AddOnDrawGizmos();
-        enemyDetector.OnGizmos(transform.position, isRight);
         wallDetector.OnGizmos(transform.position, isRight);
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var creature = collision.gameObject.GetComponent<Creature>();
+        if (creature != null)
+        {
+            if (state.alignment.IsEnemy(creature.Faction))
+            {
+                enemiesInSight.Add(creature);
+            }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        var creature = collision.gameObject.GetComponent<Creature>();
+        if (creature != null)
+        {
+            enemiesInSight.Remove(creature);
+        }
     }
 }
 

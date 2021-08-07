@@ -25,7 +25,6 @@ public class Projectile : PhysicalItem<StatsProjectile, SoundsWeapon, StateWeapo
         Collider2D = GetComponent<Collider2D>();
     }
 
-    private bool detonating = false;
     protected override void Init()
     {
         base.Init();
@@ -58,6 +57,8 @@ public class Projectile : PhysicalItem<StatsProjectile, SoundsWeapon, StateWeapo
             {
                 attackerType = stats.entityType,
                 isRight = isRight,
+                hitPosition = transform.position,
+                hitDirection = transform.right,
                 damage = (stats.attack as AttackStatsMelee).damage,
                 force = (stats.attack as AttackStatsMelee).force
             });
@@ -67,6 +68,7 @@ public class Projectile : PhysicalItem<StatsProjectile, SoundsWeapon, StateWeapo
                 force = 0,
                 attackerType = ObjectType.ITEM,
                 hitPosition = transform.position,
+                hitDirection = transform.right,
                 isRight = isRight
             });
             StartCoroutine(DelayedDetonation());

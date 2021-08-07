@@ -36,6 +36,8 @@ public class AttackStatsMelee : AttackStatsBase
                 isRight = limb.Father.isRight,
                 damage = damage,
                 force = force,
+                hitPosition = limb.transform.position,
+                hitDirection = limb.transform.right,
             });
             limb.Father.Inertia += returnForce;
         }
