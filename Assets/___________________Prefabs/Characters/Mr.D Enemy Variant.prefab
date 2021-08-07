@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1340088823260678470, guid: 5b1f6084f821c324d8479f9f0c4c22f8, type: 3}
       propertyPath: m_Name
-      value: Mr.D Enemy
+      value: Mr.D Enemy Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1340088823260678524, guid: 5b1f6084f821c324d8479f9f0c4c22f8, type: 3}
       propertyPath: state.alignment

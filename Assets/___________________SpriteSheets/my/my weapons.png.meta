@@ -124,12 +124,12 @@ TextureImporter:
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 0
+    overridden: 1
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -139,8 +139,8 @@ TextureImporter:
       name: my weapons_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 109
+        x: 11
+        y: 111
         width: 6
         height: 5
       alignment: 7
@@ -181,12 +181,12 @@ TextureImporter:
       name: my weapons_2
       rect:
         serializedVersion: 2
-        x: 36
-        y: 83
+        x: 37
+        y: 82
         width: 7
-        height: 21
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        height: 23
+      alignment: 9
+      pivot: {x: 0.5, y: 0.14848062}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -202,8 +202,8 @@ TextureImporter:
       name: my weapons_3
       rect:
         serializedVersion: 2
-        x: 1
-        y: 93
+        x: 29
+        y: 106
         width: 10
         height: 7
       alignment: 7
@@ -246,10 +246,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1
         y: 83
-        width: 14
+        width: 17
         height: 7
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.42660865, y: 0.41800907}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -333,7 +333,7 @@ TextureImporter:
         width: 5
         height: 3
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -354,7 +354,7 @@ TextureImporter:
         width: 2
         height: 2
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

@@ -7,6 +7,7 @@ public class NPC : Creature
 {
     public DetectHittable enemyDetector;
     public DetectGround wallDetector;
+    public bool isFlying = false;
 
     public Limb PreferedLimb => limbs.FirstOrDefault();
     public AttackStatsBase PreferedWeaponStats => PreferedLimb.equipedWeapon.stats.attack;
@@ -90,7 +91,7 @@ public class NPC : Creature
     void Jump(bool isMoving)
     {
         if (OnGround)
-            if (wallDetector.Detected && isMoving)
+            if ((wallDetector.Detected && isMoving) || isFlying)
                 DoJump();
     }
     void Attack()

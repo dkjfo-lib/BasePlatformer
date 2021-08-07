@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8924480172673752411, guid: 4870907f69d496e4f825bf3ffcdfc6fb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8924480172673752414, guid: 4870907f69d496e4f825bf3ffcdfc6fb, type: 3}
       propertyPath: m_Name
       value: NPC Knight Friendly Variant

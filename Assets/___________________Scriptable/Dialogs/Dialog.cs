@@ -11,6 +11,7 @@ public class Dialog : ScriptableObject
 [System.Serializable]
 public class ReplicaBase 
 {
+    public Sprite authorImage;
     public string authorName;
     [TextArea]
     public string sentence;

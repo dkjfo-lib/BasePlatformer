@@ -76,6 +76,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC Knight Enemy DualWielding Variants
       objectReference: {fileID: 0}
+    - target: {fileID: 1246160541460923805, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246160541460923805, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1246160541460923811, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -119,6 +127,10 @@ PrefabInstance:
     - target: {fileID: 1246160541460923811, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1297928607488303116, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}

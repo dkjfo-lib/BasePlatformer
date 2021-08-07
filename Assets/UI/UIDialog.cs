@@ -52,5 +52,9 @@ public class UIDialog : MonoBehaviour
     {
         textAuthorName.text = replica.authorName;
         textSentence.text = replica.sentence;
+        if (replica.authorImage != null)
+        {
+            image.sprite = replica.authorImage;
+        }
     }
 }

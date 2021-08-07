@@ -79,12 +79,10 @@ public class Player : Creature
         if (Input.GetKeyDown(KeyCode.E))
         {
             var items = activationRect.Cast(transform.position, isRight);
-            var activatesA = items.Select(s => s.transform.GetComponent<IActivate>()).Where(s => s != null).ToArray();
-            var activatesAT = items.Select(s => s.transform);
-            var tr = GetClosest(activatesAT);
-            if (tr != null)
+            var interactable = items.Select(s => s.transform.GetComponent<IInetractable>()).Where(s => s != null).FirstOrDefault();
+            if (interactable != null)
             {
-                tr.GetComponent<IActivate>().Activate(new ActivationParams
+                interactable.Inetract(new InetractionParams
                 {
                     character = this
                 });
