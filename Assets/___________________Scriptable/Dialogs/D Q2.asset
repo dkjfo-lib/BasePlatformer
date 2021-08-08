@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: D Q2
   m_EditorClassIdentifier: 
   replicas:
-  - authorName: Girl
+  - authorImage: {fileID: 11400000, guid: d0481aa47164e984b8acb58401d59834, type: 2}
+    authorName: Girl
     sentence: GOOOOD JOB!
-  - authorName: Girl
+  - authorImage: {fileID: 11400000, guid: d0481aa47164e984b8acb58401d59834, type: 2}
+    authorName: Girl
     sentence: They sure deserved it!
-  - authorName: Girl
+  - authorImage: {fileID: 11400000, guid: d0481aa47164e984b8acb58401d59834, type: 2}
+    authorName: Girl
     sentence: Now it is only appropriate to continue our efforts and kill a bit more
       of those pesky Dinos!

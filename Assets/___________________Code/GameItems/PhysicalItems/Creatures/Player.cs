@@ -71,7 +71,11 @@ public class Player : Creature
     {
         if (Input.GetMouseButton(0))
         {
-            DoAttack();
+            DoAttack(1);
+        }
+        if (Input.GetMouseButton(1))
+        {
+            DoAttack(0);
         }
     }
     void Activate()

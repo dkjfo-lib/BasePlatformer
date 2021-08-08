@@ -71,7 +71,7 @@ MonoBehaviour:
     contacts: []
     lastOverlapTime: -1
   isFlying: 0
-  enemySight: {fileID: 4363165890193392860}
+  creatureSight: {fileID: 4363165890193392860}
 --- !u!212 &1845882391321316220
 SpriteRenderer:
   m_ObjectHideFlags: 0

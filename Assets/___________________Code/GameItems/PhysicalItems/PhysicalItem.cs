@@ -101,7 +101,7 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem, IHi
     {
         bool wasDead = state.IsDead;
         var hitForce = hit.GetForce(ObjectCenter);
-        state.health -= hit.damage;
+        state.health -= Mathf.Max(0, hit.damage - stats.Armour);
         Inertia += hitForce;
         BaseExt.SpawnParticles(transform, OnHitParticles, hit.isRight);
 
