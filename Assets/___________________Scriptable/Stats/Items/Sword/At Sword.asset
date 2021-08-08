@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c370a1055af1b594d96a4e1c30a503bb, type: 3}
   m_Name: At Sword
   m_EditorClassIdentifier: 
-  size: {x: 0.3, y: 1}
-  offset: {x: 0, y: 0.8}
   closeBorder: 0.5
   farBorder: 1.8
-  damage: 1
-  force: 10
+  size: {x: 0.3, y: 1}
+  offset: {x: 0, y: 0.8}
+  damage: 3
+  force: 15

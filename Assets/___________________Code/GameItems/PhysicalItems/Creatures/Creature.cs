@@ -42,6 +42,13 @@ public abstract class Creature : PhysicalItem<StatsCharacter, SoundsCharacter, S
             }
         }
     }
+    protected void DoAttack(int limbId)
+    {
+        if (state.CanAttack())
+        {
+            limbs[limbId].UseWeapon();
+        }
+    }
 
     protected void DoMove(int movement_H)
     {

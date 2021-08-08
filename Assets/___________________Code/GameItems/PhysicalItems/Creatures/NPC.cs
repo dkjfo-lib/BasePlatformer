@@ -15,10 +15,10 @@ public class NPC : Creature
     private float PreferedWeaponFarBorder => PreferedLimb.transform.localPosition.x + PreferedWeaponStats.farBorder;
 
     // Enemy Aim Stuff
-    public Transform enemySight;
-    private List<Creature> enemiesInSight = new List<Creature>();
+    public Transform creatureSight;
+    private List<Creature> creaturesInSight = new List<Creature>();
     private Vector3? target;
-    private Vector3 DefaultTarget => isRight ? transform.position + 1000 * Vector3.right : transform.position - 1000 * Vector3.right;
+    private Vector3 DefaultTarget => isRight ? transform.position + creatureSight.right * 1000 : transform.position - creatureSight.right * 1000;
     private Vector2 TargetVector => target.Value - transform.position;
     public override Vector2 LimbsDirection => target != null ?
         target.Value :
@@ -39,8 +39,11 @@ public class NPC : Creature
 
     void HandleEnemySight()
     {
-        var enemiesCenters = enemiesInSight.Where(s =>
+        var enemiesCenters = creaturesInSight.Where(s =>
         {
+            if (s.state.IsDead) return false;
+            if (!state.alignment.IsEnemy(s.Faction)) return false;
+
             var vect = s.ObjectCenter - ObjectCenter;
             var hit = Physics2D.Raycast(ObjectCenter, vect, vect.magnitude, Layers.Ground);
             return hit.transform == null;
@@ -108,7 +111,7 @@ public class NPC : Creature
         if (target == null) return;
         if (PreferedLimb == null) return;
         float targetsDistance = TargetVector.magnitude;
-        enemySight.right = isRight ? target.Value - enemySight.position : enemySight.position - target.Value;
+        creatureSight.right = isRight ? target.Value - creatureSight.position : creatureSight.position - target.Value;
         if (PreferedWeaponCloseBorder < targetsDistance && targetsDistance < PreferedWeaponFarBorder)
         {
             DoAttack();
@@ -129,7 +132,7 @@ public class NPC : Creature
         // if not in battle
         if (target == null)
         {
-            enemySight.right = hit.hitDirection;
+            creatureSight.right = hit.hitDirection;
         }
     }
 
@@ -145,10 +148,7 @@ public class NPC : Creature
         var creature = collision.gameObject.GetComponent<Creature>();
         if (creature != null)
         {
-            if (state.alignment.IsEnemy(creature.Faction))
-            {
-                enemiesInSight.Add(creature);
-            }
+            creaturesInSight.Add(creature);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -156,7 +156,7 @@ public class NPC : Creature
         var creature = collision.gameObject.GetComponent<Creature>();
         if (creature != null)
         {
-            enemiesInSight.Remove(creature);
+            creaturesInSight.Remove(creature);
         }
     }
 }

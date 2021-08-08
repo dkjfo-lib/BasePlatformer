@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: D Q1
   m_EditorClassIdentifier: 
   replicas:
-  - authorName: Girl
+  - authorImage: {fileID: 11400000, guid: d0481aa47164e984b8acb58401d59834, type: 2}
+    authorName: Girl
     sentence: Listen boy scout, see those heretic dinos across the bridge...
-  - authorName: Girl
+  - authorImage: {fileID: 11400000, guid: d0481aa47164e984b8acb58401d59834, type: 2}
+    authorName: Girl
     sentence: 'Kill em!..
 
       Yeah go kill em!'
-  - authorName: Girl
+  - authorImage: {fileID: 11400000, guid: d0481aa47164e984b8acb58401d59834, type: 2}
+    authorName: Girl
     sentence: They are most definitely evil and it is our duty to bring justice upon
       them!

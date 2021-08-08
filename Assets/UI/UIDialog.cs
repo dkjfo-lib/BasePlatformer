@@ -54,7 +54,7 @@ public class UIDialog : MonoBehaviour
         textSentence.text = replica.sentence;
         if (replica.authorImage != null)
         {
-            image.sprite = replica.authorImage;
+            image.sprite = replica.authorImage.value;
         }
     }
 }

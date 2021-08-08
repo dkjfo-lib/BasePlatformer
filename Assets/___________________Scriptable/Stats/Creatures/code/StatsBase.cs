@@ -12,6 +12,7 @@ public abstract class StatsBase<TSounds> : ScriptableObject
 {
     public ObjectType entityType = ObjectType.UNDEFINED;
     public int maxHealth = 10;
+    public int Armour = 0;
     [Space]
     public StatsPhysics physics;
     public RuntimeAnimatorController animator;
