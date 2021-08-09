@@ -62,14 +62,16 @@ MonoBehaviour:
     offset: {x: 0, y: 0}
     contacts: []
     lastOverlapTime: -1
+    usePlatforms: 1
   OnHitParticles: {fileID: 0}
   OnDestroyParticles: {fileID: 0}
   corpseAlignment: {fileID: 11400000, guid: 6c037796e8b1ad745a64989db81fd498, type: 2}
   wallDetector:
-    size: {x: 0.5, y: 0.5}
-    offset: {x: 0.7, y: 0.5}
+    size: {x: 2, y: 0.5}
+    offset: {x: 1.2, y: 0.5}
     contacts: []
     lastOverlapTime: -1
+    usePlatforms: 1
   isFlying: 0
   creatureSight: {fileID: 4363165890193392860}
 --- !u!212 &1845882391321316220
@@ -318,7 +320,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 5, y: 1}
+  m_Offset: {x: 7, y: 1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -329,7 +331,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12, y: 6}
+  m_Size: {x: 16, y: 6}
   m_EdgeRadius: 0
 --- !u!1 &7995463922641271884
 GameObject:

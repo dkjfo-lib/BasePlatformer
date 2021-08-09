@@ -77,15 +77,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1845882391321316163, guid: 9ca2b4cf2d9dc9d4ea88a24d75a9b56b, type: 3}
       propertyPath: detectGroundLayer.size.x
-      value: 0.47
+      value: 1.61
       objectReference: {fileID: 0}
     - target: {fileID: 1845882391321316163, guid: 9ca2b4cf2d9dc9d4ea88a24d75a9b56b, type: 3}
       propertyPath: detectGroundLayer.size.y
-      value: 0.28
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 1845882391321316163, guid: 9ca2b4cf2d9dc9d4ea88a24d75a9b56b, type: 3}
       propertyPath: detectGroundLayer.offset.y
-      value: -1.22
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1845882391321316217, guid: 9ca2b4cf2d9dc9d4ea88a24d75a9b56b, type: 3}
       propertyPath: m_Name
@@ -95,5 +95,9 @@ PrefabInstance:
       propertyPath: defaultWeapon.stats
       value: 
       objectReference: {fileID: 11400000, guid: 7aa516830696275498d6237c384a2951, type: 2}
+    - target: {fileID: 7423283740495434763, guid: 9ca2b4cf2d9dc9d4ea88a24d75a9b56b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2550619369964143724, guid: 69a9b83e48bd93f42bae3bd7b36425b9, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ca2b4cf2d9dc9d4ea88a24d75a9b56b, type: 3}
