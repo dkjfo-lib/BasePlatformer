@@ -26,7 +26,9 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem, IHi
     public override bool isRight => state.isRight;
     public bool OnGround => detectGroundLayer.Detected;
     public Faction Faction => state.alignment.faction;
+    public Vector3 ObjectTop => (Vector3)Collider2D.offset + Vector3.up * Collider2D.size.y / 2 + transform.position;
     public Vector3 ObjectCenter => (Vector3)Collider2D.offset + transform.position;
+    public Vector3 ObjectBottom=> transform.position;
 
     public ParticleSystem OnHitParticles;
     public ParticleSystem OnDestroyParticles;

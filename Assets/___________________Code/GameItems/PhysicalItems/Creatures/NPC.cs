@@ -39,15 +39,25 @@ public class NPC : Creature
 
     void HandleEnemySight()
     {
-        var enemiesCenters = creaturesInSight.Where(s =>
+        var enemiesCenters = creaturesInSight.Select<Creature, Vector3?>(s =>
         {
-            if (s.state.IsDead) return false;
-            if (!state.alignment.IsEnemy(s.Faction)) return false;
+            if (s.state.IsDead) return null;
+            if (!state.alignment.IsEnemy(s.Faction)) return null;
 
-            var vect = s.ObjectCenter - ObjectCenter;
-            var hit = Physics2D.Raycast(ObjectCenter, vect, vect.magnitude, Layers.Ground);
-            return hit.transform == null;
-        }).Select(s => s.ObjectCenter);
+            var vectC = s.ObjectCenter - ObjectCenter;
+            var hitC = Physics2D.Raycast(ObjectCenter, vectC, vectC.magnitude, Layers.Ground);
+            if (hitC.transform == null) return s.ObjectCenter;
+
+            var vectT = s.ObjectTop - ObjectTop;
+            var hitT = Physics2D.Raycast(ObjectTop, vectT, vectT.magnitude, Layers.Ground);
+            if (hitT.transform == null) return s.ObjectTop;
+
+            var vectB = s.ObjectBottom - ObjectBottom;
+            var hitB = Physics2D.Raycast(ObjectBottom, vectB, vectB.magnitude, Layers.Ground);
+            if (hitB.transform == null) return s.ObjectBottom;
+
+            return null;
+        }).Where(s => s.HasValue).Select(s => s.Value);
         target = GetClosest(enemiesCenters);
     }
 
@@ -103,7 +113,9 @@ public class NPC : Creature
     void Jump(bool isMoving)
     {
         if (OnGround)
-            if ((wallDetector.Detected && isMoving) || isFlying)
+            if ((wallDetector.Detected && isMoving) ||
+                (target != null && target.Value.y - transform.position.y > PreferedWeaponFarBorder)
+                || isFlying)
                 DoJump();
     }
     void Attack()
@@ -140,6 +152,13 @@ public class NPC : Creature
     {
         base.AddOnDrawGizmos();
         wallDetector.OnGizmos(transform.position, isRight);
+
+        foreach (var s in creaturesInSight)
+        {
+            Gizmos.DrawLine(ObjectCenter, s.ObjectCenter);
+            Gizmos.DrawLine(ObjectTop, s.ObjectTop);
+            Gizmos.DrawLine(ObjectBottom, s.ObjectBottom);
+        }
     }
 
 
