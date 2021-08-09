@@ -50,7 +50,7 @@ public class UIDialog : MonoBehaviour
 
     void DisplayReplica(ReplicaBase replica)
     {
-        textAuthorName.text = replica.authorName;
+        textAuthorName.text = replica.authorName.value;
         textSentence.text = replica.sentence;
         if (replica.authorImage != null)
         {

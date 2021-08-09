@@ -12,7 +12,7 @@ public class Dialog : ScriptableObject
 public class ReplicaBase 
 {
     public Picture authorImage;
-    public string authorName;
+    public Line authorName;
     [TextArea]
     public string sentence;
 }
