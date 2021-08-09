@@ -55,15 +55,16 @@ MonoBehaviour:
     isRight: 1
     alignment: {fileID: 0}
   detectGroundLayer:
-    size: {x: 0.4, y: 0.2}
-    offset: {x: 0, y: 0.1225}
+    size: {x: 0, y: 0}
+    offset: {x: 0, y: 0}
     contacts: []
     lastOverlapTime: -1
+    usePlatforms: 0
   OnHitParticles: {fileID: 0}
-  OnDestroyParticles: {fileID: 0}
+  OnDestroyParticles: {fileID: 2583375143392473565, guid: dda7fee41b9c65e479bbbe31a52ac010, type: 3}
   attackerType: 6
   addonLiveParticles: {fileID: 379507912698277261}
-  addonOnDeathParticles: {fileID: 2583375143392473565, guid: dda7fee41b9c65e479bbbe31a52ac010, type: 3}
+  addonOnDeathParticles: {fileID: 0}
   addonHitSound: {fileID: 0}
 --- !u!50 &5397831979872414373
 Rigidbody2D:
@@ -169,8 +170,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 4.2351647e-22, y: 0.125}
-  m_Size: {x: 1.5392447, y: 0.53892434}
+  m_Offset: {x: -0.31367508, y: 0.12500006}
+  m_Size: {x: 0.91191244, y: 0.5389329}
   m_Direction: 1
 --- !u!1001 &1918439897781879759
 PrefabInstance:

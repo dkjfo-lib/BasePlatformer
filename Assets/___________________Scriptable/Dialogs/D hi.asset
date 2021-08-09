@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   replicas:
   - authorImage: {fileID: 11400000, guid: c70944489c4ba2e47b01caf977f929b6, type: 2}
-    authorName: Player
+    authorName: {fileID: 11400000, guid: 295f47e7409b7de4c9726193ce3a3de5, type: 2}
     sentence: Reporting for duty!
   - authorImage: {fileID: 11400000, guid: d0481aa47164e984b8acb58401d59834, type: 2}
-    authorName: Girl
+    authorName: {fileID: 11400000, guid: 048b1855705cfb5428c4195970ee9b14, type: 2}
     sentence: Greetings m'lord...

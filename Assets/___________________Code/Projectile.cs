@@ -14,42 +14,37 @@ public class Projectile : PhysicalItem<StatsProjectile, SoundsWeapon, StateWeapo
     public override bool isRight => state.isRight;
     [Space]
     public ParticleSystem addonLiveParticles;
-    public ParticleSystem addonOnDeathParticles;
     public ClipsCollection addonHitSound;
 
-
-    Collider2D Collider2D { get; set; }
-    protected override void GetComponents()
-    {
-        base.GetComponents();
-        Collider2D = GetComponent<Collider2D>();
-    }
+    int GroundLayer;
 
     protected override void Init()
     {
         base.Init();
-        Destroy(gameObject, 1);
+        GroundLayer = LayerMask.NameToLayer("Ground");
         Inertia += isRight ? (Vector2)transform.right * stats.acceleration_H : -(Vector2)transform.right * stats.acceleration_H;
+        StartCoroutine(KillSelf(1));
     }
 
-    private void Update()
+    protected override void OnFixedUpdate() { }
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (OnGround)
+        if (collision.gameObject.layer == GroundLayer)
         {
-            if (!state.IsDead)
-            GetHit(new Hit
-            {
-                damage = 99999,
-                force = 0,
-                attackerType = ObjectType.ITEM,
-                hitPosition = transform.position,
-                isRight = isRight
-            });
+            KillSelf();
+            return;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.layer == GroundLayer)
+        {
+            KillSelf();
+            return;
+        }
+
         var target = collision.GetComponent<IHittable>();
         if (BaseExt.ShouldHit(this, target))
         {
@@ -71,19 +66,25 @@ public class Projectile : PhysicalItem<StatsProjectile, SoundsWeapon, StateWeapo
                 hitDirection = transform.right,
                 isRight = isRight
             });
-            StartCoroutine(DelayedDetonation());
+            StartCoroutine(KillSelf(stats.detonationDelay));
         }
     }
 
-    IEnumerator DelayedDetonation()
+    IEnumerator KillSelf(float time)
     {
-        yield return new WaitForSeconds(stats.detonationDelay);
+        yield return new WaitForSeconds(time);
+        KillSelf();
+    }
+
+    void KillSelf()
+    {
         GetHit(new Hit
         {
             damage = 99999,
             force = 0,
             attackerType = ObjectType.ITEM,
             hitPosition = transform.position,
+            hitDirection = transform.right,
             isRight = isRight
         });
     }
@@ -96,11 +97,6 @@ public class Projectile : PhysicalItem<StatsProjectile, SoundsWeapon, StateWeapo
         {
             addonLiveParticles.transform.parent = transform.parent;
             Destroy(addonLiveParticles.gameObject, 2);
-        }
-        if (addonOnDeathParticles != null)
-        {
-            var newParticle = Instantiate(addonOnDeathParticles, transform.position, addonOnDeathParticles.transform.rotation, transform.parent);
-            Destroy(newParticle.gameObject, 2);
         }
         if (addonHitSound)
         {

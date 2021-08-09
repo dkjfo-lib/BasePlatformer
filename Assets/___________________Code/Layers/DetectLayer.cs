@@ -24,7 +24,8 @@ public abstract class DetectLayer<T> : MyCastRect where T : MonoBehaviour
 [System.Serializable]
 public class DetectGround : DetectLayer<MonoBehaviour>
 {
-    public override LayerMask LayerMask => Layers.Ground;
+    public bool usePlatforms = true;
+    public override LayerMask LayerMask => usePlatforms ? Layers.GroundAndPlatforms : Layers.Ground;
     public override Color GizmosColor => Color.yellow;
 }
 

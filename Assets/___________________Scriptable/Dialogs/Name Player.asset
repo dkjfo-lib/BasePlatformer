@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82cca4f28b1723249b2511987190c0dc, type: 3}
-  m_Name: Name SisOBattle
+  m_Name: Name Player
   m_EditorClassIdentifier: 
-  value: Sister
+  value: Player
