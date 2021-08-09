@@ -35,6 +35,8 @@ public class CameraFollower : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (currentPlayer == null) return;
+
         var pX = Input.mousePosition.x / Screen.width * 2 - 1;
         var pY = Input.mousePosition.y / Screen.height * 2 - 1;
         var directionOffset = new Vector3(pX, pY, 0) * this.directionOffset;
