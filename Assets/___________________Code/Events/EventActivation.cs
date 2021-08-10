@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public abstract class EventActivation : MonoBehaviour
+public abstract class EventActivation : Base
 {
     public Pipe_Events pipe_Events;
     [Space]
@@ -12,29 +12,29 @@ public abstract class EventActivation : MonoBehaviour
     int GlobalCount => pipe_Events.GetEventCount(activationTag);
     int localCount;
 
-    private void Start()
+    protected override void Init()
     {
         if (activationTag == "404") Debug.LogWarning("Tag: 404", gameObject);
         localCount = GlobalCount;
-        OnStart();
+        OnInit();
         StartCoroutine(WaitForEvent());
     }
 
-    protected virtual void OnStart() { }
+    protected virtual void OnInit() { }
 
     IEnumerator WaitForEvent()
     {
         while (true)
         {
             yield return new WaitUntil(() => localCount != GlobalCount);
-            int diff = GlobalCount - localCount;
-            for (int i = 0; i < diff; i++)
-            {
+            if (GlobalCount > localCount)
                 Activate();
-            }
+            if (GlobalCount < localCount)
+                Deactivate();
             localCount = GlobalCount;
         }
     }
 
     protected abstract void Activate();
+    protected abstract void Deactivate();
 }

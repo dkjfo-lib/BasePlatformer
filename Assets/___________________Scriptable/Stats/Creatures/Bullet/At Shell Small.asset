@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c370a1055af1b594d96a4e1c30a503bb, type: 3}
-  m_Name: At Big Bullet
+  m_Name: At Shell Small
   m_EditorClassIdentifier: 
   closeBorder: 0
   farBorder: 0
   size: {x: 0.4, y: 0.2}
   offset: {x: 0.15, y: 0.1225}
-  damage: 10
-  force: 250
+  damage: 6
+  force: 150

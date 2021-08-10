@@ -25,6 +25,23 @@ public class Pipe_Events : ScriptableObject
         }
     }
 
+    public void SubtractEvent(string eventTag)
+    {
+        EventData data = events.FirstOrDefault((s) => s.tag == eventTag);
+        if (data == null)
+        {
+            events.Add(new EventData
+            {
+                tag = eventTag,
+                count = -1
+            });
+        }
+        else
+        {
+            data.count -= 1;
+        }
+    }
+
     public int GetEventCount(string eventTag)
     {
         int count;

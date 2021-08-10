@@ -16,7 +16,7 @@ MonoBehaviour:
   maxHealth: 10
   Armour: 0
   physics: {fileID: 11400000, guid: 43b7dcd150020da4aae9bc0da7fe63c8, type: 2}
-  animator: {fileID: 9100000, guid: ad118711cae8402419d30f91b9b9b3c1, type: 2}
+  animator: {fileID: 9100000, guid: a2da932358d1dac479e307205a37ab04, type: 2}
   sounds:
     idleSounds: {fileID: 0}
     onHitSounds: {fileID: 0}

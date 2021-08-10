@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ph Static
   m_EditorClassIdentifier: 
   mass: 1000
-  toughness: 0.25
+  toughness: 1
   gravity: {fileID: 11400000, guid: 811bc8eb2983e694d8a5e3c2977341d8, type: 2}
   maxSpeed_H: 0
   minSpeedInAir_H: 0

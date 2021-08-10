@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f65ad2710c7a024f8a5825adcfcb5bd, type: 3}
   m_Name: M Player
   m_EditorClassIdentifier: 
-  acceleration_H: 1
+  acceleration_H: 1.6
   jumpSpeed: 12
   speed_controll_inAir: 0.18

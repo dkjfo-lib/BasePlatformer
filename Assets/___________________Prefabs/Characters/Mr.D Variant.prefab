@@ -187,6 +187,26 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4363165890193392860, guid: 9ca2b4cf2d9dc9d4ea88a24d75a9b56b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4363165890193392860, guid: 9ca2b4cf2d9dc9d4ea88a24d75a9b56b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423295885369225059, guid: 9ca2b4cf2d9dc9d4ea88a24d75a9b56b, type: 3}
+      propertyPath: m_Size.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423295885369225059, guid: 9ca2b4cf2d9dc9d4ea88a24d75a9b56b, type: 3}
+      propertyPath: m_Offset.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423295885369225059, guid: 9ca2b4cf2d9dc9d4ea88a24d75a9b56b, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7423283740495434763, guid: 9ca2b4cf2d9dc9d4ea88a24d75a9b56b, type: 3}
       propertyPath: m_Sprite
       value: 
