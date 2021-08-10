@@ -415,11 +415,15 @@ PrefabInstance:
     - target: {fileID: 7281529401196558991, guid: 3a0ab9dd2e47125478d7f484a2686302, type: 3}
       propertyPath: defaultWeapon.stats
       value: 
-      objectReference: {fileID: 11400000, guid: 7aa516830696275498d6237c384a2951, type: 2}
+      objectReference: {fileID: 11400000, guid: f0559ee2054479b4b9ed306ee708142a, type: 2}
+    - target: {fileID: 7281529401830257845, guid: 3a0ab9dd2e47125478d7f484a2686302, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a2da932358d1dac479e307205a37ab04, type: 2}
     - target: {fileID: 7281529401830257846, guid: 3a0ab9dd2e47125478d7f484a2686302, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -9196235938935945489, guid: c99e4f1dabc5e694497acb37d5dc2b27, type: 3}
+      objectReference: {fileID: -2034971778571265789, guid: c99e4f1dabc5e694497acb37d5dc2b27, type: 3}
     - target: {fileID: 7281529401830257846, guid: 3a0ab9dd2e47125478d7f484a2686302, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -434,19 +438,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7281529401830257847, guid: 3a0ab9dd2e47125478d7f484a2686302, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.42660865
+      value: 0.2854815
       objectReference: {fileID: 0}
     - target: {fileID: 7281529401830257847, guid: 3a0ab9dd2e47125478d7f484a2686302, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.41800907
+      value: 0.44846153
       objectReference: {fileID: 0}
     - target: {fileID: 7281529401830257847, guid: 3a0ab9dd2e47125478d7f484a2686302, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.0625
+      value: 1.375
       objectReference: {fileID: 0}
     - target: {fileID: 7281529401830257847, guid: 3a0ab9dd2e47125478d7f484a2686302, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.4375
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a0ab9dd2e47125478d7f484a2686302, type: 3}
@@ -640,6 +644,14 @@ PrefabInstance:
       propertyPath: defaultWeapon.stats
       value: 
       objectReference: {fileID: 11400000, guid: 8a983045c29eee14eb30729fb895d243, type: 2}
+    - target: {fileID: 7281529401830257845, guid: 3a0ab9dd2e47125478d7f484a2686302, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2c3767f5d20d74048bed584eff54426a, type: 2}
+    - target: {fileID: 7281529401830257846, guid: 3a0ab9dd2e47125478d7f484a2686302, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2613351356564164340, guid: c99e4f1dabc5e694497acb37d5dc2b27, type: 3}
     - target: {fileID: 7281529401830257846, guid: 3a0ab9dd2e47125478d7f484a2686302, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -651,6 +663,18 @@ PrefabInstance:
     - target: {fileID: 7281529401830257846, guid: 3a0ab9dd2e47125478d7f484a2686302, type: 3}
       propertyPath: m_SortingLayerID
       value: -1873702429
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281529401830257847, guid: 3a0ab9dd2e47125478d7f484a2686302, type: 3}
+      propertyPath: m_Size.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281529401830257847, guid: 3a0ab9dd2e47125478d7f484a2686302, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.11132475
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281529401830257847, guid: 3a0ab9dd2e47125478d7f484a2686302, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.625
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a0ab9dd2e47125478d7f484a2686302, type: 3}

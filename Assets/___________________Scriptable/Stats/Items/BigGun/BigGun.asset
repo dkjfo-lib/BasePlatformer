@@ -9,21 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e0fd437cc0a08e4594684f152e72696, type: 3}
-  m_Name: Bullet
+  m_Script: {fileID: 11500000, guid: fdad34813f6b9a545a0f064e7ce07a23, type: 3}
+  m_Name: BigGun
   m_EditorClassIdentifier: 
   entityType: 6
-  maxHealth: 1
+  maxHealth: 10
   Armour: 0
-  physics: {fileID: 11400000, guid: ff8dbc764315dc64197d6144788da985, type: 2}
-  animator: {fileID: 9100000, guid: 577a949e9952b0241a5bf1f2d08952cb, type: 2}
+  physics: {fileID: 11400000, guid: 43b7dcd150020da4aae9bc0da7fe63c8, type: 2}
+  animator: {fileID: 9100000, guid: ad118711cae8402419d30f91b9b9b3c1, type: 2}
   sounds:
     idleSounds: {fileID: 0}
     onHitSounds: {fileID: 0}
     onDeathAudio: {fileID: 0}
-    onAttackSounds: {fileID: 11400000, guid: 1da00febe55d45c40a42e0352afdc040, type: 2}
+    onAttackSounds: {fileID: 11400000, guid: d4b6780e11cb21b43bf145d5027b01ac, type: 2}
   isFriendlyDamageOn: {fileID: 11400000, guid: d77f9e77ffb023b4db121908452070fe, type: 2}
   isSelfDamageOn: {fileID: 11400000, guid: 4791d9c40e5c4e443ae4639e3eaa98b6, type: 2}
-  attack: {fileID: 11400000, guid: a9f813b3254d47b4dbf8077bd9318261, type: 2}
-  acceleration_H: 50
-  detonationDelay: 0
+  attack: {fileID: 11400000, guid: c0ce5e8f41a25274aa31f0d6b34fa3b4, type: 2}

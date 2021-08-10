@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 1069016302816915457}
   - component: {fileID: 5397831979872414373}
   - component: {fileID: 537446099748716268}
-  - component: {fileID: -1626267764839916714}
-  - component: {fileID: 4905980453445139835}
+  - component: {fileID: 6379845403175536353}
+  - component: {fileID: -8831237659542360098}
   m_Layer: 10
-  m_Name: Bullet
+  m_Name: Bullet Big
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7040062817171129518}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3.07, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 6319432393007640381}
   m_Father: {fileID: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundsPipe: {fileID: 11400000, guid: 49c7055d96e6a844d8e1e445464b45ca, type: 2}
-  stats: {fileID: 11400000, guid: a56cf5c6342873248925552ad4f25210, type: 2}
+  stats: {fileID: 11400000, guid: f75dec0f33048a0429de4ab8dba85a43, type: 2}
   state:
     health: 5
     isRight: 1
@@ -64,7 +64,6 @@ MonoBehaviour:
   OnDestroyParticles: {fileID: 0}
   attackerType: 6
   addonLiveParticles: {fileID: 379507912698277261}
-  addonOnDeathParticles: {fileID: 0}
   addonHitSound: {fileID: 0}
 --- !u!50 &5397831979872414373
 Rigidbody2D:
@@ -127,7 +126,7 @@ SpriteRenderer:
   m_SortingLayerID: -613827491
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2590606729651084605, guid: c99e4f1dabc5e694497acb37d5dc2b27, type: 3}
+  m_Sprite: {fileID: 4136300395856015383, guid: c99e4f1dabc5e694497acb37d5dc2b27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -138,23 +137,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &-1626267764839916714
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7040062817171129518}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.09119929, y: 0.000000010871801}
-  m_Size: {x: 0.44104594, y: 0.2208169}
-  m_Direction: 1
---- !u!95 &4905980453445139835
+--- !u!95 &6379845403175536353
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -173,6 +156,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &-8831237659542360098
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7040062817171129518}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.081501745, y: -0.0090891635}
+  m_Size: {x: 0.44757196, y: 0.27076083}
+  m_Direction: 1
 --- !u!1001 &1918439897781879759
 PrefabInstance:
   m_ObjectHideFlags: 0
