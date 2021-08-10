@@ -156,7 +156,9 @@ MonoBehaviour:
     offset: {x: 0, y: 0}
     contacts: []
     lastOverlapTime: -1
+    usePlatforms: 1
   OnHitParticles: {fileID: 2583375143392473565, guid: dda7fee41b9c65e479bbbe31a52ac010, type: 3}
+  OnDestroyParticles: {fileID: 0}
 --- !u!212 &8489612966310033797
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -261,6 +263,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0000000016182184, y: 0.98642564}
-  m_Size: {x: 1.9797835, y: 1.9242477}
-  m_Direction: 1
+  m_Offset: {x: 0, y: 1}
+  m_Size: {x: 1.7, y: 2}
+  m_Direction: 0

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GunShot
   m_EditorClassIdentifier: 
   closeBorder: 1
-  farBorder: 5
+  farBorder: 12
   projectile: {fileID: 1069016302816915457, guid: ee5eedf1f9405ff4eabe07973ecc441a, type: 3}

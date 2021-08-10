@@ -154,10 +154,11 @@ MonoBehaviour:
     isRight: 0
     alignment: {fileID: 11400000, guid: a72e196a3e888ef46932533b0ce4ae19, type: 2}
   detectGroundLayer:
-    size: {x: 0.6, y: 0.2}
+    size: {x: 0.45, y: 0.2}
     offset: {x: 0, y: 0}
     contacts: []
     lastOverlapTime: -1
+    usePlatforms: 1
   OnHitParticles: {fileID: 1752277761188710304, guid: 6fcd787e80a1ce9449d154e9d3070ba4, type: 3}
   OnDestroyParticles: {fileID: 9016459303696241561, guid: d39856a2eb7b09c40a822bb4134aec2f, type: 3}
   corpseAlignment: {fileID: 11400000, guid: 6c037796e8b1ad745a64989db81fd498, type: 2}
