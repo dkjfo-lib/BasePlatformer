@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityType: 2
   maxHealth: 15
+  Armour: 15
   physics: {fileID: 11400000, guid: 6d711e9053ebadf4fbf5ae4583d23b7b, type: 2}
   animator: {fileID: 9100000, guid: ca7bddd4fc52cd244a9cb41c57a3e5e4, type: 2}
   sounds:

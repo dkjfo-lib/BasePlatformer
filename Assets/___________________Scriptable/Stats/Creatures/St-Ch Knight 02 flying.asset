@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: St-Ch Knight 02 flying
   m_EditorClassIdentifier: 
   entityType: 3
-  maxHealth: 5
+  maxHealth: 3
+  Armour: 0
   physics: {fileID: 11400000, guid: 6d711e9053ebadf4fbf5ae4583d23b7b, type: 2}
   animator: {fileID: 9100000, guid: ca7bddd4fc52cd244a9cb41c57a3e5e4, type: 2}
   sounds:

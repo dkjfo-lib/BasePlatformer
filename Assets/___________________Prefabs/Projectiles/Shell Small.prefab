@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6379845403175536353}
   - component: {fileID: -8831237659542360098}
   m_Layer: 10
-  m_Name: Big Bullet
+  m_Name: Shell Small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,6 @@ MonoBehaviour:
   OnDestroyParticles: {fileID: 2583375143392473565, guid: dda7fee41b9c65e479bbbe31a52ac010, type: 3}
   attackerType: 6
   addonLiveParticles: {fileID: 379507912698277261}
-  addonOnDeathParticles: {fileID: 0}
   addonHitSound: {fileID: 0}
 --- !u!50 &5397831979872414373
 Rigidbody2D:
@@ -127,7 +126,7 @@ SpriteRenderer:
   m_SortingLayerID: -613827491
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4136300395856015383, guid: c99e4f1dabc5e694497acb37d5dc2b27, type: 3}
+  m_Sprite: {fileID: 915821000800175669, guid: c99e4f1dabc5e694497acb37d5dc2b27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -170,8 +169,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.31367508, y: 0.12500006}
-  m_Size: {x: 0.91191244, y: 0.5389329}
+  m_Offset: {x: -0.05928255, y: 0.0000000070670296}
+  m_Size: {x: 0.6402437, y: 0.36891606}
   m_Direction: 1
 --- !u!1001 &1918439897781879759
 PrefabInstance:
