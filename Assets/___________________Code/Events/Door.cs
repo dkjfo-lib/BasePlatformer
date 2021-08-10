@@ -7,20 +7,43 @@ using UnityEngine;
 public class Door : EventActivation
 {
     public bool open = false;
+    [Space]
+    [Space]
+    public ClipsCollection addon_openSound;
+    public ClipsCollection addon_closeSound;
 
     new Collider2D collider;
-    SpriteRenderer spriteRenderer;
+    Animator animator;
 
-    protected override void OnStart()
+    protected override void GetComponents()
     {
         collider = GetComponent<Collider2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+    }
+
+    protected override void OnInit()
+    {
+        SetIsOpen(open);
     }
 
     protected override void Activate()
     {
-        open = !open;
-        collider.enabled = !open;
-        spriteRenderer.enabled = !open;
+        if (open == true) return;
+        SetIsOpen(true);
+        PlayAudio(addon_openSound);
+    }
+
+    protected override void Deactivate()
+    {
+        if (open == false) return;
+        SetIsOpen(false);
+        PlayAudio(addon_closeSound);
+    }
+
+    void SetIsOpen(bool value)
+    {
+        open = value;
+        collider.enabled = !value;
+        animator.SetBool("active", value);
     }
 }

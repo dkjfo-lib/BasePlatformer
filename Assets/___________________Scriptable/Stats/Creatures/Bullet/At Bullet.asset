@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c370a1055af1b594d96a4e1c30a503bb, type: 3}
   m_Name: At Bullet
   m_EditorClassIdentifier: 
-  size: {x: 0.4, y: 0.2}
-  offset: {x: 0.15, y: 0.1225}
   closeBorder: 0
   farBorder: 0
-  damage: 1
+  size: {x: 0.4, y: 0.2}
+  offset: {x: 0.15, y: 0.1225}
+  damage: 2
   force: 5

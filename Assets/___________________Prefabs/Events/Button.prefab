@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3499088074548848135}
   - component: {fileID: 3499088074548848152}
   - component: {fileID: 3499088074548848154}
+  - component: {fileID: 1657306916}
   m_Layer: 9
   m_Name: Button
   m_TagString: Untagged
@@ -45,8 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079fd1fb7e0447f458d57bf10decf5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundsPipe: {fileID: 11400000, guid: 49c7055d96e6a844d8e1e445464b45ca, type: 2}
   pipe_Events: {fileID: 11400000, guid: f39ff9213d6aaae43aa1f87b4c760732, type: 2}
+  active: 0
   activationTag: 404
+  addon_pressSound: {fileID: 11400000, guid: 3da49ea288057d84d8a3a6090fa04764, type: 2}
 --- !u!212 &3499088074548848152
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -124,3 +128,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &1657306916
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3499088074548848134}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fd21ad5c302d5064ea7ce6bf002014bb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

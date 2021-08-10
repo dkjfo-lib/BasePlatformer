@@ -16,5 +16,5 @@ MonoBehaviour:
   farBorder: 0
   size: {x: 0.4, y: 0.2}
   offset: {x: 0.15, y: 0.1225}
-  damage: 10
-  force: 250
+  damage: 4
+  force: 25
