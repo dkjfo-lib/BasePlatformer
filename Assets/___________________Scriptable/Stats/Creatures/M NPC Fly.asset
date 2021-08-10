@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: M NPC Fly
   m_EditorClassIdentifier: 
   acceleration_H: 0.5
-  jumpSpeed: 1
+  jumpSpeed: 3
   speed_controll_inAir: 0.9
