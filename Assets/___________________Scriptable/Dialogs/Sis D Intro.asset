@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eef70255b89f7a4a8ce45fde1a5d98c, type: 3}
+  m_Name: Sis D Intro
+  m_EditorClassIdentifier: 
+  emittingTags:
+  - eventTag: ResetTalky
+  - eventTag: D1 Open
+  replicas:
+  - authorImage: {fileID: 11400000, guid: c70944489c4ba2e47b01caf977f929b6, type: 2}
+    authorName: {fileID: 11400000, guid: 295f47e7409b7de4c9726193ce3a3de5, type: 2}
+    sentence: Reporting for duty... Mam!
+  - authorImage: {fileID: 11400000, guid: d0481aa47164e984b8acb58401d59834, type: 2}
+    authorName: {fileID: 11400000, guid: 048b1855705cfb5428c4195970ee9b14, type: 2}
+    sentence: 'Ah, the new replacement!
+
+      Welcome to the Testing Facility 101
+
+      Here
+      we will simulate some of the situations you may encounter on a battlefield!'
+  - authorImage: {fileID: 11400000, guid: d0481aa47164e984b8acb58401d59834, type: 2}
+    authorName: {fileID: 11400000, guid: 048b1855705cfb5428c4195970ee9b14, type: 2}
+    sentence: 'Let us peseed with our training, private!
+
+      Go to the test chamber
+      and activate big switch in the middle of it. Training protocols will be activated
+      shortly after and we shall see what you''ve got.'
+  - authorImage: {fileID: 11400000, guid: c70944489c4ba2e47b01caf977f929b6, type: 2}
+    authorName: {fileID: 11400000, guid: 295f47e7409b7de4c9726193ce3a3de5, type: 2}
+    sentence: Yes Mam!

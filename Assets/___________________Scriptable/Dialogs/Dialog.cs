@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewDialog", menuName = "My/Dialog/Dialog")]
+[CreateAssetMenu(fileName = "NewDialog", menuName = "Dialogs/Dialog")]
 public class Dialog : ScriptableObject
 {
+    public TagEmitting[] emittingTags;
+    [Space]
     public ReplicaBase[] replicas;
 }
 

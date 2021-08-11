@@ -168,6 +168,7 @@ MonoBehaviour:
     contacts: []
     lastOverlapTime: -1
   pipe_BetweenScenesData: {fileID: 11400000, guid: 69395d1d59ab95b48a6dcba16e4f4f50, type: 2}
+  pipe_Events: {fileID: 11400000, guid: f39ff9213d6aaae43aa1f87b4c760732, type: 2}
 --- !u!212 &2937913634312664301
 SpriteRenderer:
   m_ObjectHideFlags: 0

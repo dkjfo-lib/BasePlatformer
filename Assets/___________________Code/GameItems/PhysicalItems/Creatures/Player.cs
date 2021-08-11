@@ -13,6 +13,7 @@ public class Player : Creature
     public Vector2 MouseRelativePosition => LimbsDirection - (Vector2)transform.position;
 
     public Pipe_BetweenScenesData pipe_BetweenScenesData;
+    public Pipe_Events pipe_Events;
 
     private void Awake()
     {
@@ -98,6 +99,7 @@ public class Player : Creature
     {
         base.OnDeath(hit);
         respawn = true;
+        pipe_Events.AddEvent("Player Die");
     }
     protected override void AddOnDrawGizmos()
     {
