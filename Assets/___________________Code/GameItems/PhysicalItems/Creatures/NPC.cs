@@ -70,7 +70,12 @@ public class NPC : Creature
 
         if (target != null)
         {
+            creatureSight.right = isRight ? target.Value - creatureSight.position : creatureSight.position - target.Value;
             lastEnemyPlace = target;
+        }
+        if (target == null && lastEnemyPlace != null)
+        {
+            creatureSight.right = isRight ? lastEnemyPlace.Value - creatureSight.position : creatureSight.position - lastEnemyPlace.Value;
         }
     }
 
@@ -175,7 +180,6 @@ public class NPC : Creature
         if (target == null) return;
         if (PreferedLimb == null) return;
         float targetsDistance = TargetVector.magnitude;
-        creatureSight.right = isRight ? target.Value - creatureSight.position : creatureSight.position - target.Value;
         if (PreferedWeaponCloseBorder < targetsDistance && targetsDistance < PreferedWeaponFarBorder)
         {
             DoAttack();
