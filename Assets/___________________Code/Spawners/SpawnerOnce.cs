@@ -28,8 +28,10 @@ public class SpawnerOnce : MonoBehaviour
     {
         var chosenPrefab = spawnVariants[Random.Range(0, spawnVariants.Length)];
         var newItem = Instantiate(chosenPrefab, transform.position, Quaternion.identity);
-        yield return new WaitUntil(() => newItem.inited);
         var force = new Vector2(Random.Range(forceRangeX.x, forceRangeX.y), Random.Range(forceRangeY.x, forceRangeY.y));
+        newItem.state.isRight = force.x > 0;
+
+        yield return new WaitUntil(() => newItem.inited);
         newItem.Inertia += force;
 
         if (isOneUse)

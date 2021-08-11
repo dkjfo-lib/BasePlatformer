@@ -77,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1845882391321316163, guid: 9ca2b4cf2d9dc9d4ea88a24d75a9b56b, type: 3}
       propertyPath: detectGroundLayer.size.x
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1845882391321316163, guid: 9ca2b4cf2d9dc9d4ea88a24d75a9b56b, type: 3}
       propertyPath: detectGroundLayer.size.y
