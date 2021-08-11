@@ -17,7 +17,7 @@ public class NPC : Creature
     // Enemy Aim Stuff
     public Transform creatureSight;
     private List<Creature> creaturesInSight = new List<Creature>();
-    private Vector3? target;
+    public Vector3? target;
     private Vector3 DefaultTarget => isRight ? transform.position + creatureSight.right * 1000 : transform.position - creatureSight.right * 1000;
     private Vector2 TargetVector => target.Value - transform.position;
     public override Vector2 LimbsDirection =>
@@ -29,7 +29,7 @@ public class NPC : Creature
 
     // Enemy follow stuff
     public float investigateDistance = 3f;
-    private Vector3? lastEnemyPlace;
+    public Vector3? lastEnemyPlace;
     private Vector2 EnemyPlaceVector => lastEnemyPlace.Value - transform.position;
 
     protected override void OnFixedUpdate()
