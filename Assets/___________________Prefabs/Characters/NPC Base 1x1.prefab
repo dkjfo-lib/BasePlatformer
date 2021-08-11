@@ -57,7 +57,7 @@ MonoBehaviour:
     isRight: 1
     alignment: {fileID: 0}
   detectGroundLayer:
-    size: {x: 0.8, y: 0.2}
+    size: {x: 0.6, y: 0.2}
     offset: {x: 0, y: 0}
     contacts: []
     lastOverlapTime: -1

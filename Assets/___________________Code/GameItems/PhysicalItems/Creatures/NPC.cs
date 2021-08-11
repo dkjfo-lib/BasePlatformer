@@ -20,9 +20,17 @@ public class NPC : Creature
     private Vector3? target;
     private Vector3 DefaultTarget => isRight ? transform.position + creatureSight.right * 1000 : transform.position - creatureSight.right * 1000;
     private Vector2 TargetVector => target.Value - transform.position;
-    public override Vector2 LimbsDirection => target != null ?
-        target.Value :
-        DefaultTarget;
+    public override Vector2 LimbsDirection =>
+        target != null ?
+            target.Value :
+            lastEnemyPlace != null ?
+                lastEnemyPlace.Value :
+                DefaultTarget;
+
+    // Enemy follow stuff
+    public float investigateDistance = 3f;
+    private Vector3? lastEnemyPlace;
+    private Vector2 EnemyPlaceVector => lastEnemyPlace.Value - transform.position;
 
     protected override void OnFixedUpdate()
     {
@@ -59,6 +67,11 @@ public class NPC : Creature
             return null;
         }).Where(s => s.HasValue).Select(s => s.Value);
         target = GetClosest(enemiesCenters);
+
+        if (target != null)
+        {
+            lastEnemyPlace = target;
+        }
     }
 
     bool Move()
@@ -106,6 +119,40 @@ public class NPC : Creature
                 }
             }
         }
+
+        if (target == null && lastEnemyPlace != null)
+        {
+            float targetsDistance = EnemyPlaceVector.magnitude;
+            if (lastEnemyPlace.Value.x > transform.position.x)
+            {
+                if (targetsDistance > investigateDistance)
+                {
+                    movement_H = +1;
+                }
+                else
+                {
+                    lastEnemyPlace = null;
+                }
+
+                if (!isRight)
+                    Flip_H(true);
+            }
+            if (lastEnemyPlace.Value.x < transform.position.x)
+            {
+                if (targetsDistance > investigateDistance)
+                {
+                    movement_H = -1;
+                }
+                else
+                {
+                    lastEnemyPlace = null;
+                }
+
+                if (isRight)
+                    Flip_H(false);
+            }
+        }
+
         bool isMoving = movement_H != 0;
         DoMove(movement_H);
         return isMoving;
@@ -113,10 +160,15 @@ public class NPC : Creature
     void Jump(bool isMoving)
     {
         if (OnGround)
-            if ((wallDetector.Detected && isMoving) ||
-                (target != null && target.Value.y - transform.position.y > PreferedWeaponFarBorder)
-                || isFlying)
+        {
+            if (isFlying ||
+                (wallDetector.Detected && isMoving) ||
+                (target != null && target.Value.y - transform.position.y > PreferedWeaponFarBorder) ||
+                (lastEnemyPlace != null && lastEnemyPlace.Value.y - transform.position.y > PreferedWeaponFarBorder))
+            {
                 DoJump();
+            }
+        }
     }
     void Attack()
     {
@@ -137,6 +189,8 @@ public class NPC : Creature
     protected override void OnHit(Hit hit)
     {
         base.OnHit(hit);
+
+
         if (hit.isRight == state.isRight)
         {
             Flip_H(!hit.isRight);
@@ -145,6 +199,7 @@ public class NPC : Creature
         if (target == null)
         {
             creatureSight.right = hit.hitDirection;
+            lastEnemyPlace = isRight ? hit.hitDirection * investigateDistance : -hit.hitDirection * investigateDistance;
         }
     }
 
