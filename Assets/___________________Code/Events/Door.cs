@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 public class Door : EventActivation
 {
+    public string[] OpenEvents;
+    public string[] CloseEvents;
+    protected override string[] ActivationEvents => OpenEvents.Concat(CloseEvents).ToArray();
     public bool open = false;
     [Space]
     [Space]
@@ -26,18 +30,20 @@ public class Door : EventActivation
         SetIsOpen(open);
     }
 
-    protected override void Activate()
+    protected override void Activate(string eventTag)
     {
-        if (open == true) return;
-        SetIsOpen(true);
-        PlayAudio(addon_openSound);
-    }
-
-    protected override void Deactivate()
-    {
-        if (open == false) return;
-        SetIsOpen(false);
-        PlayAudio(addon_closeSound);
+        if (OpenEvents.Contains(eventTag))
+        {
+            if (open == true) return;
+            SetIsOpen(true);
+            PlayAudio(addon_openSound);
+        }
+        if (CloseEvents.Contains(eventTag))
+        {
+            if (open == false) return;
+            SetIsOpen(false);
+            PlayAudio(addon_closeSound);
+        }
     }
 
     void SetIsOpen(bool value)

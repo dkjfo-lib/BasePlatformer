@@ -6,35 +6,33 @@ using UnityEngine;
 public abstract class EventActivation : Base
 {
     public Pipe_Events pipe_Events;
-    [Space]
-    public string activationTag = "404";
 
-    int GlobalCount => pipe_Events.GetEventCount(activationTag);
-    int localCount;
+    protected abstract string[] ActivationEvents { get; }
+    int GlobalCount(string eventTag) => pipe_Events.GetEventCount(eventTag);
 
     protected override void Init()
     {
-        if (activationTag == "404") Debug.LogWarning("Tag: 404", gameObject);
-        localCount = GlobalCount;
         OnInit();
-        StartCoroutine(WaitForEvent());
+        string[] activationTags = ActivationEvents;
+        if (activationTags.Length == 0) Debug.LogWarning("Empty event tags", gameObject);
+        foreach (var eventTag in activationTags)
+        {
+            StartCoroutine(WaitForEvent(eventTag));
+        }
     }
 
     protected virtual void OnInit() { }
 
-    IEnumerator WaitForEvent()
+    IEnumerator WaitForEvent(string eventTag)
     {
+        int localCount = GlobalCount(eventTag);
         while (true)
         {
-            yield return new WaitUntil(() => localCount != GlobalCount);
-            if (GlobalCount > localCount)
-                Activate();
-            if (GlobalCount < localCount)
-                Deactivate();
-            localCount = GlobalCount;
+            yield return new WaitUntil(() => localCount != GlobalCount(eventTag));
+            Activate(eventTag);
+            localCount = GlobalCount(eventTag);
         }
     }
 
-    protected abstract void Activate();
-    protected abstract void Deactivate();
+    protected abstract void Activate(string eventTag);
 }
