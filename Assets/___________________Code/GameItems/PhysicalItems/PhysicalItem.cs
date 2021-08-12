@@ -145,7 +145,7 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem, IHi
     protected virtual void OnHit(Hit hit) { }
     protected virtual void OnDeath(Hit hit) { }
 
-    protected void UpdateGUI(bool isDisplayed)
+    public void UpdateGUI(bool isDisplayed)
     {
         addon_CharacterGUI?.UpdateUI(state, isDisplayed);
     }
