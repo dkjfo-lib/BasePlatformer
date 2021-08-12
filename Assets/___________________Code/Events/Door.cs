@@ -5,11 +5,11 @@ using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class Door : EventActivation
+public class Door : EventReceiver
 {
     public string[] OpenEvents;
     public string[] CloseEvents;
-    protected override string[] ActivationEvents => OpenEvents.Concat(CloseEvents).ToArray();
+    protected override string[] ReceivedEvents => OpenEvents.Concat(CloseEvents).ToArray();
     public bool open = false;
     [Space]
     [Space]
@@ -30,7 +30,7 @@ public class Door : EventActivation
         SetIsOpen(open);
     }
 
-    protected override void Activate(string eventTag)
+    protected override void OnEvent(string eventTag)
     {
         if (OpenEvents.Contains(eventTag))
         {

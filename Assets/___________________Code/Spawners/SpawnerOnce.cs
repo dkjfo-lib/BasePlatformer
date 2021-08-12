@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnerOnce : MonoBehaviour
 {
     public Creature[] spawnVariants;
+    public Pod[] pods;
     public Vector2 forceRangeX = new Vector2(-1000, 1000);
     public Vector2 forceRangeY = new Vector2(500, 1000);
     [Space]
@@ -26,13 +27,26 @@ public class SpawnerOnce : MonoBehaviour
 
     IEnumerator SpawnItem()
     {
-        var chosenPrefab = spawnVariants[Random.Range(0, spawnVariants.Length)];
-        var newItem = Instantiate(chosenPrefab, transform.position, Quaternion.identity);
-        var force = new Vector2(Random.Range(forceRangeX.x, forceRangeX.y), Random.Range(forceRangeY.x, forceRangeY.y));
-        newItem.state.isRight = force.x > 0;
+        if (spawnVariants.Length == 0)
+        {
+            var chosenPrefab = pods[Random.Range(0, spawnVariants.Length)];
+            var newItem = Instantiate(chosenPrefab, transform.position, Quaternion.identity);
+            var force = new Vector2(Random.Range(forceRangeX.x, forceRangeX.y), Random.Range(forceRangeY.x, forceRangeY.y));
+            newItem.state.isRight = force.x > 0;
 
-        yield return new WaitUntil(() => newItem.inited);
-        newItem.Inertia += force;
+            yield return new WaitUntil(() => newItem.inited);
+            newItem.Inertia += force;
+        }
+        else
+        {
+            var chosenPrefab = spawnVariants[Random.Range(0, spawnVariants.Length)];
+            var newItem = Instantiate(chosenPrefab, transform.position, Quaternion.identity);
+            var force = new Vector2(Random.Range(forceRangeX.x, forceRangeX.y), Random.Range(forceRangeY.x, forceRangeY.y));
+            newItem.state.isRight = force.x > 0;
+
+            yield return new WaitUntil(() => newItem.inited);
+            newItem.Inertia += force;
+        }
 
         if (isOneUse)
         {

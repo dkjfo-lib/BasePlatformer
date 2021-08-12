@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class EventConverter : EventActivation
+public class EventConverter : EventReceiver
 {
     public EventToEvent[] eventToEvents;
-    protected override string[] ActivationEvents => eventToEvents.Select(s => s.eventTagOriginal).ToArray();
+    protected override string[] ReceivedEvents => eventToEvents.Select(s => s.eventTagOriginal).ToArray();
 
-    protected override void Activate(string eventTag)
+    protected override void OnEvent(string eventTag)
     {
         pipe_Events.AddEvent(eventToEvents.First(s => s.eventTagOriginal == eventTag).eventTagResult);
     }
