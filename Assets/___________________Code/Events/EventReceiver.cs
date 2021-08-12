@@ -7,13 +7,13 @@ public abstract class EventReceiver : Base
 {
     public Pipe_Events pipe_Events;
 
-    protected abstract string[] ReceivedEvents { get; }
+    protected abstract IEnumerable<string> ReceivedEvents { get; }
     int GlobalCount(string eventTag) => pipe_Events.GetEventCount(eventTag);
 
     protected override void Init()
     {
         OnInit();
-        string[] activationTags = ReceivedEvents;
+        string[] activationTags = ReceivedEvents.ToArray();
         if (activationTags.Length == 0) Debug.LogWarning("Empty event tags", gameObject);
         foreach (var eventTag in activationTags)
         {

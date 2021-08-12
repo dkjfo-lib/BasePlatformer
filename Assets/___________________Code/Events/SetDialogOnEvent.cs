@@ -7,7 +7,7 @@ using UnityEngine;
 public class SetDialogOnEvent : EventReceiver
 {
     public DialogEvent[] dialogsEvents;
-    protected override string[] ReceivedEvents => dialogsEvents.Select(s => s.eventTag).ToArray();
+    protected override IEnumerable<string> ReceivedEvents => dialogsEvents.Select(s => s.eventTag);
 
     InteractableDialog interactableDialog;
 

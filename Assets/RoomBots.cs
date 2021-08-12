@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class RoomBots : MonoBehaviour
+public class RoomBots : EventReceiver
 {
     public Faction[] monitoringFactions;
     [Space]
@@ -11,35 +11,24 @@ public class RoomBots : MonoBehaviour
 
     public IEnumerable<NPC> Bots => allNPCs.Where(s => s != null);
 
-    private void Start()
+    protected override IEnumerable<string> ReceivedEvents => monitoringFactions.Select(s => (int)s + "EnemyDetected");
+
+    protected override void OnEvent(string eventTag)
     {
         foreach (var faction in monitoringFactions)
         {
-            StartCoroutine(MonitorBotsOfFaction(faction));
-        }
-    }
-
-    IEnumerator MonitorBotsOfFaction(Faction faction)
-    {
-        NPC[] botsOfFaction;
-        NPC[] botsWithEnemy;
-
-        while (true)
-        {
-            do
+            if (eventTag.StartsWith(((int)faction).ToString()))
             {
-                yield return new WaitForSeconds(.5f);
-                botsOfFaction = Bots.Where(s => s.state.alignment.faction == faction).Select(s => s).ToArray();
-                botsWithEnemy = botsOfFaction.Where(s => s.target.HasValue).Select(s => s).ToArray();
-            } while (botsWithEnemy.Length == 0);
+                var botsOfFaction = Bots.Where(s => s.state.alignment.faction == faction).Select(s => s).ToArray();
+                var botsWithEnemy = botsOfFaction.Where(s => s.target.HasValue).Select(s => s).ToArray();
 
-            var commandingBot = botsWithEnemy[Random.Range(0, botsWithEnemy.Length)];
-            var botsWithoutEnemy = botsOfFaction.Where(s => !s.target.HasValue).Select(s => s).ToArray();
-            foreach (var bot in botsWithoutEnemy)
-            {
-                bot.lastEnemyPlace = commandingBot.target;
+                var commandingBot = botsWithEnemy[Random.Range(0, botsWithEnemy.Length)];
+                var botsWithoutEnemy = botsOfFaction.Where(s => !s.target.HasValue).Select(s => s).ToArray();
+                foreach (var bot in botsWithoutEnemy)
+                {
+                    bot.lastEnemyPlace = commandingBot.target;
+                }
             }
-            yield return new WaitForSeconds(2f);
         }
     }
 

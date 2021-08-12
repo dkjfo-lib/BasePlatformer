@@ -6,7 +6,7 @@ using UnityEngine;
 public class EventConverter : EventReceiver
 {
     public EventToEvent[] eventToEvents;
-    protected override string[] ReceivedEvents => eventToEvents.Select(s => s.eventTagOriginal).ToArray();
+    protected override IEnumerable<string> ReceivedEvents => eventToEvents.Select(s => s.eventTagOriginal);
 
     protected override void OnEvent(string eventTag)
     {

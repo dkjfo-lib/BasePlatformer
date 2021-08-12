@@ -7,6 +7,7 @@ public class NPC : Creature
 {
     public DetectGround wallDetector;
     public bool isFlying = false;
+    public Pipe_Events pipe_Events;
 
     // Weapon Stuff
     private Limb PreferedLimb => limbs.FirstOrDefault();
@@ -47,6 +48,7 @@ public class NPC : Creature
 
     void HandleEnemySight()
     {
+        bool wasNoEnemy = target == null;
         var enemiesCenters = creaturesInSight.Select<Creature, Vector3?>(s =>
         {
             if (s.state.IsDead) return null;
@@ -67,6 +69,11 @@ public class NPC : Creature
             return null;
         }).Where(s => s.HasValue).Select(s => s.Value);
         target = GetClosest(enemiesCenters);
+
+        if (target != null && wasNoEnemy)
+        {
+            pipe_Events.AddEvent((int)Faction + "EnemyDetected");
+        }
 
         if (target != null)
         {

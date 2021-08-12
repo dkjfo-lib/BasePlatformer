@@ -9,7 +9,7 @@ public class ActivateButton : EventReceiver
     public string[] deactivationEvents;
     Collider2D collider;
 
-    protected override string[] ReceivedEvents => activationEvents.Concat(deactivationEvents).ToArray();
+    protected override IEnumerable<string> ReceivedEvents => activationEvents.Concat(deactivationEvents);
 
     protected override void GetComponents()
     {

@@ -8,7 +8,7 @@ public class SpawnOnEvent : EventReceiver
     public string[] SpawnOnEvents;
     public string[] LockOnEvents;
     public string[] UnLockOnEvents;
-    protected override string[] ReceivedEvents => SpawnOnEvents.Concat(LockOnEvents).Concat(UnLockOnEvents).ToArray();
+    protected override IEnumerable<string> ReceivedEvents => SpawnOnEvents.Concat(LockOnEvents).Concat(UnLockOnEvents);
     public bool isLocked = false;
 
     SpawnerOnce[] spawners;
