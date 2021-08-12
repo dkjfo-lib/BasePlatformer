@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Pipe_Dialog: {fileID: 11400000, guid: ed2794ef57af51d42aaaa8f9845b4b6c, type: 2}
   Pipe_Events: {fileID: 11400000, guid: f39ff9213d6aaae43aa1f87b4c760732, type: 2}
-  myDialog: {fileID: 11400000, guid: ca009b308d8104a4fa956810b005a54c, type: 2}
-  firstTime: 1
+  myDialog: {fileID: 11400000, guid: 5b65038fefa89b8429fc572b9698428b, type: 2}
 --- !u!114 &1716397986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31,11 +30,11 @@ MonoBehaviour:
   soundsPipe: {fileID: 0}
   pipe_Events: {fileID: 11400000, guid: f39ff9213d6aaae43aa1f87b4c760732, type: 2}
   dialogsEvents:
-  - dialogSequence: {fileID: 11400000, guid: f966bcc91c354f240aa019fe57fa5641, type: 2}
+  - dialog: {fileID: 11400000, guid: 862536af22820464ca1a3092cf3d1025, type: 2}
     eventTag: V1 Defeat
-  - dialogSequence: {fileID: 11400000, guid: 418afde6aaaf27d43a57ff11c82c1815, type: 2}
+  - dialog: {fileID: 11400000, guid: e1849d60a10edb1409267b565fd2903c, type: 2}
     eventTag: V1 Victory
-  - dialogSequence: {fileID: 11400000, guid: b27ff61efb8009e44bb818d24cb3c552, type: 2}
+  - dialog: {fileID: 11400000, guid: 358c14b25716cf549b7d83a5d475c1b5, type: 2}
     eventTag: ResetTalky
 --- !u!1001 &4930562611399015669
 PrefabInstance:

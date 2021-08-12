@@ -7,28 +7,22 @@ public class InteractableDialog : MonoBehaviour, IInetractable
     public Pipe_Dialog Pipe_Dialog;
     public Pipe_Events Pipe_Events;
     [Space]
-    public DialogSequence myDialog;
-    public bool firstTime = true;
+    public Dialog myDialog;
 
     public void Inetract(InetractionParams values)
     {
-        Dialog displayDialog = firstTime ?
-            myDialog.firstTimeDialog :
-            myDialog.GetLaterDialog();
-        if (displayDialog != null)
+        if (myDialog != null)
         {
-            firstTime = false;
-            Pipe_Dialog.SetDialog(displayDialog);
-            foreach (var tag in displayDialog.emittingTags)
+            Pipe_Dialog.SetDialog(myDialog);
+            foreach (var tag in myDialog.emittingTags)
             {
                 tag.Emit(Pipe_Events);
             }
         }
     }
 
-    public void SetDialog(DialogSequence dialogSequence)
+    public void SetDialog(Dialog dialogSequence)
     {
         myDialog = dialogSequence;
-        firstTime = true;
     }
 }

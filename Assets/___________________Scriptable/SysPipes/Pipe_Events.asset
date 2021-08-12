@@ -13,5 +13,21 @@ MonoBehaviour:
   m_Name: Pipe_Events
   m_EditorClassIdentifier: 
   events:
-  - tag: D1
-    count: 41
+  - tag: ResetTalky
+    count: 18
+  - tag: D1 Open
+    count: 16
+  - tag: D1 Close
+    count: 36
+  - tag: ClearRoom
+    count: 40
+  - tag: V1 Start
+    count: 36
+  - tag: Player Die
+    count: 10
+  - tag: V1 Defeat
+    count: 10
+  - tag: V1 Victory
+    count: 5
+  - tag: 3EnemyDetected
+    count: 215

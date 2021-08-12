@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(InteractableDialog))]
 public class SetDialogOnEvent : EventReceiver
 {
-    public DialogEvent[] dialogsEvents;
+    public DialogOnEvent[] dialogsEvents;
     protected override IEnumerable<string> ReceivedEvents => dialogsEvents.Select(s => s.eventTag);
 
     InteractableDialog interactableDialog;
@@ -18,13 +18,13 @@ public class SetDialogOnEvent : EventReceiver
 
     protected override void OnEvent(string eventTag)
     {
-        interactableDialog.SetDialog(dialogsEvents.First(s => s.eventTag == eventTag).dialogSequence);
+        interactableDialog.SetDialog(dialogsEvents.First(s => s.eventTag == eventTag).dialog);
     }
 }
 
 [System.Serializable]
-public struct DialogEvent
+public struct DialogOnEvent
 {
-    public DialogSequence dialogSequence;
+    public Dialog dialog;
     public string eventTag;
 }
