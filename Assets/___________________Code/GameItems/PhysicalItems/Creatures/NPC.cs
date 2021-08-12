@@ -142,7 +142,7 @@ public class NPC : Creature
                 if (!isRight)
                     Flip_H(true);
             }
-            if (lastEnemyPlace.Value.x < transform.position.x)
+            else if (lastEnemyPlace.Value.x < transform.position.x)
             {
                 if (targetsDistance > investigateDistance)
                 {
@@ -203,7 +203,9 @@ public class NPC : Creature
         if (target == null)
         {
             creatureSight.right = hit.hitDirection;
-            lastEnemyPlace = isRight ? hit.hitDirection * investigateDistance : -hit.hitDirection * investigateDistance;
+            lastEnemyPlace = isRight ?
+                (Vector2)transform.position + hit.hitDirection * investigateDistance :
+                (Vector2)transform.position - hit.hitDirection * investigateDistance;
         }
     }
 

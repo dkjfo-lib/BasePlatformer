@@ -9,7 +9,7 @@ using UnityEngine;
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CapsuleCollider2D))]
-public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem, IHittable
+public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem, IHittable, IPhisical
     where TStats : StatsBase<TSounds>
     where TState : StateItem
     where TSounds : SoundsPhysicalItem
@@ -180,4 +180,10 @@ public abstract class PhysicalItem<TStats, TSounds, TState> : GraphicalItem, IHi
     {
         detectGroundLayer.OnGizmos(transform.position, isRight);
     }
+}
+
+public interface IPhisical
+{
+    Vector2 Velocity { get; set; }
+    Vector2 Inertia { get; set; }
 }

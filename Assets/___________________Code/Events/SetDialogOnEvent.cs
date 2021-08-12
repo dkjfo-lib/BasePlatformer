@@ -4,10 +4,10 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(InteractableDialog))]
-public class SetDialogOnEvent : EventActivation
+public class SetDialogOnEvent : EventReceiver
 {
     public DialogEvent[] dialogsEvents;
-    protected override string[] ActivationEvents => dialogsEvents.Select(s => s.eventTag).ToArray();
+    protected override string[] ReceivedEvents => dialogsEvents.Select(s => s.eventTag).ToArray();
 
     InteractableDialog interactableDialog;
 
@@ -16,7 +16,7 @@ public class SetDialogOnEvent : EventActivation
         interactableDialog = GetComponent<InteractableDialog>();
     }
 
-    protected override void Activate(string eventTag)
+    protected override void OnEvent(string eventTag)
     {
         interactableDialog.SetDialog(dialogsEvents.First(s => s.eventTag == eventTag).dialogSequence);
     }

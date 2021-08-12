@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class SpawnOnEvent : EventActivation
+public class SpawnOnEvent : EventReceiver
 {
     public string[] SpawnOnEvents;
     public string[] LockOnEvents;
     public string[] UnLockOnEvents;
-    protected override string[] ActivationEvents => SpawnOnEvents.Concat(LockOnEvents).Concat(UnLockOnEvents).ToArray();
+    protected override string[] ReceivedEvents => SpawnOnEvents.Concat(LockOnEvents).Concat(UnLockOnEvents).ToArray();
     public bool isLocked = false;
 
     SpawnerOnce[] spawners;
@@ -18,7 +18,7 @@ public class SpawnOnEvent : EventActivation
         spawners = GetComponentsInChildren<SpawnerOnce>();
     }
 
-    protected override void Activate(string eventTag)
+    protected override void OnEvent(string eventTag)
     {
         if (!isLocked && SpawnOnEvents.Contains(eventTag))
             foreach (var spawn in spawners)
