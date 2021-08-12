@@ -15,6 +15,6 @@ public class ReplicaBase
 {
     public Picture authorImage;
     public Line authorName;
-    [TextArea]
+    [TextArea(4, 10)]
     public string sentence;
 }
