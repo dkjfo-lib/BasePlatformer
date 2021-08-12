@@ -9,7 +9,7 @@ public class RoomEnemiesMonitor : EventReceiver
     [Space]
     public string[] StartListenEvents;
     public string[] ClearRoomEvents;
-    protected override string[] ReceivedEvents => StartListenEvents.Concat(ClearRoomEvents).ToArray();
+    protected override IEnumerable<string> ReceivedEvents => StartListenEvents.Concat(ClearRoomEvents);
     [Space]
     public TagEmitting[] onRoomSuccessfullyCleanEvents;
     [Space]

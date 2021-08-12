@@ -9,7 +9,7 @@ public class Door : EventReceiver
 {
     public string[] OpenEvents;
     public string[] CloseEvents;
-    protected override string[] ReceivedEvents => OpenEvents.Concat(CloseEvents).ToArray();
+    protected override IEnumerable<string> ReceivedEvents => OpenEvents.Concat(CloseEvents);
     public bool open = false;
     [Space]
     [Space]
