@@ -15,6 +15,7 @@ MonoBehaviour:
   emittingTags:
   - eventTag: ResetTalky
   - eventTag: D1 Open
+  - eventTag: MusicNormal
   replicas:
   - authorImage: {fileID: 11400000, guid: c70944489c4ba2e47b01caf977f929b6, type: 2}
     authorName: {fileID: 11400000, guid: 295f47e7409b7de4c9726193ce3a3de5, type: 2}

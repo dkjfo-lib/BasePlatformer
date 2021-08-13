@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e95b1df63a6a1641bf2c29c6da25b02, type: 3}
-  m_Name: Music normal
+  m_Name: Music fight
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: 4bc0887a6731dd945980ce3fd6542c87, type: 3}
-  - {fileID: 8300000, guid: e49ef4db7d488254e863d8ead82a3447, type: 3}
+  - {fileID: 8300000, guid: a61d67903b9287c48853fc8ddbc60d08, type: 3}
+  - {fileID: 8300000, guid: 6a6f47510fd648644b7404824cfb8016, type: 3}

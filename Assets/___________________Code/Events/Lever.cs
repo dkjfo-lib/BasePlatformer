@@ -60,6 +60,6 @@ public class TagEmitting
 
     public void Emit(Pipe_Events pipe_Events)
     {
-        pipe_Events.AddEvent(eventTag);
+        pipe_Events.SendEvent(eventTag);
     }
 }

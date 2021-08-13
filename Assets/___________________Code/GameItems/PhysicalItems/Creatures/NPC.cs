@@ -72,7 +72,7 @@ public class NPC : Creature
 
         if (target != null && wasNoEnemy)
         {
-            pipe_Events.AddEvent((int)Faction + "EnemyDetected");
+            pipe_Events.SendEvent((int)Faction + "EnemyDetected");
         }
 
         if (target != null)

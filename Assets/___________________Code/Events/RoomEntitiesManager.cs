@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class RoomEnemiesMonitor : EventReceiver
+public class RoomEntitiesManager : EventReceiver
 {
     public FactionAlignment playerAlignment;
     [Space]
@@ -17,27 +17,28 @@ public class RoomEnemiesMonitor : EventReceiver
     public List<Pod> allPods;
     public bool isLookingForBots;
 
-    public IEnumerable<NPC> EnemyNPCs => allBots.Where(s => s != null && playerAlignment.IsEnemy(s.state.alignment.faction));
+    public IEnumerable<NPC> EnemyBots => allBots.Where(s => s != null && !s.state.IsDead && playerAlignment.IsEnemy(s.state.alignment.faction));
     public IEnumerable<Pod> Pods => allPods.Where(s => s != null);
 
 
     protected override void OnEvent(string eventTag)
     {
         if (StartListenEvents.Contains(eventTag)) StartLookingForNPCs();
-        if (ClearRoomEvents.Contains(eventTag)) ClearRoom();
+        if (ClearRoomEvents.Contains(eventTag)) StartCoroutine(ClearRoom());
     }
 
     void StartLookingForNPCs()
     {
         if (!isLookingForBots)
         {
+            isLookingForBots = true;
             StartCoroutine(LookForNPCs());
         }
     }
-    void ClearRoom()
+    IEnumerator ClearRoom()
     {
         isLookingForBots = false;
-        foreach (var npc in EnemyNPCs)
+        foreach (var npc in EnemyBots)
         {
             npc.GetHit(new Hit
             {
@@ -61,14 +62,16 @@ public class RoomEnemiesMonitor : EventReceiver
                 isRight = false
             });
         }
+        yield return new WaitForSeconds(.1f);
+        allPods = allPods.Where(s => s != null).ToList();
+        allBots = allBots.Where(s => s != null).ToList();
     }
 
     IEnumerator LookForNPCs()
     {
-        isLookingForBots = true;
-        yield return new WaitUntil(() => EnemyNPCs.Count() > 0);
+        yield return new WaitUntil(() => EnemyBots.Count() > 0);
 
-        yield return new WaitUntil(() => !isLookingForBots || EnemyNPCs.All(s => s.state.IsDead));
+        yield return new WaitUntil(() => !isLookingForBots || EnemyBots.All(s => s.state.IsDead));
         if (isLookingForBots)
         {
             foreach (var tag in onRoomSuccessfullyCleanEvents)

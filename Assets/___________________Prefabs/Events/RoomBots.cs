@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(RoomEntitiesManager))]
 public class RoomBots : EventReceiver
 {
     public Faction[] monitoringFactions;
-    [Space]
-    public List<NPC> allNPCs;
 
-    public IEnumerable<NPC> Bots => allNPCs.Where(s => s != null);
-
+    public IEnumerable<NPC> Bots => entitiesManager.allBots.Where(s => s != null && !s.state.IsDead);
     protected override IEnumerable<string> ReceivedEvents => monitoringFactions.Select(s => (int)s + "EnemyDetected");
+    
+    RoomEntitiesManager entitiesManager;
+
+    protected override void GetComponents()
+    {
+        base.GetComponents();
+        entitiesManager = GetComponent<RoomEntitiesManager>();
+    }
 
     protected override void OnEvent(string eventTag)
     {
@@ -30,13 +36,5 @@ public class RoomBots : EventReceiver
                 }
             }
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        var newNPC = collision.gameObject.GetComponent<NPC>();
-        if (newNPC == null) return;
-
-        allNPCs.Add(newNPC);
     }
 }
