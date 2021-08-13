@@ -45,12 +45,12 @@ public class Player : Creature
     void Move()
     {
         int movement_H = 0;
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             movement_H += 1;
             //if (!isRight) Flip_H(true);
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             movement_H -= 1;
             //if (isRight) Flip_H(false);
@@ -64,7 +64,7 @@ public class Player : Creature
     void Jump()
     {
         if (OnGround)
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space))
                 DoJump();
     }
 
