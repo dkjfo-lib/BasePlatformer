@@ -10,7 +10,7 @@ public class EventConverter : EventReceiver
 
     protected override void OnEvent(string eventTag)
     {
-        pipe_Events.AddEvent(eventToEvents.First(s => s.eventTagOriginal == eventTag).eventTagResult);
+        pipe_Events.SendEvent(eventToEvents.First(s => s.eventTagOriginal == eventTag).eventTagResult);
     }
 }
 

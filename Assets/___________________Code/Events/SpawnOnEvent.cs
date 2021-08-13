@@ -8,6 +8,7 @@ public class SpawnOnEvent : EventReceiver
     public string[] SpawnEvents;
     public string[] AddDangerPointsEvents;
     public string[] ReduceDangerPointsEvents;
+    public string[] EventsOnSpawnIsOver;
     protected override IEnumerable<string> ReceivedEvents => SpawnEvents.Concat(AddDangerPointsEvents).Concat(ReduceDangerPointsEvents);
     [Space]
     public int dangerPoints = 5;
@@ -46,6 +47,10 @@ public class SpawnOnEvent : EventReceiver
         {
             yield return new WaitForSeconds(Random.Range(.25f, 1.25f));
             SpawnVariant(variant);
+        }
+        foreach (var eventTag in EventsOnSpawnIsOver)
+        {
+            pipe_Events.SendEvent(eventTag);
         }
     }
 

@@ -99,7 +99,7 @@ public class Player : Creature
     {
         base.OnDeath(hit);
         respawn = true;
-        pipe_Events.AddEvent("Player Die");
+        pipe_Events.SendEvent("Player Die");
     }
     protected override void AddOnDrawGizmos()
     {

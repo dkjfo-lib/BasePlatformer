@@ -8,7 +8,7 @@ public class Pipe_Events : ScriptableObject
 {
     public List<EventData> events;
 
-    public void AddEvent(string eventTag)
+    public void SendEvent(string eventTag)
     {
         EventData data = events.FirstOrDefault((s) => s.tag == eventTag);
         if (data == null)
