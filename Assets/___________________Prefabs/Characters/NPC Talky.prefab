@@ -32,7 +32,7 @@ MonoBehaviour:
   dialogsEvents:
   - dialog: {fileID: 11400000, guid: 862536af22820464ca1a3092cf3d1025, type: 2}
     eventTag: V1 Defeat
-  - dialog: {fileID: 11400000, guid: e1849d60a10edb1409267b565fd2903c, type: 2}
+  - dialog: {fileID: 11400000, guid: f830340ecd56dd2449541fbf6c552974, type: 2}
     eventTag: V1 Victory
   - dialog: {fileID: 11400000, guid: 358c14b25716cf549b7d83a5d475c1b5, type: 2}
     eventTag: ResetTalky

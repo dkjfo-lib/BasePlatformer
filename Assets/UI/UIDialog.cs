@@ -42,7 +42,8 @@ public class UIDialog : MonoBehaviour
             yield return new WaitForEndOfFrame();
             yield return new WaitUntil(() =>
                 Time.unscaledTime - replicaShownAt > timeForReplica || 
-                Input.GetMouseButtonDown(0));
+                Input.GetMouseButtonDown(0) || 
+                Input.GetKeyDown(KeyCode.E));
         }
         Time.timeScale = 1;
         animator.SetBool("inDialog", false);
