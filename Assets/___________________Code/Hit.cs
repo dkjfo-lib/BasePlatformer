@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class Hit
 {
+    public static readonly Hit SelfDestroy = new Hit
+    {
+        damage = 9999,
+        attackerType = ObjectType.UNDEFINED,
+        force = 0,
+        hitDirection = Vector2.down,
+        hitPosition = Vector2.zero,
+        isRight = true
+    };
+
     public ObjectType attackerType;
     public int damage;
     public int force;

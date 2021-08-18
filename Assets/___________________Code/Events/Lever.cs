@@ -6,7 +6,10 @@ public class Lever : Base, IInetractable
 {
     public Pipe_Events pipe_Events;
     [Space]
-    public bool active = false;
+    [Tooltip("Trigger Levers are only activating and not deactivating ")]
+    public bool isTriggerLever = false;
+    public bool isActive = false;
+    [Space]
     public TagEmitting[] activationTags;
     public TagEmitting[] deactivationTags;
     [Space]
@@ -23,14 +26,14 @@ public class Lever : Base, IInetractable
     protected override void Init()
     {
         if (activationTags.Length == 0) Debug.LogWarning("Empty tags!", gameObject);
-        if (active) SendEvent(true);
+        if (isActive) SendEvent(true);
     }
 
     public void Inetract(InetractionParams values)
     {
-        active = !active;
+        isActive = !isActive || isTriggerLever;
         PlayAudio(addon_pressSound);
-        SendEvent(active);
+        SendEvent(isActive || isTriggerLever);
     }
 
     void SendEvent(bool value)

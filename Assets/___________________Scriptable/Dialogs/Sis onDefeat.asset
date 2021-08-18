@@ -15,7 +15,7 @@ MonoBehaviour:
   emittingTags:
   - eventTag: ResetTalky
   - eventTag: D1 Open
-  - eventTag: ClearRoom
+  - eventTag: V1 Defeat ResetRoom
   replicas:
   - authorImage: {fileID: 11400000, guid: d0481aa47164e984b8acb58401d59834, type: 2}
     authorName: {fileID: 11400000, guid: 048b1855705cfb5428c4195970ee9b14, type: 2}
