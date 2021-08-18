@@ -78,15 +78,7 @@ public class Projectile : PhysicalItem<StatsProjectile, SoundsWeapon, StateWeapo
 
     void KillSelf()
     {
-        GetHit(new Hit
-        {
-            damage = 99999,
-            force = 0,
-            attackerType = ObjectType.ITEM,
-            hitPosition = transform.position,
-            hitDirection = transform.right,
-            isRight = isRight
-        });
+        GetHit(Hit.SelfDestroy);
     }
 
     protected override void OnDeath(Hit hit)

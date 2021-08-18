@@ -13,6 +13,7 @@ public class SpawnOnEvent : EventReceiver
     [Space]
     public int dangerPoints = 5;
     public int dangerPointsChange = 3;
+    public Vector2Int dangerPointsLimits = new Vector2Int(1, 15);
     public VariantDangerPoints[] allVariants;
 
     SpawnerOnce[] spawners;
@@ -27,9 +28,19 @@ public class SpawnOnEvent : EventReceiver
         if (SpawnEvents.Contains(eventTag))
             StartCoroutine(SpawnWave());
         if (AddDangerPointsEvents.Contains(eventTag))
-            dangerPoints += dangerPointsChange;
+        {
+            if (dangerPoints + dangerPointsChange < dangerPointsLimits.y)
+                dangerPoints += dangerPointsChange;
+            else
+                dangerPoints = dangerPointsLimits.y;
+        }
         if (ReduceDangerPointsEvents.Contains(eventTag))
-            dangerPoints -= dangerPointsChange;
+        {
+            if (dangerPoints - dangerPointsChange > dangerPointsLimits.x)
+                dangerPoints -= dangerPointsChange;
+            else
+                dangerPoints = dangerPointsLimits.x;
+        }
     }
 
     IEnumerator SpawnWave()
@@ -67,5 +78,6 @@ public struct VariantDangerPoints
 {
     public NPC Bot;
     public Pod Pod;
+    public ConsumableItem Item;
     public int dangerPoints;
 }

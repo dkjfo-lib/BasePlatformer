@@ -40,27 +40,11 @@ public class RoomEntitiesManager : EventReceiver
         isLookingForBots = false;
         foreach (var npc in EnemyBots)
         {
-            npc.GetHit(new Hit
-            {
-                attackerType = ObjectType.ITEM_WEAPON,
-                damage = 9999,
-                force = 0,
-                hitDirection = Vector2.right,
-                hitPosition = Vector2.zero,
-                isRight = false
-            });
+            npc.GetHit(Hit.SelfDestroy);
         }
         foreach (var pod in Pods)
         {
-            pod.GetHit(new Hit
-            {
-                attackerType = ObjectType.ITEM_WEAPON,
-                damage = 9999,
-                force = 0,
-                hitDirection = Vector2.right,
-                hitPosition = Vector2.zero,
-                isRight = false
-            });
+            pod.GetHit(Hit.SelfDestroy);
         }
         yield return new WaitForSeconds(.1f);
         allPods = allPods.Where(s => s != null).ToList();

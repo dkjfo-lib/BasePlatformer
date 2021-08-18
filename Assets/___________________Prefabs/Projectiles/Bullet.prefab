@@ -61,7 +61,7 @@ MonoBehaviour:
     lastOverlapTime: -1
     usePlatforms: 0
   OnHitParticles: {fileID: 0}
-  OnDestroyParticles: {fileID: 0}
+  OnDestroyParticles: {fileID: 6251566355465235652, guid: d9b01077b67a06243a4125b35c2e6235, type: 3}
   attackerType: 6
   addonLiveParticles: {fileID: 379507912698277261}
   addonHitSound: {fileID: 0}

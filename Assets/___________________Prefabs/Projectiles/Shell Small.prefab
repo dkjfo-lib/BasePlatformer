@@ -60,7 +60,7 @@ MonoBehaviour:
     contacts: []
     lastOverlapTime: -1
     usePlatforms: 0
-  OnHitParticles: {fileID: 0}
+  OnHitParticles: {fileID: 6251566355465235652, guid: d9b01077b67a06243a4125b35c2e6235, type: 3}
   OnDestroyParticles: {fileID: 2583375143392473565, guid: dda7fee41b9c65e479bbbe31a52ac010, type: 3}
   attackerType: 6
   addonLiveParticles: {fileID: 379507912698277261}

@@ -33,11 +33,12 @@ public class Limb : GraphicalItem, ISlot
 
     private void Update()
     {
-        Vector2 aim = equipedWeapon.stats.attack is AttackStatsRange ?
-            FirePoint.position : transform.position;
+        Vector2 aimFrom = equipedWeapon.stats.attack is AttackStatsRange ?
+            isRight ? FirePoint.position - FirePoint.right * 10 : FirePoint.position + FirePoint.right * 10 :
+            isRight ? transform.position - transform.right * 10 : transform.position + transform.right * 10;
         transform.right = isRight ?
-            Father.LimbsDirection - aim :
-            aim - Father.LimbsDirection;
+            Father.LimbsDirection - aimFrom :
+            aimFrom - Father.LimbsDirection;
     }
 
     public void Equip(WeaponDescription newWeapon)
