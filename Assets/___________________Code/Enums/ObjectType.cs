@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
 
-public enum ObjectType 
-{
-    UNDEFINED,
+//public enum ObjectType 
+//{
+//    UNDEFINED,
 
-    UNIQUE_Player,
-    UNIQUE_Quest,
+//    UNIQUE_Player,
+//    UNIQUE_Quest,
 
-    NPC,
+//    NPC,
 
-    OBJECT,
+//    OBJECT,
 
-    ITEM,
-    ITEM_WEAPON,
-}
+//    ITEM,
+//    ITEM_WEAPON,
+//}

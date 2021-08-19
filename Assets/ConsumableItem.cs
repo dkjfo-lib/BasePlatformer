@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConsumableItem : PhysicalItem<StatsPhysicalItem, SoundsPhysicalItem, StateItem>, IInetractable
+public class ConsumableItem : PhysicalEntity<StatsPhysicalItem, SoundsPhysicalItem, StateItem>, IInetractable
 {
     [Space]
     public ConsumableType consumableItem;

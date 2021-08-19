@@ -27,27 +27,11 @@ public class SpawnerOnce : MonoBehaviour
     IEnumerator SpawnItem()
     {
         var chosenVariant = spawnVariants[Random.Range(0, spawnVariants.Length)];
-        if (chosenVariant.Pod != null)
+        if (chosenVariant.item != null)
         {
-            var newItem = Instantiate(chosenVariant.Pod, transform.position, Quaternion.identity);
+            var newItem = Instantiate(chosenVariant.item, transform.position, Quaternion.identity);
             var force = new Vector2(Random.Range(forceRangeX.x, forceRangeX.y), Random.Range(forceRangeY.x, forceRangeY.y));
-            newItem.state.isRight = force.x > 0;
-            yield return new WaitUntil(() => newItem.inited);
-            newItem.Inertia += force;
-        }
-        else if (chosenVariant.Bot != null)
-        {
-            var newItem = Instantiate(chosenVariant.Bot, transform.position, Quaternion.identity);
-            var force = new Vector2(Random.Range(forceRangeX.x, forceRangeX.y), Random.Range(forceRangeY.x, forceRangeY.y));
-            newItem.state.isRight = force.x > 0;
-            yield return new WaitUntil(() => newItem.inited);
-            newItem.Inertia += force;
-        }
-        else if (chosenVariant.Item != null)
-        {
-            var newItem = Instantiate(chosenVariant.Item, transform.position, Quaternion.identity);
-            var force = new Vector2(Random.Range(forceRangeX.x, forceRangeX.y), Random.Range(forceRangeY.x, forceRangeY.y));
-            newItem.state.isRight = force.x > 0;
+            newItem.isRight = force.x > 0;
             yield return new WaitUntil(() => newItem.inited);
             newItem.Inertia += force;
         }

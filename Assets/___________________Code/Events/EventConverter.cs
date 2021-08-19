@@ -10,7 +10,11 @@ public class EventConverter : EventReceiver
 
     protected override void OnEvent(string eventTag)
     {
-        pipe_Events.SendEvent(eventToEvents.First(s => s.eventTagOriginal == eventTag).eventTagResult);
+        var triggeredOrigin = eventToEvents.First(s => s.eventTagOriginal == eventTag);
+        foreach (var newEventTag in triggeredOrigin.eventTagResults)
+        {
+            pipe_Events.SendEvent(newEventTag);
+        }
     }
 }
 
@@ -18,5 +22,5 @@ public class EventConverter : EventReceiver
 public struct EventToEvent
 {
     public string eventTagOriginal;
-    public string eventTagResult;
+    public string[] eventTagResults;
 }

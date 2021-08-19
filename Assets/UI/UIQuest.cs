@@ -32,7 +32,7 @@ public class UIQuest : MonoBehaviour
     {
         if (questProgress != null && questProgress.notEmpty)
         {
-            textQuestName.text = questProgress.questDescription.questName;
+            textQuestName.text = questProgress.quest.questName;
             textStepDescription.text = questProgress.CurrentStepDescription;
         }
         else
