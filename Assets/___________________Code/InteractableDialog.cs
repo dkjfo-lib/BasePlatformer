@@ -14,9 +14,9 @@ public class InteractableDialog : MonoBehaviour, IInetractable
         if (myDialog != null)
         {
             Pipe_Dialog.SetDialog(myDialog);
-            foreach (var tag in myDialog.emittingTags)
+            foreach (var eventTag in myDialog.emittingTags)
             {
-                tag.Emit(Pipe_Events);
+                Pipe_Events.SendEvent(eventTag);
             }
         }
     }

@@ -27,12 +27,11 @@ public class AttackStatsMelee : AttackStatsBase
     }
     public override void OnTrigger(Limb limb, Collider2D collision)
     {
-        var target = collision.GetComponent<IHittable>();
+        var target = collision.GetComponent<PhysicalEntityBase>();
         if (BaseExt.ShouldHit(limb, target))
         {
             Vector2 returnForce = target.GetHit(new Hit
             {
-                attackerType = limb.Father.stats.entityType,
                 isRight = limb.Father.isRight,
                 damage = damage,
                 force = force,

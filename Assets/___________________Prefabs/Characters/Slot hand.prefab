@@ -75,14 +75,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 062234371002e294e9018c313eeabcb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundsPipe: {fileID: 11400000, guid: 49c7055d96e6a844d8e1e445464b45ca, type: 2}
+  pipe_SoundsPlay: {fileID: 11400000, guid: 49c7055d96e6a844d8e1e445464b45ca, type: 2}
   defaultWeapon:
     stats: {fileID: 0}
     state:
       health: 5
       isRight: 1
       alignment: {fileID: 0}
-  weapon:
+  equipedWeapon:
     stats: {fileID: 0}
     state:
       health: 5
@@ -229,8 +229,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.8}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.4375, y: 1.3125}
+    pivot: {x: 0.5, y: 0.14848062}
+    oldSize: {x: 0.4375, y: 1.4375}
     newSize: {x: 4, y: 4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

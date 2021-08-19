@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b8ed61619522e44aacd4bd57eab37f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundsPipe: {fileID: 11400000, guid: 49c7055d96e6a844d8e1e445464b45ca, type: 2}
+  pipe_SoundsPlay: {fileID: 11400000, guid: 49c7055d96e6a844d8e1e445464b45ca, type: 2}
   stats: {fileID: 11400000, guid: f75dec0f33048a0429de4ab8dba85a43, type: 2}
   state:
     health: 5
@@ -62,7 +62,6 @@ MonoBehaviour:
     usePlatforms: 0
   OnHitParticles: {fileID: 0}
   OnDestroyParticles: {fileID: 6251566355465235652, guid: d9b01077b67a06243a4125b35c2e6235, type: 3}
-  attackerType: 6
   addonLiveParticles: {fileID: 379507912698277261}
   addonHitSound: {fileID: 0}
 --- !u!50 &5397831979872414373
@@ -163,7 +162,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7040062817171129518}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1

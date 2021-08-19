@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05c3ceb7f37a904087b212bba84a377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundsPipe: {fileID: 11400000, guid: 49c7055d96e6a844d8e1e445464b45ca, type: 2}
+  pipe_SoundsPlay: {fileID: 11400000, guid: 49c7055d96e6a844d8e1e445464b45ca, type: 2}
   stats: {fileID: 11400000, guid: 7fc79d22464bd7445aa85ad7ad01677d, type: 2}
   state:
     health: 5

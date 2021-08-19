@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43e4f7f80e14f294686b80951e9c44a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundsPipe: {fileID: 11400000, guid: 49c7055d96e6a844d8e1e445464b45ca, type: 2}
+  pipe_SoundsPlay: {fileID: 11400000, guid: 49c7055d96e6a844d8e1e445464b45ca, type: 2}
   stats: {fileID: 0}
   state:
     health: 5
@@ -74,7 +74,10 @@ MonoBehaviour:
   isFlying: 0
   pipe_Events: {fileID: 11400000, guid: f39ff9213d6aaae43aa1f87b4c760732, type: 2}
   creatureSight: {fileID: 4363165890193392860}
-  investigateDistance: 3
+  seesTarget: 0
+  isLookingForTarget: 0
+  lastEnemyPosition: {x: 0, y: 0, z: 0}
+  investigateDistance: 10
 --- !u!95 &1845882391321316221
 Animator:
   serializedVersion: 3

@@ -1,17 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
 
-public enum SoundType
-{
-    UNDEFINED,
+//public enum SoundType
+//{
+//    UNDEFINED,
 
-    Step,
-    Voice,
-    HitSound,
-    WeaponSound,
+//    Step,
+//    Voice,
+//    HitSound,
+//    WeaponSound,
 
-    Spawnable,
+//    Spawnable,
 
-    Music
-}
+//    Music
+//}

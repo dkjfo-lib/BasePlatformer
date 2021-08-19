@@ -76,8 +76,6 @@ public class SpawnOnEvent : EventReceiver
 [System.Serializable]
 public struct VariantDangerPoints
 {
-    public NPC Bot;
-    public Pod Pod;
-    public ConsumableItem Item;
+    public PhysicalEntityBase item;
     public int dangerPoints;
 }

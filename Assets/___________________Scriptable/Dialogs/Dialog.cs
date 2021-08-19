@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewDialog", menuName = "Dialogs/Dialog")]
 public class Dialog : ScriptableObject
 {
-    public TagEmitting[] emittingTags;
+    public string[] emittingTags;
     [Space]
     public ReplicaBase[] replicas;
 }

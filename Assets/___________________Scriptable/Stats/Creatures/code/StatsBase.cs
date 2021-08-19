@@ -10,7 +10,6 @@ public interface IAudioStats<TSounds> where TSounds : SoundsPhysicalItem
 public abstract class StatsBase<TSounds> : ScriptableObject 
     where TSounds : SoundsPhysicalItem
 {
-    public ObjectType entityType = ObjectType.UNDEFINED;
     public int maxHealth = 10;
     public int Armour = 0;
     [Space]

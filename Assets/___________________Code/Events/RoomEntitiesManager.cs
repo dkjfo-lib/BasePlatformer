@@ -7,11 +7,11 @@ public class RoomEntitiesManager : EventReceiver
 {
     public FactionAlignment playerAlignment;
     [Space]
-    public string[] StartListenEvents;
-    public string[] ClearRoomEvents;
-    protected override IEnumerable<string> ReceivedEvents => StartListenEvents.Concat(ClearRoomEvents);
+    public string[] StartListeningOnEvents;
+    public string[] ClearRoomOnEvents;
+    protected override IEnumerable<string> ReceivedEvents => StartListeningOnEvents.Concat(ClearRoomOnEvents);
     [Space]
-    public TagEmitting[] onRoomSuccessfullyCleanEvents;
+    public string[] onRoomSuccessfullyCleanEvents;
     [Space]
     public List<NPC> allBots;
     public List<Pod> allPods;
@@ -23,8 +23,8 @@ public class RoomEntitiesManager : EventReceiver
 
     protected override void OnEvent(string eventTag)
     {
-        if (StartListenEvents.Contains(eventTag)) StartLookingForNPCs();
-        if (ClearRoomEvents.Contains(eventTag)) StartCoroutine(ClearRoom());
+        if (StartListeningOnEvents.Contains(eventTag)) StartLookingForNPCs();
+        if (ClearRoomOnEvents.Contains(eventTag)) StartCoroutine(ClearRoom());
     }
 
     void StartLookingForNPCs()
@@ -58,9 +58,9 @@ public class RoomEntitiesManager : EventReceiver
         yield return new WaitUntil(() => !isLookingForBots || EnemyBots.All(s => s.state.IsDead));
         if (isLookingForBots)
         {
-            foreach (var tag in onRoomSuccessfullyCleanEvents)
+            foreach (var eventTag in onRoomSuccessfullyCleanEvents)
             {
-                tag.Emit(pipe_Events);
+                pipe_Events.SendEvent(eventTag);
             }
             isLookingForBots = false;
         }

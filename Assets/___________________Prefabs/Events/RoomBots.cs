@@ -26,13 +26,15 @@ public class RoomBots : EventReceiver
             if (eventTag.StartsWith(((int)faction).ToString()))
             {
                 var botsOfFaction = Bots.Where(s => s.state.alignment.faction == faction).Select(s => s).ToArray();
-                var botsWithEnemy = botsOfFaction.Where(s => s.target.HasValue).Select(s => s).ToArray();
+                var botsWithEnemy = botsOfFaction.Where(s => s.seesTarget).Select(s => s).ToArray();
+                if (botsWithEnemy.Length == 0) return;
 
                 var commandingBot = botsWithEnemy[Random.Range(0, botsWithEnemy.Length)];
-                var botsWithoutEnemy = botsOfFaction.Where(s => !s.target.HasValue).Select(s => s).ToArray();
+                var botsWithoutEnemy = botsOfFaction.Where(s => !s.seesTarget).Select(s => s).ToArray();
                 foreach (var bot in botsWithoutEnemy)
                 {
-                    bot.lastEnemyPlace = commandingBot.target;
+                    bot.lastEnemyPosition = commandingBot.lastEnemyPosition;
+                    bot.isLookingForTarget = true;
                 }
             }
         }
