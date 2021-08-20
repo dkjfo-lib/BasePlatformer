@@ -27,7 +27,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c4ff855997cb5488b5e430bf76c593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundsPipe: {fileID: 0}
   pipe_Events: {fileID: 11400000, guid: f39ff9213d6aaae43aa1f87b4c760732, type: 2}
   dialogsEvents:
   - dialog: {fileID: 11400000, guid: 862536af22820464ca1a3092cf3d1025, type: 2}
@@ -44,9 +43,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1481546093178352635, guid: 8cfcedeae4512f94ebe7809cebc6a7bf, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481546093178352635, guid: 8cfcedeae4512f94ebe7809cebc6a7bf, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481546093178352635, guid: 8cfcedeae4512f94ebe7809cebc6a7bf, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -6132651216035639224, guid: 69a9b83e48bd93f42bae3bd7b36425b9, type: 3}
+      objectReference: {fileID: -2047801095409271930, guid: 4d82087fc838fb74b97516a6dbdaaf15, type: 3}
     - target: {fileID: 7592717615529380124, guid: 8cfcedeae4512f94ebe7809cebc6a7bf, type: 3}
       propertyPath: defaultWeapon.stats
       value: 

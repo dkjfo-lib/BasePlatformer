@@ -77,7 +77,8 @@ MonoBehaviour:
   seesTarget: 0
   isLookingForTarget: 0
   lastEnemyPosition: {x: 0, y: 0, z: 0}
-  investigateDistance: 10
+  investigatedDistance: 2
+  OnHitDistance: 10
 --- !u!95 &1845882391321316221
 Animator:
   serializedVersion: 3
@@ -357,7 +358,7 @@ SpriteRenderer:
   m_SortingLayerID: 1246926345
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8267515312625950684, guid: 69a9b83e48bd93f42bae3bd7b36425b9, type: 3}
+  m_Sprite: {fileID: -4661478017058703725, guid: 4d82087fc838fb74b97516a6dbdaaf15, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
