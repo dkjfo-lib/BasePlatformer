@@ -12,7 +12,7 @@ public class BodyPart : MonoBehaviour, ISlot
         SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void OnDeath()
+    public void OnHostDeath()
     {
         SpriteRenderer.enabled = false;
     }

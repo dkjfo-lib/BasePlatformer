@@ -45,7 +45,8 @@ MonoBehaviour:
   armorModifier: 1
   damageOnDestroyed: 0.1
   ignoreArmorOnDeath: 0
-  disableSpriteOnDeath: 1
+  disableSpriteOnGettinKilled: 1
+  disableSpriteOnHostDeath: 0
 --- !u!61 &1559834745789346063
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -91,7 +92,8 @@ MonoBehaviour:
   armorModifier: 1
   damageOnDestroyed: 0.1
   ignoreArmorOnDeath: 0
-  disableSpriteOnDeath: 1
+  disableSpriteOnGettinKilled: 1
+  disableSpriteOnHostDeath: 0
 --- !u!1001 &794067220307608127
 PrefabInstance:
   m_ObjectHideFlags: 0

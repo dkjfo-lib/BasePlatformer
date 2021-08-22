@@ -12,7 +12,8 @@ public class HittableBodyPart : MonoBehaviour, ISlot, IHittable
     [Range(0, 1)] public float damageOnDestroyed = 0;
     public bool ignoreArmorOnDeath = true;
     [Space]
-    public bool disableSpriteOnDeath = true;
+    public bool disableSpriteOnGettinKilled = true;
+    public bool disableSpriteOnHostDeath = true;
 
     private int hp = 1;
     private int armor = 1;
@@ -45,19 +46,22 @@ public class HittableBodyPart : MonoBehaviour, ISlot, IHittable
         hp -= Mathf.Max(0, hit.damage - armor);
         if (hp < 0)
         {
-            OnDeath();
+            GetKilled();
         }
         return Father.GetHit(hit);
     }
 
-    public void OnDeath()
+    private void GetKilled()
     {
-        SpriteRenderer.enabled = !disableSpriteOnDeath;
-        Collider.enabled = false;
-
-        int destroyDamage = ignoreArmorOnDeath ? 
+        int destroyDamage = ignoreArmorOnDeath ?
             (int)(damageOnDestroyed * Father.state.health) + Father.stats.Armour :
             (int)(damageOnDestroyed * Father.state.health);
         Father.GetHit(new Hit(destroyDamage));
+        SpriteRenderer.enabled = !disableSpriteOnGettinKilled;
+    }
+
+    public void OnHostDeath()
+    {
+        SpriteRenderer.enabled = !disableSpriteOnHostDeath;
     }
 }

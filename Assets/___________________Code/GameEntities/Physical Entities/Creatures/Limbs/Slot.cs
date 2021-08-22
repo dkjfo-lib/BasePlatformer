@@ -81,7 +81,7 @@ public class Slot : SeeAndHearEntity, ISlot, ICanHit
         weaponStats.attack.OnTrigger(this, collision);
     }
 
-    public virtual void OnDeath()
+    public virtual void OnHostDeath()
     {
         SpriteRenderer.enabled = false;
     }

@@ -75,7 +75,7 @@ public abstract class Creature : PhysicalEntity<StatsCharacter, SoundsCharacter,
         gameObject.layer = corpseLayer;
         foreach (var slot in slots)
         {
-            slot.OnDeath();
+            slot.OnHostDeath();
         }
     }
 

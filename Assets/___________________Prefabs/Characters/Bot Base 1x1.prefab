@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1845882391321316222}
   - component: {fileID: 1845882391321316216}
   m_Layer: 7
-  m_Name: NPC Base 1x1
+  m_Name: Bot Base 1x1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -413,7 +413,8 @@ MonoBehaviour:
   armorModifier: 0
   damageOnDestroyed: 1
   ignoreArmorOnDeath: 1
-  disableSpriteOnDeath: 1
+  disableSpriteOnGettinKilled: 1
+  disableSpriteOnHostDeath: 0
 --- !u!1 &7995463922641271884
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,4 +543,5 @@ MonoBehaviour:
   armorModifier: 1
   damageOnDestroyed: 1
   ignoreArmorOnDeath: 1
-  disableSpriteOnDeath: 0
+  disableSpriteOnGettinKilled: 0
+  disableSpriteOnHostDeath: 0
