@@ -15,9 +15,6 @@ public abstract class PhysicalEntity<TStats, TSounds, TState> : PhysicalEntityBa
     where TSounds : SoundsPhysicalItem
 {
     public TStats stats;
-    protected override float Mass => stats.physics.mass;
-    protected override float MaxSpeed_H => stats.physics.maxSpeed_H;
-    protected override float MinSpeedAir_H => stats.physics.minSpeedInAir_H;
 
     public TState state;
     public DetectGround detectGroundLayer;
@@ -26,15 +23,24 @@ public abstract class PhysicalEntity<TStats, TSounds, TState> : PhysicalEntityBa
 
     protected CapsuleCollider2D Collider2D { get; private set; }
 
-    public override bool isRight { get => state.isRight; set => state.isRight = value; }
     protected override bool OnGround => detectGroundLayer.Detected;
-    public override Faction Faction => state.alignment.faction;
     public Vector3 ObjectTop => (Vector3)Collider2D.offset + Vector3.up * Collider2D.size.y / 2 + transform.position;
     public Vector3 ObjectCenter => (Vector3)Collider2D.offset + transform.position;
     public Vector3 ObjectBottom => transform.position;
 
     public ParticleSystem OnHitParticles;
     public ParticleSystem OnDestroyParticles;
+
+    // PhysicalEntityBase
+    protected override float Mass => stats.physics.mass;
+    protected override float MaxSpeed_H => stats.physics.maxSpeed_H;
+    protected override float MinSpeedAir_H => stats.physics.minSpeedInAir_H;
+
+    // SeeAndHearEntity
+    public override bool isRight { get => state.isRight; set => state.isRight = value; }
+
+    // IHittable
+    public override Faction Faction => state.alignment.faction;
 
     protected void DampVelocity()
     {
@@ -48,7 +54,7 @@ public abstract class PhysicalEntity<TStats, TSounds, TState> : PhysicalEntityBa
         var hitForce = hit.GetForce();
         state.health -= Mathf.Max(0, hit.damage - stats.Armour);
         Inertia += hitForce;
-        BaseExt.SpawnParticles(transform, OnHitParticles, hit.isRight);
+        Spawn.SpawnParticles(transform, OnHitParticles, hit.isRight);
 
         if (state.IsDead)
         {
@@ -66,7 +72,7 @@ public abstract class PhysicalEntity<TStats, TSounds, TState> : PhysicalEntityBa
             // Destroy object
             if (state.health < -stats.maxHealth)
             {
-                BaseExt.SpawnParticles(transform, OnDestroyParticles, hit.isRight);
+                Spawn.SpawnParticles(transform, OnDestroyParticles, hit.isRight);
                 Destroy(gameObject);
             }
         }

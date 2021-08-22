@@ -13,11 +13,11 @@ public class RoomEntitiesManager : EventReceiver
     [Space]
     public string[] onRoomSuccessfullyCleanEvents;
     [Space]
-    public List<NPC> allBots;
+    public List<Bot> allBots;
     public List<Pod> allPods;
     public bool isLookingForBots;
 
-    public IEnumerable<NPC> EnemyBots => allBots.Where(s => s != null && !s.state.IsDead && playerAlignment.IsEnemy(s.state.alignment.faction));
+    public IEnumerable<Bot> EnemyBots => allBots.Where(s => s != null && !s.state.IsDead && playerAlignment.IsEnemy(s.state.alignment.faction));
     public IEnumerable<Pod> Pods => allPods.Where(s => s != null);
 
 
@@ -68,7 +68,7 @@ public class RoomEntitiesManager : EventReceiver
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var newBot = collision.gameObject.GetComponent<NPC>();
+        var newBot = collision.gameObject.GetComponent<Bot>();
         if (newBot != null)
         {
             allBots.Add(newBot);

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PhysicalEntityBase : SeeAndHearEntity
+public abstract class PhysicalEntityBase : SeeAndHearEntity, IHittable
 {
     // STATS
     public abstract Faction Faction { get; }
