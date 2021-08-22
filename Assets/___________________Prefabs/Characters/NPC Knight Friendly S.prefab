@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3758521824540562522, guid: 4870907f69d496e4f825bf3ffcdfc6fb, type: 3}
+      propertyPath: weaponStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a983045c29eee14eb30729fb895d243, type: 2}
     - target: {fileID: 8924480172325611528, guid: 4870907f69d496e4f825bf3ffcdfc6fb, type: 3}
       propertyPath: m_Sprite
       value: 

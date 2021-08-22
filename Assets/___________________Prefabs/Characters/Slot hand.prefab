@@ -76,18 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pipe_SoundsPlay: {fileID: 11400000, guid: 49c7055d96e6a844d8e1e445464b45ca, type: 2}
-  defaultWeapon:
-    stats: {fileID: 0}
-    state:
-      health: 5
-      isRight: 1
-      alignment: {fileID: 0}
-  equipedWeapon:
-    stats: {fileID: 0}
-    state:
-      health: 5
-      isRight: 1
-      alignment: {fileID: 0}
+  weaponStats: {fileID: 0}
 --- !u!50 &7281529401196559088
 Rigidbody2D:
   serializedVersion: 4
@@ -204,7 +193,7 @@ Animator:
   m_GameObject: {fileID: 7281529401830257843}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ad118711cae8402419d30f91b9b9b3c1, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -13,9 +13,27 @@ public class Hit
         isRight = true
     };
 
-    //public ObjectType attackerType;
+    public Hit()
+    {
+        damage = 0;
+        force = 0;
+        hitDirection = Vector2.down;
+        hitPosition = Vector2.zero;
+        isRight = true;
+    }
+    public Hit(int damage)
+    {
+        this.damage = damage;
+        force = 0;
+        hitDirection = Vector2.down;
+        hitPosition = Vector2.zero;
+        isRight = true;
+    }
+    
     public int damage;
+
     public int force;
+    
     public bool isRight;
     public Vector2 hitPosition;
     public Vector2 hitDirection;

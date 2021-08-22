@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0fd437cc0a08e4594684f152e72696, type: 3}
   m_Name: Bullet
   m_EditorClassIdentifier: 
-  entityType: 6
   maxHealth: 1
   Armour: 0
   physics: {fileID: 11400000, guid: ff8dbc764315dc64197d6144788da985, type: 2}
@@ -25,5 +24,5 @@ MonoBehaviour:
   isFriendlyDamageOn: {fileID: 11400000, guid: d77f9e77ffb023b4db121908452070fe, type: 2}
   isSelfDamageOn: {fileID: 11400000, guid: 4791d9c40e5c4e443ae4639e3eaa98b6, type: 2}
   attack: {fileID: 11400000, guid: a9f813b3254d47b4dbf8077bd9318261, type: 2}
-  acceleration_H: 50
+  acceleration_H: 30
   detonationDelay: 0

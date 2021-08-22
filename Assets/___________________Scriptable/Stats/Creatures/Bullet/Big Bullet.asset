@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0fd437cc0a08e4594684f152e72696, type: 3}
   m_Name: Big Bullet
   m_EditorClassIdentifier: 
-  entityType: 6
   maxHealth: 1
   Armour: 0
   physics: {fileID: 11400000, guid: ff8dbc764315dc64197d6144788da985, type: 2}
@@ -25,5 +24,5 @@ MonoBehaviour:
   isFriendlyDamageOn: {fileID: 11400000, guid: 7769fa6d2776d9c48b3bd4d94a168af0, type: 2}
   isSelfDamageOn: {fileID: 11400000, guid: 24c4061e526f53145a2207f0e6fb08da, type: 2}
   attack: {fileID: 11400000, guid: 11c1e8773852ad640b781737888e3b99, type: 2}
-  acceleration_H: 60
+  acceleration_H: 30
   detonationDelay: 0

@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6344985734079280781
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 164298884807072255, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7677084188431171025, guid: 4d82087fc838fb74b97516a6dbdaaf15, type: 3}
+    - target: {fileID: 275147465519056070, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 275147465519056071, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: weaponStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a983045c29eee14eb30729fb895d243, type: 2}
+    - target: {fileID: 275147465519056071, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: defaultWeapon.stats
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a983045c29eee14eb30729fb895d243, type: 2}
+    - target: {fileID: 1246160541460923800, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_Name
+      value: Bot E S&S
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246160541460923805, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246160541460923805, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246160541460923811, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246160541460923811, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 53.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246160541460923811, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246160541460923811, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246160541460923811, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246160541460923811, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246160541460923811, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246160541460923811, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246160541460923811, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246160541460923811, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246160541460923811, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1297928607488303116, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3772803087067777597, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825676554515008668, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: weaponStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a983045c29eee14eb30729fb895d243, type: 2}
+    - target: {fileID: 6825676554515008668, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: defaultWeapon.stats
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a983045c29eee14eb30729fb895d243, type: 2}
+    - target: {fileID: 6825676554515008669, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a649ed3642f8094c995c837a84457e6, type: 3}

@@ -15,20 +15,21 @@ public class AttackStatsMelee : AttackStatsBase
 
     public int Damage => damage;
     public int Force => force;
+    public override float DPS => damage * 1;
 
-    public override void SetUp(Limb limb)
+    public override void SetUp(Slot limb)
     {
         limb.Collider.offset = offset;
         limb.Collider.size = size;
     }
-    public override void StartAttack(Limb limb)
+    public override void StartAttack(Slot limb)
     {
 
     }
-    public override void OnTrigger(Limb limb, Collider2D collision)
+    public override void OnTrigger(Slot limb, Collider2D collision)
     {
-        var target = collision.GetComponent<PhysicalEntityBase>();
-        if (BaseExt.ShouldHit(limb, target))
+        var target = collision.GetComponent<IHittable>();
+        if (limb.ShouldHit(target))
         {
             Vector2 returnForce = target.GetHit(new Hit
             {

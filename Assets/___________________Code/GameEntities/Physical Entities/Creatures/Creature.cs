@@ -10,7 +10,7 @@ using UnityEngine;
 public abstract class Creature : PhysicalEntity<StatsCharacter, SoundsCharacter, StateCharacter>
 {
     protected ISlot[] slots;
-    protected Limb[] limbs;
+    protected Slot[] limbs;
     public FactionAlignment corpseAlignment;
     public LayerMask corpseLayer => LayerMask.NameToLayer("Items");
     public abstract Vector2 LimbsDirection { get; }
@@ -19,7 +19,7 @@ public abstract class Creature : PhysicalEntity<StatsCharacter, SoundsCharacter,
     {
         base.GetComponents();
         slots = GetComponentsInChildren<ISlot>();
-        limbs = GetComponentsInChildren<Limb>();
+        limbs = GetComponentsInChildren<Slot>();
     }
 
     protected override void Init()

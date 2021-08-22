@@ -8,15 +8,21 @@ using UnityEngine;
 /// animations: idle die
 /// </summary>
 [RequireComponent(typeof(Collider2D))]
-public class Projectile : PhysicalEntity<StatsProjectile, SoundsWeapon, StateWeapon>
+public class Projectile : PhysicalEntity<StatsProjectile, SoundsWeapon, StateWeapon>, ICanHit
 {
     public override bool isRight => state.isRight;
+
     [Space]
     public ParticleSystem addonLiveParticles;
     public ClipsCollection addonHitSound;
 
-    int GroundLayer;
+    // ICanHit
+    public UnityEngine.Object CoreObject => this;
+    public bool IsSelfDamageOn => false;
+    public bool IsFriendlyDamageOn => stats.isFriendlyDamageOn.value;
+    public bool IsEnemy(Faction faction) => state.alignment.IsEnemy(faction);
 
+    int GroundLayer;
     protected override void Init()
     {
         base.Init();
@@ -45,8 +51,8 @@ public class Projectile : PhysicalEntity<StatsProjectile, SoundsWeapon, StateWea
             return;
         }
 
-        var target = collision.GetComponent<PhysicalEntityBase>();
-        if (BaseExt.ShouldHit(this, target))
+        var target = collision.GetComponent<IHittable>();
+        if (this.ShouldHit(target))
         {
             var returnForce = target.GetHit(new Hit
             {

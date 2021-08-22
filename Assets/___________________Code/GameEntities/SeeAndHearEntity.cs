@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
 public abstract class SeeAndHearEntity : BaseEntity, IAudiable
 {
     public Pipe_SoundsPlay pipe_SoundsPlay;
     public Pipe_SoundsPlay Pipe_SoundsPlay => pipe_SoundsPlay;
 
+    // SeeAndHearEntity
+    public virtual Animator GetAnimator => GetComponent<Animator>();
     public abstract bool isRight { get; set; }
 
     protected void Anim_SetBool(string name, bool value) => Animator.SetBool(name, value);
@@ -22,7 +23,7 @@ public abstract class SeeAndHearEntity : BaseEntity, IAudiable
 
     protected override void GetComponents()
     {
-        Animator = GetComponent<Animator>();
+        Animator = GetAnimator;
     }
     protected override void Init()
     {
